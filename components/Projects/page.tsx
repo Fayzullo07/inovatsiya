@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const Projects = () => {
     return (
         <div className="relative font-inter antialiased">
@@ -9,7 +11,15 @@ const Projects = () => {
                         {/* <!-- Card --> */}
                         <div className="flex flex-col h-full bg-white border border-slate-200 shadow shadow-slate-950/5 rounded-2xl overflow-hidden">
                             {/* <!-- Image --> */}
-                            <img className="object-cover h-48 w-full" src="https://cruip-tutorials.vercel.app/equal-height-cards/equal-height-01.jpg" width="304" height="192" alt="Course 01" />
+                            <Image
+                                src="https://cruip-tutorials.vercel.app/equal-height-cards/equal-height-01.jpg"
+                                className="object-cover h-48 w-full"
+                                width={0}
+                                height={0}
+                                sizes="100vw"
+                                style={{ width: '100%', height: 'auto' }} // optional
+                                alt="Image"
+                            />
                             {/* <!-- Card Content --> */}
                             <div className="flex-1 flex flex-col p-6">
                                 {/* <!-- Card body --> */}
@@ -39,7 +49,15 @@ const Projects = () => {
                         {/* <!-- Card --> */}
                         <div className="flex flex-col h-full bg-white border border-slate-200 shadow shadow-slate-950/5 rounded-2xl overflow-hidden">
                             {/* <!-- Image --> */}
-                            <img className="object-cover h-48 w-full" src="https://cruip-tutorials.vercel.app/equal-height-cards/equal-height-02.jpg" width="304" height="192" alt="Course 02" />
+                            <Image
+                                src="https://cruip-tutorials.vercel.app/equal-height-cards/equal-height-02.jpg"
+                                className="object-cover h-48 w-full"
+                                width={0}
+                                height={0}
+                                sizes="100vw"
+                                style={{ width: '100%', height: 'auto' }} // optional
+                                alt="Image"
+                            />
                             {/* <!-- Card Content --> */}
                             <div className="flex-1 flex flex-col p-6">
                                 {/* <!-- Card body --> */}
@@ -69,7 +87,15 @@ const Projects = () => {
                         {/* <!-- Card --> */}
                         <div className="flex flex-col h-full bg-white border border-slate-200 shadow shadow-slate-950/5 rounded-2xl overflow-hidden">
                             {/* <!-- Image --> */}
-                            <img className="object-cover h-48 w-full" src="https://cruip-tutorials.vercel.app/equal-height-cards/equal-height-03.jpg" width="304" height="192" alt="Course 03" />
+                            <Image
+                                src="https://cruip-tutorials.vercel.app/equal-height-cards/equal-height-03.jpg"
+                                className="object-cover h-48 w-full"
+                                width={0}
+                                height={0}
+                                sizes="100vw"
+                                style={{ width: '100%', height: 'auto' }} // optional
+                                alt="Image"
+                            />
                             {/* <!-- Card Content --> */}
                             <div className="flex-1 flex flex-col p-6">
                                 {/* <!-- Card body --> */}

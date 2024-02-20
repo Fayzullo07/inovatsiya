@@ -24,11 +24,11 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <TopLoader />
-          <div className=" mx-auto max-w-7xl text-2xl gap-2 mb-10">
-            <Navbar />
+          <Navbar />
+          <div className="mx-auto max-w-7xl text-2xl gap-2 mb-10">
             {children}
-            <Footer />
           </div>
+          <Footer />
           <TailwindIndicator />
         </ThemeProvider>
 

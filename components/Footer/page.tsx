@@ -1,13 +1,13 @@
 const Footer = () => {
     return (
         <div id="about" className="footer-2 bg-gray-800 pt-6 md:pt-12">
-            <div className="container px-4 mx-auto">
+            <div className="px-4 mx-auto max-w-7xl ">
 
                 <div className="md:flex md:flex-wrap md:-mx-4 py-6 md:pb-12">
 
                     <div className="footer-info lg:w-1/3 md:px-4">
                         <h4 className="text-white text-2xl mb-4">19K users are using FWR blocks and making their life easy.</h4>
-                        <p className="text-gray-400">We have carefully crafted the blocks to suit to everyone's need.</p>
+                        <p className="text-gray-400">We have carefully crafted the blocks to suit to everyones need.</p>
                         
                     </div>
 
@@ -56,10 +56,8 @@ const Footer = () => {
                             <a href="#" className="py-2 px-4 text-white inline-block hover:underline">Privacy Policy</a>
                         </div>
                     </div>
-
                 </div>
             </div>
-
         </div>
     )
 }
