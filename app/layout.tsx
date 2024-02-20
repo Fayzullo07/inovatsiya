@@ -25,9 +25,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <TopLoader />
           <Navbar />
-          <div className="mx-auto max-w-7xl text-2xl gap-2 mb-10">
-            {children}
-          </div>
+          {children}
           <Footer />
           <TailwindIndicator />
         </ThemeProvider>
