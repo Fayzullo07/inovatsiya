@@ -19,7 +19,7 @@ const Navbar = () => {
     ];
     return (
         <header>
-            <nav className="flex flex-wrap items-center justify-between w-full py-4  md:py-2 px-4 text-lg text-gray-700 bg-white">
+            <nav className="flex flex-wrap items-center justify-between w-full py-4  md:py-2 px-4 text-lg text-gray-700 bg-white fixed z-10">
                 <div>
                     <Link href={"/"} className="flex justify-center items-center gap-2">
                         <div className=" h-12 w-1 bg-green-200 rounded-full">
