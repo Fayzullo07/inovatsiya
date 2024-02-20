@@ -106,7 +106,7 @@
   transition: 1s;
   opacity: 1;
   animation: opacity_animate 0.8s;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 @keyframes opacity_animate {

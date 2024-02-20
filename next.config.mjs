@@ -5,6 +5,7 @@ const nextConfig = {
       "images.unsplash.com",
       "cdn.devdojo.com",
       "cruip-tutorials.vercel.app",
+      "images.pexels.com"
     ],
   },
 };
