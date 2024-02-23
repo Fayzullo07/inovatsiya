@@ -101,6 +101,7 @@
 /* Navbar */
 .active {
   max-width: 80rem;
+  background: white;
   position: fixed;
   top: 0;
   transition: 1s;

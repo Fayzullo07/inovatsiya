@@ -32,10 +32,10 @@ const Navbar = () => {
         <header className="h-[75px]">
             <Container>
                 <nav className={`${stickyNav ? "active" : ""} flex flex-wrap items-center justify-between w-full py-4  md:py-2 px-4 text-lg text-gray-700 bg-white z-10`}>
-                    <div>
+                    <div data-aos="fade-right" data-aos-delay="100">
                         <Link href={"/"} className="flex justify-center items-center gap-2">
-                            <div className=" h-12 w-1 bg-green-200 rounded-full">
-                                <div className="h-8 w-1 bg-blue rounded-full"></div>
+                            <div className="h-12 w-1 bg-green-200 rounded-full">
+                                <div className="h-8 w-1 bg-green-500 rounded-full"></div>
                             </div>
                             <div>
                                 <span className=" text-green-500">New</span>
@@ -72,8 +72,8 @@ const Navbar = () => {
                   md:justify-between 
                   md:pt-0"
                         >
-                            {navbar.map(item => (
-                                <li key={item.name}>
+                            {navbar.map((item, i) => (
+                                <li key={item.name} data-aos="fade-left" data-aos-delay={(i + 1) * 100}>
                                     <Link href={item.slug} className="md:p-4 py-2 block hover:text-purple-400">
                                         {item.name}
                                     </Link>

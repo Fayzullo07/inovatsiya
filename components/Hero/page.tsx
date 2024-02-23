@@ -8,7 +8,7 @@ const Hero = () => {
                 <section className="py-20 md:px-0 background">
                     <div className="container items-center max-w-6xl px-8 mx-auto xl:px-5">
                         <div className="flex flex-wrap items-center sm:-mx-3">
-                            <div className="w-full md:w-1/2 md:px-3">
+                            <div className="w-full md:w-1/2 md:px-3" data-aos="fade-up-right" data-aos-delay="300">
                                 <div className="w-full pb-6 space-y-6 sm:max-w-md lg:max-w-lg md:space-y-4 lg:space-y-8 xl:space-y-9 sm:pr-5 lg:pr-0 md:pb-0">
                                     <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl">
                                         <span className="block xl:inline">Useful Tools to </span>
@@ -24,7 +24,7 @@ const Hero = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="w-full md:w-1/2">
+                            <div className="w-full md:w-1/2" data-aos="fade-up-left" data-aos-delay="600">
                                 <div className="w-full h-auto overflow-hidden rounded-md shadow-xl sm:rounded-xl">
                                     <Image
                                         src="https://images.unsplash.com/photo-1498049860654-af1a5c566876?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"

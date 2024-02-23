@@ -36,13 +36,8 @@ const Members = () => {
             <Container>
 
                 <div className="flex flex-col text-center gap-4 mb-8 p-4">
-
-                    <div className="text-purple-600 text-sm font-bold">Our team</div>
-
-                    <div className="text-gray-900 text-3xl md:text-4xl font-bold">Some of the people you will be working with</div>
-
+                    <div className="text-gray-900 text-3xl md:text-4xl font-bold">Azolar</div>
                     <div className="text-gray-600 md:text-lg">We are a 100% remote team spread all across the world. Join us!</div>
-
                 </div>
 
                 <div className="flex items-center justify-center flex-wrap gap-4 p-4">
