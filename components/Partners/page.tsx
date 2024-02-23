@@ -24,18 +24,18 @@ const Partners = () => {
 
     ]
     return (
-        <div>
+        <div className="py-16 bg-slate-50">
             <Container>
-                <section className="flex items-center justify-center py-20 min-w-screen">
+                <div className="text-center py-2">
+                    <h2 className=" text-4xl font-semibold">Hamkorlarimiz</h2>
+                </div>
+                <section className="flex items-center justify-center min-w-screen">
                     <div className="container flex flex-col items-start mx-auto lg:items-center">
-                        <h2 className="relative flex items-start justify-start w-full max-w-3xl text-5xl font-bold lg:justify-center">
-                            Hamkorlarimiz</h2>
-                        <div className="block w-full h-0.5 max-w-lg mt-6 bg-purple-100 rounded-full"></div>
 
-                        <div className="items-center justify-center w-full mt-12 mb-4 lg:flex gap-4">
+                        <div className="items-center justify-center w-full mb-4 lg:flex gap-4 py-6">
 
                             {data_partners.map((item, i) => (
-                                <div key={i} className="flex flex-col items-start justify-start w-full h-auto mb-12 lg:w-1/3 lg:mb-0">
+                                <div key={i} className="flex flex-col items-start justify-start w-full h-auto mb-12 lg:w-1/3 lg:mb-0 shadow-lg rounded-lg p-4 bg-white">
                                     <div className="flex items-center justify-center">
                                         <div className="w-16 h-16 mr-4 overflow-hidden bg-gray-200 rounded-full">
                                             <Image

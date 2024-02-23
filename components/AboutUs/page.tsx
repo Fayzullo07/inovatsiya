@@ -5,6 +5,9 @@ const AboutUs = () => {
     return (
         <div className="bg-gray-50">
             <Container>
+                <div className="text-center pt-6">
+                    <h2 className=" text-4xl font-semibold">Biz Haqimizda</h2>
+                </div>
                 <section className="py-20">
                     <div className="container items-center max-w-6xl px-4 mx-auto sm:px-20 md:px-32 lg:px-16">
                         <div className="flex flex-wrap items-center -mx-3">

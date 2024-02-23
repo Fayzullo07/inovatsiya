@@ -4,65 +4,53 @@ const Footer = () => {
     return (
         <div id="about" className="footer-2 bg-gray-800 pt-6 md:pt-12">
             <Container>
-                <div className="px-4 mx-auto max-w-7xl ">
-
-                    <div className="md:flex md:flex-wrap md:-mx-4 py-6 md:pb-12">
-
-                        <div className="footer-info lg:w-1/3 md:px-4">
-                            <h4 className="text-white text-2xl mb-4">19K users are using FWR blocks and making their life easy.</h4>
-                            <p className="text-gray-400">We have carefully crafted the blocks to suit to everyones need.</p>
+                <section className="bg-gray-800 -mt-12 py-16">
+                    <div className="flex flex-col md:flex-row text-white text-center">
+                        <div className="p-6 md:w-1/3">
+                            <h1 className="uppercase text-2xl font-bold leading-none tracking-normal pb-5">Location</h1>
+                            <p>Metropolitan City of Bari,<br/>
+                                70121, Italy</p>
+                        </div>
+                        <div className="p-6 md:w-1/3">
+                            <h1 className="uppercase text-2xl font-bold  leading-none tracking-normal">Around the web</h1>
+                            <div className="flex justify-center py-5 ">
+                                <span className="items-center rounded-full border-2 p-3 hover:bg-white mx-1">
+                                    <svg className="fill-current w-5 h-5 hover:text-blue-900" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20"><title>Twitter</title><path
+                                            d="M6.29 18.25c7.55 0 11.67-6.25 11.67-11.67v-.53c.8-.59 1.49-1.3 2.04-2.13-.75.33-1.54.55-2.36.65a4.12 4.12 0 0 0 1.8-2.27c-.8.48-1.68.81-2.6 1a4.1 4.1 0 0 0-7 3.74 11.65 11.65 0 0 1-8.45-4.3 4.1 4.1 0 0 0 1.27 5.49C2.01 8.2 1.37 8.03.8 7.7v.05a4.1 4.1 0 0 0 3.3 4.03 4.1 4.1 0 0 1-1.86.07 4.1 4.1 0 0 0 3.83 2.85A8.23 8.23 0 0 1 0 16.4a11.62 11.62 0 0 0 6.29 1.84"></path></svg>
+                                </span>
+                                <span className="items-center rounded-full border-2 p-3 hover:bg-white mx-1">
+                                    <svg className="fill-current w-5 h-5 hover:text-blue-900" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20"><title>Twitter</title><path
+                                            d="M6.29 18.25c7.55 0 11.67-6.25 11.67-11.67v-.53c.8-.59 1.49-1.3 2.04-2.13-.75.33-1.54.55-2.36.65a4.12 4.12 0 0 0 1.8-2.27c-.8.48-1.68.81-2.6 1a4.1 4.1 0 0 0-7 3.74 11.65 11.65 0 0 1-8.45-4.3 4.1 4.1 0 0 0 1.27 5.49C2.01 8.2 1.37 8.03.8 7.7v.05a4.1 4.1 0 0 0 3.3 4.03 4.1 4.1 0 0 1-1.86.07 4.1 4.1 0 0 0 3.83 2.85A8.23 8.23 0 0 1 0 16.4a11.62 11.62 0 0 0 6.29 1.84"></path></svg>
+                                </span>
+                                <span className="items-center rounded-full border-2 p-3 hover:bg-white mx-1">
+                                    <svg className="fill-current w-5 h-5 hover:text-blue-900" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20"><title>Twitter</title><path
+                                            d="M6.29 18.25c7.55 0 11.67-6.25 11.67-11.67v-.53c.8-.59 1.49-1.3 2.04-2.13-.75.33-1.54.55-2.36.65a4.12 4.12 0 0 0 1.8-2.27c-.8.48-1.68.81-2.6 1a4.1 4.1 0 0 0-7 3.74 11.65 11.65 0 0 1-8.45-4.3 4.1 4.1 0 0 0 1.27 5.49C2.01 8.2 1.37 8.03.8 7.7v.05a4.1 4.1 0 0 0 3.3 4.03 4.1 4.1 0 0 1-1.86.07 4.1 4.1 0 0 0 3.83 2.85A8.23 8.23 0 0 1 0 16.4a11.62 11.62 0 0 0 6.29 1.84"></path></svg>
+                                </span>
+                                <span className="items-center rounded-full border-2 p-3 hover:bg-white mx-1">
+                                    <svg className="fill-current w-5 h-5 hover:text-blue-900" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20"><title>Twitter</title><path
+                                            d="M6.29 18.25c7.55 0 11.67-6.25 11.67-11.67v-.53c.8-.59 1.49-1.3 2.04-2.13-.75.33-1.54.55-2.36.65a4.12 4.12 0 0 0 1.8-2.27c-.8.48-1.68.81-2.6 1a4.1 4.1 0 0 0-7 3.74 11.65 11.65 0 0 1-8.45-4.3 4.1 4.1 0 0 0 1.27 5.49C2.01 8.2 1.37 8.03.8 7.7v.05a4.1 4.1 0 0 0 3.3 4.03 4.1 4.1 0 0 1-1.86.07 4.1 4.1 0 0 0 3.83 2.85A8.23 8.23 0 0 1 0 16.4a11.62 11.62 0 0 0 6.29 1.84"></path></svg>
+                                </span>
+                            </div>
 
                         </div>
-
-                        <div className="md:w-2/3 lg:w-1/3 md:px-4 xl:pl-16 mt-12 lg:mt-0">
-                            <div className="sm:flex">
-                                <div className="sm:flex-1">
-                                    <h6 className="text-base font-medium text-white uppercase mb-2">About</h6>
-                                    <div>
-                                        <a href="#" className="text-gray-400 py-1 block hover:underline">Company</a>
-                                        <a href="#" className="text-gray-400 py-1 block hover:underline">Culture</a>
-                                        <a href="#" className="text-gray-400 py-1 block hover:underline">Team</a>
-                                        <a href="#" className="text-gray-400 py-1 block hover:underline">Careers</a>
-                                    </div>
-                                </div>
-                                <div className="sm:flex-1 mt-4 sm:mt-0">
-                                    <h6 className="text-base font-medium text-white uppercase mb-2">What we offer</h6>
-                                    <div>
-                                        <a href="#" className="text-gray-400 py-1 block hover:underline">Blocks</a>
-                                        <a href="#" className="text-gray-400 py-1 block hover:underline">Resources</a>
-                                        <a href="#" className="text-gray-400 py-1 block hover:underline">Tools</a>
-                                        <a href="#" className="text-gray-400 py-1 block hover:underline">Tutorials</a>
-                                        <a href="#" className="text-gray-400 py-1 block hover:underline">Freebies</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="md:w-1/3 md:px-4 md:text-center mt-12 lg:mt-0">
-                            <h5 className="text-lg text-white font-medium mb-4">Explore our site</h5>
-                            <button className="bg-indigo-600 text-white hover:bg-indigo-700 rounded py-2 px-6 md:px-12 transition-colors duration-300">Explore</button>
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div className="border-t border-solid border-gray-900 mt-4 py-4">
-                    <div className="container px-4 mx-auto">
-
-                        <div className="md:flex md:-mx-4 md:items-center">
-                            <div className="md:flex-1 md:px-4 text-center md:text-left">
-                                <p className="text-white">&copy; <strong>FWR</strong></p>
-                            </div>
-                            <div className="md:flex-1 md:px-4 text-center md:text-right">
-                                <a href="#" className="py-2 px-4 text-white inline-block hover:underline">Terms of Service</a>
-                                <a href="#" className="py-2 px-4 text-white inline-block hover:underline">Privacy Policy</a>
-                            </div>
+                        <div className="p-6 md:w-1/3">
+                            <h1 className="uppercase text-2xl font-bold leading-none tracking-normal pb-5">About freelancer</h1>
+                            <p className="text-xl break-normal">Freelance is a free to use, MIT licensed Tailwindcss theme created by
+                                <a className="text-green-500" href="https://twitter.com/framansi">Francesco Mansi</a>
+                            </p>
                         </div>
                     </div>
-                </div>
+                </section>
+
             </Container>
-        </div>
+                <footer className="bg-gray-900 h-16">
+                    <p className="pt-5 text-center text-white">Copyright © Your Website 2028</p>
+                </footer>
+        </div >
     )
 }
 

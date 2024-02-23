@@ -29,18 +29,17 @@ const Members = () => {
         {
             img: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         },
-        
+
     ]
     return (
         <div>
             <Container>
 
-                <div className="flex flex-col text-center gap-4 mb-8 p-4">
-                    <div className="text-gray-900 text-3xl md:text-4xl font-bold">Azolar</div>
-                    <div className="text-gray-600 md:text-lg">We are a 100% remote team spread all across the world. Join us!</div>
+                <div className="text-center py-6">
+                    <h2 className=" text-4xl font-semibold">Azolar</h2>
                 </div>
 
-                <div className="flex items-center justify-center flex-wrap gap-4 p-4">
+                <div className="flex items-center justify-between flex-wrap gap-4">
                     {data_members.map((item, i) => (
 
                         <div key={i} className="card">

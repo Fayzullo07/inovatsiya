@@ -4,7 +4,9 @@ const Events = () => {
     return (
         <div>
             <Container>
-                <h1>Events</h1>
+                <div className="text-center py-2">
+                    <h2 className=" text-4xl font-semibold">Tadbirlar</h2>
+                </div>
             </Container>
         </div>
     )
