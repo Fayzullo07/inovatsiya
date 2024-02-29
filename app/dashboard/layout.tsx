@@ -1,6 +1,5 @@
 import { ArchiveIcon, BellIcon, BriefcaseIcon, CalendarIcon, HomeIcon, RssIcon, UserIcon, UsersIcon } from "lucide-react";
 import Link from "next/link";
-import { Suspense } from "react";
 
 export default function Layout({ children }: Readonly<{ children: React.ReactNode }>) {
 
@@ -28,13 +27,13 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
                         </li>
                         <li className='border my-2'></li>
                         <li>
-                            <a href="#" className='flex rounded px-3 py-2 hover:text-black hover:bg-gray-50 transition-all'>
+                            <Link href={"/dashboard/news"} className='flex rounded px-3 py-2 hover:text-black hover:bg-gray-50 transition-all'>
                                 <span className='flex items-center gap-3'>
                                     <RssIcon />
                                     News
                                     <span className='bg-red-500 text-white leading-none px-2 py-1 rounded-full text-xs'>99+</span>
                                 </span>
-                            </a>
+                            </Link>
                         </li>
 
                         <li>
