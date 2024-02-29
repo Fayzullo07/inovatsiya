@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Container from "./Core/Container";
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 const Contact = () => {
     const [name, setName] = useState("");
@@ -16,7 +17,7 @@ const Contact = () => {
         e.preventDefault();
 
         if (!name || !phone || !desc) {
-            alert("Empty")
+            toast.warning("To'liq toldiring!");
             return
         }
 
@@ -31,6 +32,7 @@ const Contact = () => {
             });
 
             if (res.ok) {
+                toast.success("Yuborildi!");
                 setLoading(false)
                 setName("");
                 setPhone("");
