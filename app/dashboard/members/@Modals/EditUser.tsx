@@ -11,6 +11,7 @@ const EditUser = ({ id, username, desc }: { id: string, username: string, desc: 
     const [loading, setLoading] = useState(false);
 
     const router = useRouter();
+    router.refresh()
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
