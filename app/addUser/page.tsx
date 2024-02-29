@@ -11,18 +11,20 @@ const AddUser = () => {
     const [loading, setLoading] = useState(false);
 
     const router = useRouter();
-
+    
+    
+    console.log(`${process.env.BACKEND_API}/api/users`);
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
+        
         if (!username || !desc) {
             alert("Empty")
             return
         }
-
+        
         try {
             setLoading(true);
-            const res = await fetch(`${process.env.BACKEND_API}/api/users`, {
+            const res = await fetch(`/api/users`, {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json"

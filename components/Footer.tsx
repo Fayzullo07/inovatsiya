@@ -4,7 +4,6 @@ import Container from "./Core/Container";
 
 const Footer = () => {
     const pathname = usePathname();
-    console.log(pathname.split("/")[1]);
     return (
         <footer className={`${pathname.split("/")[1] == "dashboard" ? "hidden" : ""}`}>
             <div id="about" className="footer-2 bg-gray-800 pt-6 md:pt-12">

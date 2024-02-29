@@ -8,7 +8,6 @@ const Navbar = () => {
     const [stickyNav, setStickyNav] = useState(false);
 
     const pathname = usePathname();
-    console.log(pathname.split("/")[1]);
 
     const handleScroll = () => {
         window.pageYOffset >= 10 ? setStickyNav(true) : setStickyNav(false);
