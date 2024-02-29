@@ -3,7 +3,7 @@ import Container from "./Core/Container";
 
 const getUsers = async () => {
     try {
-        const res = await fetch(`${process.env.BACKEND_API}/api/users`, { cache: 'no-store' })
+        const res = await fetch(`/api/users`, { cache: 'no-store' })
 
         if (!res.ok) {
             throw Error('Failed to fetch users')
