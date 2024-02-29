@@ -1,4 +1,4 @@
-import Container from "@/components/Container";
+import Container from "@/components/Core/Container";
 
 const Admin = () => {
     
@@ -20,10 +20,6 @@ const Admin = () => {
                         </div>
                     </div>
                 </div>
-
-
-
-
             </Container>
         </div>
     )

@@ -1,7 +1,7 @@
 import Image from "next/image";
-import Container from "../Container"
+import Container from "./Core/Container";
 
-const Members = () => {
+const Members = async () => {
     const data_members = [
         {
             img: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
@@ -31,6 +31,7 @@ const Members = () => {
         },
 
     ]
+
     return (
         <div>
             <Container>
@@ -39,12 +40,12 @@ const Members = () => {
                     <h2 className=" text-4xl font-semibold">Azolar</h2>
                 </div>
 
-                <div className="flex items-center justify-between flex-wrap gap-4">
-                    {data_members.map((item, i) => (
+                <div className="flex items-center  flex-wrap gap-4">
+                    {data_members.map((item: any, i: number) => (
 
-                        <div key={i} className="card">
+                        <div key={i} className="card" data-aos="fade-up" data-aos-delay={(i + 1) * 100}>
                             <Image
-                                src={item.img}
+                                src={'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'}
                                 className="w-24 h-24 rounded-full object-cover transition duration-200 hover:scale-110"
                                 width={0}
                                 height={0}

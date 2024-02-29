@@ -1,12 +1,14 @@
 "use client"
 import { useEffect, useState } from "react";
-import { ModeToggle } from "../mode-toggle";
 import Link from "next/link";
-import Container from "../Container";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
     const [nav, setNav] = useState(false);
     const [stickyNav, setStickyNav] = useState(false);
+
+    const pathname = usePathname();
+    console.log(pathname.split("/")[1]);
 
     const handleScroll = () => {
         window.pageYOffset >= 10 ? setStickyNav(true) : setStickyNav(false);
@@ -27,12 +29,13 @@ const Navbar = () => {
         { name: "Aql Markazi", slug: "/services" },
         { name: "Bog'lanish", slug: "/boglanish" },
         { name: "Biz haqimizda", slug: "/#about" },
+        { name: "Login", slug: "/login" },
+        { name: "Dashboard", slug: "/dashboard" },
     ];
     return (
-        <header>
-            {/* <Container> */}
+        <header className={`${pathname.split("/")[1] == "dashboard" ? "hidden" : ""}`}>
             <nav className={`${stickyNav ? "active" : ""}  flex flex-wrap items-center justify-between w-full py-4  md:py-2 px-4 text-lg text-gray-700 bg-white z-10`}>
-                <div data-aos="fade-right" data-aos-delay="100">
+                <div data-aos="fade-left" data-aos-delay="100">
                     <Link href={"/"} className="flex justify-center items-center gap-2">
                         <div className=" h-12 w-1 bg-green-200 rounded-full">
                             <div className="h-8 w-1 bg-blue rounded-full"></div>
@@ -63,21 +66,19 @@ const Navbar = () => {
                     />
                 </svg>
 
-                <div className={`${nav ? "" : "hidden"} w-full lg:flex md:items-center md:w-auto bg-white z-10`} id="menu">
+                <div className={`${nav ? "" : "hidden"} w-full lg:flex md:items-center lg:w-auto overflow-auto bg-white z-10`} id="menu">
                     <ul
-                        className="pt-2 text-lg text-gray-700 md:flex md:justify-between md:pt-0">
+                        className="pt-2 text-lg text-gray-700 lg:flex lg:justify-between lg:pt-0">
                         {navbar.map((item, i) => (
-                            <li key={item.name} data-aos="fade-left" data-aos-delay={(i + 1) * 100}>
+                            <li key={item.name} data-aos="fade-right" data-aos-delay={(i + 1) * 100}>
                                 <Link href={item.slug} className="md:p-4 py-2 block hover:text-purple-400">
                                     {item.name}
                                 </Link>
                             </li>
                         ))}
                     </ul>
-                    {/* <ModeToggle/> */}
                 </div>
             </nav>
-            {/* </Container> */}
         </header>
     )
 }
