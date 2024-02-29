@@ -22,7 +22,7 @@ const AddUser = () => {
 
         try {
             setLoading(true);
-            const res = await fetch("http://localhost:3000/api/users", {
+            const res = await fetch(`${process.env.BACKEND_API}/api/users`, {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json"
