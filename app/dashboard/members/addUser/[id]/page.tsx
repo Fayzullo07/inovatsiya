@@ -1,4 +1,4 @@
-import EditUser from "@/components/Members/EditUser";
+import EditUser from "../../@Modals/EditUser";
 
 const getUserById = async (id: any) => {
     try {

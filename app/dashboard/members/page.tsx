@@ -1,11 +1,10 @@
-import { EditIcon, LucideTrash2 } from "lucide-react";
+import { EditIcon, LucideTrash2, PlusIcon } from "lucide-react";
 import Link from "next/link";
-
 import Image from "next/image";
 
-const getMessages = async () => {
+const getUsers = async () => {
     try {
-        const res = await fetch(`${process.env.BACKEND_API}/api/contact`, { cache: 'no-store' })
+        const res = await fetch(`${process.env.BACKEND_API}/api/users`, { cache: 'no-store' })
 
         if (!res.ok) {
             throw Error('Failed to fetch users')
@@ -17,13 +16,19 @@ const getMessages = async () => {
     }
 }
 
+const Members = async () => {
 
-const Dashboard = async () => {
-    const { messages } = await getMessages();
+    const { users } = await getUsers();
+
     return (
         <div>
-            <div className="flex justify-start items-center gap-4">
-                <h2 className="text-xl font-semibold leading-tight">{"Xabarlar"}</h2>
+            <div className="flex justify-between items-center gap-4">
+                <h2 className="text-xl font-semibold leading-tight">{"A'zolar"}</h2>
+                <Link href={"/dashboard/members/addUser"}>
+                    <button className=" bg-green-500 text-white p-1 rounded-full cursor-pointer">
+                        <PlusIcon size={32} />
+                    </button>
+                </Link>
             </div>
 
             <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
@@ -41,14 +46,33 @@ const Dashboard = async () => {
                                 <th
                                     className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"
                                 >
-                                    Phone
+                                    Amount
                                 </th>
                                 <th
                                     className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"
                                 >
-                                    Izoh
+                                    Amount
                                 </th>
-
+                                <th
+                                    className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"
+                                >
+                                    Amount
+                                </th>
+                                <th
+                                    className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"
+                                >
+                                    Amount
+                                </th>
+                                <th
+                                    className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"
+                                >
+                                    Amount
+                                </th>
+                                <th
+                                    className="text-right px-5 py-3 border-b-2 border-gray-200 bg-gray-100  text-xs font-semibold text-gray-700 uppercase tracking-wider"
+                                >
+                                    Edit
+                                </th>
                                 <th
                                     className="text-right px-5 py-3 border-b-2 border-gray-200 bg-gray-100  text-xs font-semibold text-gray-700 uppercase tracking-wider"
                                 >
@@ -58,7 +82,7 @@ const Dashboard = async () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {messages.map((user: any) => (
+                            {users.map((user: any) => (
                                 <tr key={user._id}>
                                     <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <div className="flex">
@@ -76,17 +100,36 @@ const Dashboard = async () => {
                                             </div>
                                             <div className="ml-3">
                                                 <p className="text-gray-900 whitespace-no-wrap">
-                                                    {user.name}
+                                                    {user.username}
                                                 </p>
-                                                <p className="text-gray-600 whitespace-no-wrap">{user.phone}</p>
+                                                <p className="text-gray-600 whitespace-no-wrap">{user.desc}</p>
                                             </div>
                                         </div>
                                     </td>
                                     <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <p className="text-gray-900 whitespace-no-wrap">{user.phone}</p>
+                                        <p className="text-gray-900 whitespace-no-wrap">$20,000</p>
+                                        <p className="text-gray-600 whitespace-no-wrap">USD</p>
                                     </td>
                                     <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <p className="text-gray-900 whitespace-no-wrap">{user.desc}</p>
+                                        <p className="text-gray-900 whitespace-no-wrap">$20,000</p>
+                                        <p className="text-gray-600 whitespace-no-wrap">USD</p>
+                                    </td>
+                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <p className="text-gray-900 whitespace-no-wrap">$20,000</p>
+                                        <p className="text-gray-600 whitespace-no-wrap">USD</p>
+                                    </td>
+                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <p className="text-gray-900 whitespace-no-wrap">$20,000</p>
+                                        <p className="text-gray-600 whitespace-no-wrap">USD</p>
+                                    </td>
+                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <p className="text-gray-900 whitespace-no-wrap">$20,000</p>
+                                        <p className="text-gray-600 whitespace-no-wrap">USD</p>
+                                    </td>
+                                    <td className=" text-right px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <Link href={`/dashboard/members/addUser/${user._id}`} className=" text-yellow-600 inline-block">
+                                            <EditIcon size={24} className=" cursor-pointer" />
+                                        </Link>
                                     </td>
                                     <td className=" text-right px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <button className=" text-red-600">
@@ -105,4 +148,4 @@ const Dashboard = async () => {
     )
 }
 
-export default Dashboard;
+export default Members;

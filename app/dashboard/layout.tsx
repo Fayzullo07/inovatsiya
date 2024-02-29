@@ -47,7 +47,7 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
                         </li>
 
                         <li>
-                            <a href="#" className='flex items-center rounded px-3 py-2 hover:text-black hover:bg-gray-50 transition-all'>
+                            <Link href={'/dashboard/members'} className='flex items-center rounded px-3 py-2 hover:text-black hover:bg-gray-50 transition-all'>
 
                                 <UserIcon className="mr-3" />
 
@@ -55,7 +55,7 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
 
                                 {/* <i data-feather="chevron-down" style='width: 1.2em'></i> */}
 
-                            </a>
+                            </Link>
                         </li>
 
                         <li>
@@ -96,7 +96,7 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
                 </aside>
 
                 <div className='w-full'>
-                    <header className='px-6 lg:px-8 pb-4 lg:pb-6 pt-6 lg:pt-10 shadow bg-white mb-1 sticky top-0'>
+                    <header className='px-6 lg:px-8 py-4 lg:pt-10 shadow bg-white sticky top-0'>
 
                         <h1 className='text-xl font-semibold mb-6 flex items-center'>
                             <button className='btn-open-menu inline-block lg:hidden mr-6'>

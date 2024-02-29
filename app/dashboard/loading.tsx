@@ -4,7 +4,7 @@ const Loading = () => {
             <section className='bg-white p-6 shadow rounded'>
                 <div className='bg-gray-200 pt-5 px-20 rounded inline-block '></div>
                 <div className='border mb-5 mt-4'></div>
-                <div className='bg-gray-200 pt-3 rounded max-w-lg mb-3 '></div>
+                <div className='bg-gray-200 pt-3 rounded max-w-lg mb-3'></div>
                 <div className='bg-gray-100 pt-3 rounded max-w-sm '></div>
             </section>
 
