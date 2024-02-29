@@ -21,7 +21,7 @@ const getUsers = async () => {
 
 const Dashboard = async () => {
 
-    const { users } = await getUsers();
+    // const { users } = await getUsers();
 
     return (
         <div>
@@ -67,7 +67,7 @@ const Dashboard = async () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {users.map((user: any) => (
+                            {/* {users.map((user: any) => (
                                 <tr key={user._id}>
                                     <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <div className="flex">
@@ -123,7 +123,7 @@ const Dashboard = async () => {
                                         </button>
                                     </td>
                                 </tr>
-                            ))}
+                            ))} */}
 
                         </tbody>
                     </table>
