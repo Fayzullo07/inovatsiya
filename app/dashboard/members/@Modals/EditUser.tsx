@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const EditUser = ({ id, username, desc }: { id: string, username: string, desc: string }) => {
     const [usernameEdit, setUserName] = useState(username);
@@ -15,13 +16,12 @@ const EditUser = ({ id, username, desc }: { id: string, username: string, desc: 
         e.preventDefault();
 
         if (!username || !desc) {
-            alert("Empty")
+            toast.warning("Empty");
             return
         }
-
         try {
             setLoading(true);
-            const res = await fetch(`http://localhost:3000/api/users/${id}`, {
+            const res = await fetch(`/api/users/${id}`, {
                 method: "PUT",
                 headers: {
                     "Content-type": "application/json"
@@ -62,7 +62,7 @@ const EditUser = ({ id, username, desc }: { id: string, username: string, desc: 
                             id="twitter" name="twitter" placeholder="Description" className="border shadow p-3 w-full rounded mb-" />
                     </div>
 
-                    <button type="submit" className="block w-full bg-blue-500 text-white font-bold p-4 rounded-lg">{loading ? "Loading . . ." : "Update User"}</button>
+                    <button disabled={loading} type="submit" className={`block w-full ${loading ? "bg-blue-300" : "bg-blue-500"}  text-white font-bold p-4 rounded-lg`}>{loading ? "Loading . . ." : "Update User"}</button>
                 </form>
             </div>
         </div>
