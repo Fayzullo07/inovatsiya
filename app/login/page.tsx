@@ -1,13 +1,11 @@
 "use client"
 import Container from '@/components/Core/Container';
-import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 
 const LoginForm = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [isAuth, setIsAuth] = useState(false);
-    const router = useRouter();
 
     const handleSubmit = (event: any) => {
         event.preventDefault();
@@ -23,12 +21,6 @@ const LoginForm = () => {
         }
         setIsAuth(true);
     };
-
-    useEffect(() => {
-        if (isAuth) {
-            router.push("/dashboard");
-        }
-    }, [isAuth]);
 
     return (
 

@@ -1,4 +1,4 @@
-import { EditIcon, LucideTrash2, PlusIcon } from "lucide-react";
+import { EditIcon, PlusIcon } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import DeleteUser from "./@Modals/DeleteUser";
