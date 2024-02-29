@@ -1,6 +1,7 @@
 import { EditIcon, LucideTrash2, PlusIcon } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import DeleteUser from "./@Modals/DeleteUser";
 
 const getUsers = async () => {
     try {
@@ -17,7 +18,7 @@ const getUsers = async () => {
 }
 
 const Members = async () => {
-
+    
     const { users } = await getUsers();
 
     return (
@@ -132,9 +133,7 @@ const Members = async () => {
                                         </Link>
                                     </td>
                                     <td className=" text-right px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <button className=" text-red-600">
-                                            <LucideTrash2 size={24} className=" cursor-pointer" />
-                                        </button>
+                                        <DeleteUser id={user._id} />
                                     </td>
 
                                 </tr>

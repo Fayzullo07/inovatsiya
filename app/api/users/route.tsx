@@ -19,5 +19,7 @@ export async function DELETE(req: any) {
     const id = req.nextUrl.searchParams.get("id");
     await connectMongoDB();
     await User.findByIdAndDelete(id);
+    console.log("delete");
+    
     return NextResponse.json({ message: "User deleted" }, { status: 200 })
 }

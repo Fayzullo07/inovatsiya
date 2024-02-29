@@ -31,6 +31,7 @@ const AddUser = () => {
             if (res.ok) {
                 setLoading(false)
                 router.push("/dashboard/members")
+                router.refresh();
             } else {
                 throw new Error("Failed to create a user");
             }

@@ -1,6 +1,21 @@
 import Image from "next/image";
 import Container from "./Core/Container";
 
+const getUsers = async () => {
+    try {
+        const res = await fetch(`http://localhost:3000/api/users`, { cache: 'no-store' })
+        // alert(process.env.BACKEND_API)
+
+        if (!res.ok) {
+            throw Error('Failed to fetch users')
+        }
+
+        return res.json()
+    } catch (error) {
+        console.log("Error", error);
+    }
+}
+
 const Members = async () => {
     const data_members = [
         {
@@ -32,6 +47,8 @@ const Members = async () => {
 
     ]
 
+    const { users } = await getUsers();
+
     return (
         <div>
             <Container>
@@ -41,7 +58,7 @@ const Members = async () => {
                 </div>
 
                 <div className="flex items-center  flex-wrap gap-4">
-                    {data_members.map((item: any, i: number) => (
+                    {users.map((item: any, i: number) => (
 
                         <div key={i} className="card" data-aos="fade-up" data-aos-delay={(i + 1) * 100}>
                             <Image
@@ -54,9 +71,9 @@ const Members = async () => {
                                 alt="Image"
                             />
 
-                            <div className="text-gray-900 text-lg font-bold">Phoenix Baker</div>
+                            <div className="text-gray-900 text-lg font-bold">{item.username}</div>
 
-                            <div className="text-purple-600">Engineering Manager</div>
+                            <div className="text-purple-600">{item.desc}</div>
 
                             <div className="text-gray-600">Lead engineering teams at Figma, Pitch, and Protocol Labs.</div>
 

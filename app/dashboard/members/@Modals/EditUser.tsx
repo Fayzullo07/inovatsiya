@@ -11,7 +11,6 @@ const EditUser = ({ id, username, desc }: { id: string, username: string, desc: 
     const [loading, setLoading] = useState(false);
 
     const router = useRouter();
-    router.refresh()
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
@@ -32,10 +31,11 @@ const EditUser = ({ id, username, desc }: { id: string, username: string, desc: 
 
             if (!res.ok) {
                 throw new Error("Failed to update user")
+            } else {
+                setLoading(false)
+                router.push("/dashboard/members")
+                router.refresh()
             }
-            setLoading(false)
-            router.refresh()
-            router.push("/dashboard/members")
         } catch (error) {
             console.log("Error: ", error);
 
