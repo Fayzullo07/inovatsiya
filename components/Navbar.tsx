@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { MenuIcon } from "lucide-react";
 
 const Navbar = () => {
     const [nav, setNav] = useState(false);
@@ -28,7 +29,6 @@ const Navbar = () => {
         { name: "Aql Markazi", slug: "/services" },
         { name: "Bog'lanish", slug: "/boglanish" },
         { name: "Biz haqimizda", slug: "/#about" },
-        { name: "Login", slug: "/login" },
         { name: "Dashboard", slug: "/dashboard" },
     ];
     return (
@@ -48,22 +48,10 @@ const Navbar = () => {
                     </Link>
                 </div>
 
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    id="menu-button"
-                    className="h-6 w-6 cursor-pointer lg:hidden block"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    onClick={() => setNav(!nav)}
-                >
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M4 6h16M4 12h16M4 18h16"
-                    />
-                </svg>
+                <div className="h-6 w-6 cursor-pointer lg:hidden block" onClick={() => setNav(!nav)}>
+
+                    <MenuIcon />
+                </div>
 
                 <div className={`${nav ? "" : "hidden"} w-full lg:flex md:items-center lg:w-auto overflow-auto bg-white z-10`} id="menu">
                     <ul

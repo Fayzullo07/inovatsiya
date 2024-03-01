@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Container from "./Core/Container";
+import { usersGetAPI } from "@/services/api";
 
-const getUsers = async () => {
+export const getUsers = async () => {
     try {
         const res = await fetch(`/api/users`, { cache: 'no-store' })
 
@@ -9,7 +10,11 @@ const getUsers = async () => {
             throw Error('Failed to fetch users')
         }
 
-        return res.json()
+        const { users } = await res.json()
+        console.log(users);
+
+        return users
+
     } catch (error) {
         console.log("Error", error);
     }
@@ -46,7 +51,7 @@ const Members = async () => {
 
     // ]
 
-    const { users } = await getUsers();
+    const { data } = await usersGetAPI();
 
     return (
         <div>
@@ -57,7 +62,7 @@ const Members = async () => {
                 </div>
 
                 <div className="flex items-center  flex-wrap gap-4">
-                    {users.map((item: any, i: number) => (
+                    {data.users.map((item: any, i: number) => (
 
                         <div key={i} className="card" data-aos="fade-up" data-aos-delay={(i + 1) * 100}>
                             <Image

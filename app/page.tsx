@@ -13,8 +13,6 @@ import Partners from "@/components/Partners";
 import Projects from "@/components/Projects";
 import Services from "@/components/Services";
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 export default function Home() {
   useEffect(() => {

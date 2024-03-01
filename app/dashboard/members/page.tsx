@@ -2,24 +2,12 @@ import { EditIcon, PlusIcon } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import DeleteUser from "./@Modals/DeleteUser";
-
-const getUsers = async () => {
-    try {
-        const res = await fetch(`${process.env.BACKEND_API}/api/users`, { cache: 'no-store' })
-
-        if (!res.ok) {
-            throw Error('Failed to fetch users')
-        }
-
-        return res.json()
-    } catch (error) {
-        console.log("Error", error);
-    }
-}
+import { getUsers } from "@/components/Members";
+import { usersGetAPI } from "@/services/api";
 
 const Members = async () => {
-    
-    const { users } = await getUsers();
+
+    const { data } = await usersGetAPI();
 
     return (
         <div>
@@ -83,7 +71,7 @@ const Members = async () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {users.map((user: any) => (
+                            {data.users.map((user: any) => (
                                 <tr key={user._id}>
                                     <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <div className="flex">
