@@ -20,6 +20,7 @@ import Partners from '@/components/Partners';
 import Members from '@/components/Members';
 import Services from '@/components/Services';
 import Projects from '@/components/Projects';
+import Slider from '@/components/Slider';
 
 export default function Index() {
   useEffect(() => {
@@ -56,6 +57,7 @@ export default function Index() {
       </div> */}
       {/* <Test /> */}
       <Hero />
+      <Slider />
       <AboutUs />
       <WhatWeOffer />
       <Statistics />
