@@ -75,7 +75,7 @@ const New = () => {
                             </div>
                         </div>
                         <div>
-                            <div className="grid grid-cols-1 gap-4 md:gap-8">
+                            <div className="grid grid-cols-1 gap-4 md:gap-8 ">
                                 {data_news.map((item, i) => (
                                     <div key={i} className=" bg-white border-slate-200 shadow shadow-slate-950/5 rounded overflow-hidden" >
                                         <div className=" overflow-hidden relative ">

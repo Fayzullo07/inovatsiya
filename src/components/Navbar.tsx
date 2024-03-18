@@ -54,10 +54,10 @@ const Navbar = () => {
                 </div>
                 <div className={`hidden w-full lg:flex md:items-center lg:w-auto overflow-auto bg-white z-10`}>
                     <ul
-                        className="text-xl text-gray-700 lg:flex lg:justify-between">
+                        className="text-xl text-gray-500 lg:flex lg:justify-between">
                         {navbar.map((item, i) => (
                             <li key={item.name} data-aos="fade-right" data-aos-delay={(i + 1) * 100} data-aos-duration={(i + 1) * 200} >
-                                <Link href={item.slug} className="*:hover:w-full p-2 block hover:text-green-500 duration-300" >
+                                <Link href={item.slug} className="*:hover:w-full p-2 font-normal block hover:text-green-500 duration-300" >
                                     {t(`${i}`)}
                                     <div className="w-0 duration-1000 h-0.5 bg-green-500"></div>
                                 </Link>

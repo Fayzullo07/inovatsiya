@@ -38,7 +38,7 @@ const LocalSwitcher = () => {
                             alt="Image"
                         />
                     </div>
-                    <div className="text-lg font-semibold uppercase mr-1">
+                    <div className="text-base font-medium uppercase mr-1">
                         {lang}
                     </div>
                     <ChevronDownIcon size={20}  />
