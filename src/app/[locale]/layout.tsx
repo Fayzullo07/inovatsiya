@@ -15,6 +15,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 
 import AuthProvider from "@/components/Core/AuthProvider";
+import Provider from "@/utils/Provider";
 
 export const metadata: Metadata = {
   title: "New Inovation | Uzbekistan",
@@ -50,8 +51,10 @@ export default function LocaleLayout({ children, params: { locale }, }: Readonly
                 theme="light" />
               <TopLoader />
               <div className="min-h-screen">
-                <Navbar />
-                {children}
+                <Provider>
+                  <Navbar />
+                  {children}
+                </Provider>
               </div>
               <TailwindIndicator />
               <Footer />

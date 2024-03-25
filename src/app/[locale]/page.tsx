@@ -21,6 +21,7 @@ import Members from '@/components/Members';
 import Services from '@/components/Services';
 import Projects from '@/components/Projects';
 import Slider from '@/components/Slider';
+import AskedQuestions from '@/components/AskedQuestions';
 
 export default function Index() {
   useEffect(() => {
@@ -58,18 +59,28 @@ export default function Index() {
       {/* <Test /> */}
       <Hero />
       <Slider />
-      <AboutUs />
-      <WhatWeOffer />
-      <Statistics />
-      {/* <OurCompany /> */}
+      {/* <AboutUs /> */}
+      {/* <h1>Loyihalarimiz</h1> */}
+      {/* <h1>Azolarimiz</h1> */}
+      {/* <h1>Azo bolish</h1> */}
+      {/* <h1>Tadbirlar</h1> */}
       <News />
+      {/* <h1>Hamkorlar</h1> */}
+      {/* <h1>Hamkorlik uchun aziza qoldirish</h1> */}
+      {/* <h1>Tashabbuskorlar</h1> */}
+      <WhatWeOffer />
+      {/* <h1>Hizbatlardan foydalanish uchun aziza qoldirish</h1> */}
+
+      {/* <Statistics /> */}
+      {/* <OurCompany /> */}
       {/* <OurTeam /> */}
       {/* <Events /> */}
-      <Partners />
+      {/* <Partners /> */}
       {/* <Members /> */}
       {/* <Services /> */}
-      <Projects />
+      {/* <Projects /> */}
       <Contact />
+      <AskedQuestions />
     </>
   );
 }

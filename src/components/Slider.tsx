@@ -6,8 +6,8 @@ const Slider = () => {
         <div>
 
             <Container>
-                <div className="slider">
-                    <div className="slide-track">
+                <div className="slider py-4">
+                    <div className="slide-track *:shadow *:border *:bg-white">
                         <div className="slide">
                             <RssIcon />
                             <h1>Tanlovlar</h1>

@@ -122,8 +122,6 @@
     height: 0;
   }
 
-
-
   100% {
     width: 100%;
     height: 100%;
@@ -177,13 +175,19 @@
   align-items: center;
   padding: 10px;
   gap: 10px;
-  border-radius: 10px;
+  border-radius: 5px;
   transition: 0.5s;
   cursor: pointer;
 }
 
 .slide:hover {
   transform: scale(1.2)
+}
+
+.sticy_top {
+  /* position: -webkit-sticky; Safari */
+  position: sticky;
+  top: 100px;
 }
 
 @keyframes scroll {

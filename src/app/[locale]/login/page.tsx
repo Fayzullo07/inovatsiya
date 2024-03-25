@@ -7,15 +7,15 @@ import { toast } from 'react-toastify';
 // Foydalanuvchining autentifikatsiyasini tekshiruvchi funksiya
 const checkAuth = async (token: string | null) => {
     try {
-      if (!token) {
-        throw new Error('Noto\'g\'ri token');
-      }
-    //   const response = await axios.post('/api/auth/me', { token });
-    //   return response.data.user;
+        if (!token) {
+            throw new Error('Noto\'g\'ri token');
+        }
+        //   const response = await axios.post('/api/auth/me', { token });
+        //   return response.data.user;
     } catch (error) {
-      throw new Error('Foydalanuvchi autentifikatsiyadan o\'tmadi');
+        throw new Error('Foydalanuvchi autentifikatsiyadan o\'tmadi');
     }
-  };
+};
 
 
 const LoginForm = () => {
@@ -47,24 +47,6 @@ const LoginForm = () => {
         }, 500)
     };
 
-
-    // Foydalanuvchi autentifikatsiyasini tekshirish
-    const authenticate = async () => {
-        const token = localStorage.getItem('token'); // Tokenni local storage dan olish
-        try {
-            // const userData = await checkAuth(token);
-            // setUser(userData);
-            setLoading(false);
-        } catch (error) {
-            console.error('Autentifikatsiya xato:', error);
-            // Agar foydalanuvchi autentifikatsiyadan o'tmagan bo'lsa, login sahifasiga yo'naltirish
-            router.push('/login');
-        }
-    };
-
-    useEffect(() => {
-        authenticate();
-    }, []);
 
     return (
 

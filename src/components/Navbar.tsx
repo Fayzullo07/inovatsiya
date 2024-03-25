@@ -37,9 +37,9 @@ const Navbar = () => {
 
     return (
         <header className={`${pathname.split("/")[2] == "admin" ? "hidden" : ""}`}>
-            <nav className={`${stickyNav ? "active" : ""} flex flex-wrap items-center justify-between w-full py-3  md:py-1 px-4 text-lg text-gray-700 bg-white z-[100]`}>
+            <nav className={`${stickyNav ? "active" : ""} flex flex-wrap items-center justify-between w-full py-3  md:py-1 px-4 text-lg text-gray-700 bg-white z-[100] shadow`}>
 
-                <div data-aos="fade-left" data-aos-delay="100">
+                <div>
                     <Link href={"/"} className="flex justify-center items-center gap-2">
                         <div className=" h-12 w-1 bg-green-200 rounded-full">
                             <div className="h-8 w-1 bg-blue rounded-full"></div>
@@ -56,7 +56,7 @@ const Navbar = () => {
                     <ul
                         className="text-xl text-gray-500 lg:flex lg:justify-between">
                         {navbar.map((item, i) => (
-                            <li key={item.name} data-aos="fade-right" data-aos-delay={(i + 1) * 100} data-aos-duration={(i + 1) * 200} >
+                            <li key={item.name}>
                                 <Link href={item.slug} className="*:hover:w-full p-2 font-normal block hover:text-green-500 duration-300" >
                                     {t(`${i}`)}
                                     <div className="w-0 duration-1000 h-0.5 bg-green-500"></div>

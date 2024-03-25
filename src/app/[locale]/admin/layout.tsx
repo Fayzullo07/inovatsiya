@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Layout({ children }: Readonly<{ children: React.ReactNode }>) {
     const locale = useLocale();
-
+    
 
     return (
         <div>
@@ -15,7 +15,7 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
                         <li>
                             <Link href={'/'} className='flex items-center rounded px-3 py-2 hover:text-black hover:bg-gray-50  transition-all'>
                                 <HomeIcon className="mr-3" />
-                                <span className='flex-grow'>Home</span>
+                                <span className='flex-grow'>Bosh sahifa</span>
                             </Link>
                         </li>
 
@@ -40,13 +40,13 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
                         </li>
 
                         <li>
-                            <a href="#!" className='flex items-center rounded px-3 py-2 hover:text-black hover:bg-gray-50 transition-all'>
+                            <Link href={`/${locale}/admin/news`} className='flex items-center rounded px-3 py-2 hover:text-black hover:bg-gray-50 transition-all'>
 
                                 <CalendarIcon className="mr-3" />
 
-                                <span className='flex-grow'>Events</span>
+                                <span className='flex-grow'>Yangiliklar</span>
 
-                            </a>
+                            </Link>
                         </li>
 
                         <li>
@@ -99,9 +99,9 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
                 </aside>
 
                 <div className='w-full'>
-                    <header className='px-6 lg:px-8 py-4 lg:pt-10 shadow bg-white sticky top-0'>
+                    <header className='px-6 lg:px-8 py-4 shadow bg-white sticky top-0 z-10'>
 
-                        <h1 className='text-xl font-semibold mb-6 flex items-center'>
+                        <h1 className='text-xl font-semibold flex items-center'>
                             <button className='btn-open-menu inline-block lg:hidden mr-6'>
                                 <i data-feather='menu'></i>
                             </button>

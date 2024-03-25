@@ -14,7 +14,8 @@ const nextConfig = {
       "images.ctfassets.net",
       "etimg.etb2bimg.com",
       "ngoshivam.org",
-      "nojhanco.ir"
+      "nojhanco.ir",
+      "cdn.filestackcontent.com"
     ],
   },
 };
