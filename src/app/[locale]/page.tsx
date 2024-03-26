@@ -53,16 +53,16 @@ export default function Index() {
       <Hero />
       <Slider />
       {/* <AboutUs /> */}
-      <h1>Loyihalarimiz</h1>
-      <h1>Azolarimiz</h1>
-      <h1>Azo bo'lish</h1>
-      <h1>Tadbirlar</h1>
+      {/* <h1>Loyihalarimiz</h1> */}
+      {/* <h1>Azolarimiz</h1> */}
+      {/* <h1>Azo bo'lish</h1> */}
+      {/* <h1>Tadbirlar</h1> */}
       <News />
-      <h1>Hamkorlar</h1>
-      <h1>Hamkorlik uchun aziza qoldirish</h1>
-      <h1>Tashabbuskorlar</h1>
+      {/* <h1>Hamkorlar</h1> */}
+      {/* <h1>Hamkorlik uchun aziza qoldirish</h1> */}
+      {/* <h1>Tashabbuskorlar</h1> */}
       <WhatWeOffer />
-      <h1>Hizbatlardan foydalanish uchun aziza qoldirish</h1>
+      {/* <h1>Hizbatlardan foydalanish uchun aziza qoldirish</h1> */}
 
       {/* <Statistics /> */}
       {/* <OurCompany /> */}
