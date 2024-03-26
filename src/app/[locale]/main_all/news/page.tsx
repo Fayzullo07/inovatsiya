@@ -31,11 +31,12 @@ import NewsGet from "@/components/Core/NewsGet";
 const News = () => {
     const locale = useLocale();
     const [date, setDate] = useState<Date>()
+    const [search, setSearch] = useState("");
 
 
     return (
         <div className=" bg-slate-50">
-            <div>
+            <Container>
                 <div className="flex items-center mb-4">
                     <Link href={"/"}>
                         <Button variant={"link"} className="text-lg pl-0">Bosh sahifa</Button>
@@ -46,7 +47,7 @@ const News = () => {
                 <div className="flex mb-4 gap-4">
 
                     <div className="flex w-full max-w-sm items-center space-x-2">
-                        <Input type="search" placeholder="Search . . ." />
+                        <Input type="search" placeholder="Search . . ." value={search} onChange={(e) => setSearch(e.target.value)} />
                     </div>
 
                     <Popover>
@@ -73,9 +74,9 @@ const News = () => {
                     </Popover>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 md:gap-8">
-                    <NewsGet />
+                    <NewsGet search={search} />
                 </div>
-            </div>
+            </Container>
         </div>
     )
 }

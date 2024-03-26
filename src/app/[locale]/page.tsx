@@ -28,13 +28,6 @@ export default function Index() {
     AOS.init({ once: true, easing: "ease-in-sine", delay: 100 });
     AOS.refresh();
 
-    const userToken = localStorage.getItem("token");
-
-    if (userToken) {
-      console.log("Token mavjud:", userToken);
-    } else {
-      console.log("Token mavjud emas");
-    }
   }, []);
 
 
@@ -60,16 +53,16 @@ export default function Index() {
       <Hero />
       <Slider />
       {/* <AboutUs /> */}
-      {/* <h1>Loyihalarimiz</h1> */}
-      {/* <h1>Azolarimiz</h1> */}
-      {/* <h1>Azo bolish</h1> */}
-      {/* <h1>Tadbirlar</h1> */}
+      <h1>Loyihalarimiz</h1>
+      <h1>Azolarimiz</h1>
+      <h1>Azo bo'lish</h1>
+      <h1>Tadbirlar</h1>
       <News />
-      {/* <h1>Hamkorlar</h1> */}
-      {/* <h1>Hamkorlik uchun aziza qoldirish</h1> */}
-      {/* <h1>Tashabbuskorlar</h1> */}
+      <h1>Hamkorlar</h1>
+      <h1>Hamkorlik uchun aziza qoldirish</h1>
+      <h1>Tashabbuskorlar</h1>
       <WhatWeOffer />
-      {/* <h1>Hizbatlardan foydalanish uchun aziza qoldirish</h1> */}
+      <h1>Hizbatlardan foydalanish uchun aziza qoldirish</h1>
 
       {/* <Statistics /> */}
       {/* <OurCompany /> */}

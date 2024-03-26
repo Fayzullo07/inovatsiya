@@ -15,7 +15,7 @@ const News = () => {
     const { data } = useQuery({
         queryKey: ["news"],
         queryFn: async () => {
-            return await newsGetAPI();
+            return await newsGetAPI({});
         }
     });
 
@@ -90,7 +90,7 @@ const News = () => {
                                     {moment(item.createdAt).format("LLL")}
                                 </td>
                                 <td className="px-6 py-4 flex justify-center gap-4">
-                                    <Link href={`/${locale}/admin/edit/${item._id}`}>
+                                    <Link href={`/${locale}/admin/news/edit/${item._id}`}>
                                         <Button >Edit</Button>
                                     </Link>
                                     <Button variant={"destructive"}>Delete</Button>

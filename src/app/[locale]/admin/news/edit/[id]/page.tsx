@@ -1,14 +1,15 @@
 "use client"
-import { newPostAPI } from "@/api/AdminRequest";
+import { newGetOneAPI, newPostAPI } from "@/api/AdminRequest";
 import UploadImage from "@/utils/UploadImage";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { ImageIcon, UserIcon, XIcon } from "lucide-react";
 import { useLocale } from "next-intl";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "react-toastify";
-const UpdateNew = () => {
+const UpdateNew = ({ params }: { params: any }) => {
+    const { id } = params;
     const router = useRouter();
     const [photo, setPhoto] = useState("");
     const locale = useLocale();
@@ -19,6 +20,15 @@ const UpdateNew = () => {
         title: "",
         desc: ""
     });
+
+    const { data, isLoading } = useQuery({
+        queryKey: ["new", id],
+        queryFn: async () => {
+            return await newGetOneAPI({ id });
+        }
+    });
+
+
 
     const handleInputChange = (e: any) => {
         const { name, value } = e.target;
@@ -47,7 +57,6 @@ const UpdateNew = () => {
 
         setFormData({ ...formData, img: photo })
         mutation.mutate();
-
     };
 
     return (
@@ -73,7 +82,7 @@ const UpdateNew = () => {
 
                         <div className="max-w-xl h-auto mx-auto flex justify-center">
                             <Image
-                                src={photo}
+                                src={photo || data?.data.news.img}
                                 width={0}
                                 height={0}
                                 // className=" transition hover:scale-110 duration-300"
@@ -89,7 +98,7 @@ const UpdateNew = () => {
                 <label htmlFor="title" className="block mb-2 text-sm font-medium text-gray-900">Title</label>
                 <input
                     name="title"
-                    value={formData.title}
+                    value={formData.title || data?.data.news.title}
                     onChange={handleInputChange}
                     type="text" id="title" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Enter title . . ." required />
             </div>

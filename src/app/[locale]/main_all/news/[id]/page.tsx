@@ -39,7 +39,7 @@ const New = ({ params }: { params: any }) => {
 
                             <ScrollArea className="h-[85vh]">
                                 <div className="grid grid-cols-1 gap-4 md:gap-8">
-                                    <NewsGet />
+                                    <NewsGet height={36} />
                                 </div>
                             </ScrollArea>
                         </div>
