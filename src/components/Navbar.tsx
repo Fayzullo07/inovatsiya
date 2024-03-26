@@ -16,6 +16,7 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet"
 import { navbar } from "../../data/data";
+import Image from "next/image";
 
 
 
@@ -37,21 +38,16 @@ const Navbar = () => {
 
     return (
         <header className={`${pathname.split("/")[2] == "admin" ? "hidden" : ""}`}>
-            <nav className={`${stickyNav ? "active" : ""} flex flex-wrap items-center justify-between w-full py-3  md:py-1 px-4 text-lg text-gray-700 bg-white z-[100] shadow`}>
+            <nav className={`${stickyNav ? "active" : ""} flex flex-wrap items-center justify-between w-full px-4 text-lg text-gray-700 bg-white z-[100] shadow`}>
 
-                <div>
-                    <Link href={"/"} className="flex justify-center items-center gap-2">
-                        <div className=" h-12 w-1 bg-green-200 rounded-full">
-                            <div className="h-8 w-1 bg-blue rounded-full"></div>
-                        </div>
-                        <div>
-                            <span className="text-green-500">New</span>
-                            <br />
-                            <span className="text-blue-500 font-bold">Innovatsiya</span>
-                        </div>
-
-                    </Link>
-                </div>
+                <Link href={"/"}>
+                    <Image
+                        src="/logo.png"
+                        width={100}
+                        height={0}
+                        alt="Logo"
+                    />
+                </Link>
                 <div className={`hidden w-full lg:flex md:items-center lg:w-auto overflow-auto bg-white z-10`}>
                     <ul
                         className="text-xl text-gray-500 lg:flex lg:justify-between">

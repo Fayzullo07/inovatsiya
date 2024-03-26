@@ -54,7 +54,7 @@ const Contact = () => {
                     <h2 className=" text-4xl font-semibold py-6 text-green-500">{t("hero_title")}</h2>
                 </div>
                 <div>
-                    <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="500" className="max-w-screen-xl px-4 grid gap-8 grid-cols-1 md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 py-16 mx-auto bg-green-100 text-gray-900 rounded-3xl shadow-lg">
+                    <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="500" className="max-w-screen-xl px-4 grid gap-8 grid-cols-1 md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 py-16 mx-auto text-gray-900 rounded-3xl shadow-lg">
                         <div className="flex flex-col justify-between">
                             <div data-aos="fade-up" data-aos-delay="500" data-aos-duration="500">
                                 <h2 className="text-3xl lg:text-4xl font-bold leading-tight text-green-500">{t("title")}</h2>

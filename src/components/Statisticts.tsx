@@ -11,7 +11,7 @@ const Statistics = () => {
     return (
         <section id="stats" className="bg-white">
             <Container>
-                <div className="max-w-screen-xl px-8 grid gap-8 grid-cols-1 md:grid-cols-2 py-16 mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 ">
                     <div className="flex flex-col justify-around text-xl text-green-500 ">
                         <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="500">
                             <h1 className="text-3xl lg:text-4xl font-bold leading-tight text-green-500">{t("title")}</h1>

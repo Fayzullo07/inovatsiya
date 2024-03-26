@@ -1,26 +1,7 @@
 import Image from "next/image";
 import Container from "./Core/Container";
-// import { usersGetAPI } from "@/services/api";
 
-export const getUsers = async () => {
-    try {
-        const res = await fetch(`/api/users`, { cache: 'no-store' })
-
-        if (!res.ok) {
-            throw Error('Failed to fetch users')
-        }
-
-        const { users } = await res.json()
-        console.log(users);
-
-        return users
-
-    } catch (error) {
-        console.log("Error", error);
-    }
-}
-
-const Members = async () => {
+const Members = () => {
     const data_members = [
         {
             img: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
@@ -33,25 +14,8 @@ const Members = async () => {
         {
             img: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         },
-        {
-            img: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-        },
-        {
-            img: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-        },
-        {
-            img: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-        },
-        {
-            img: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-        },
-        {
-            img: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-        },
 
     ]
-
-    // const { data } = await usersGetAPI();
 
     return (
         <div>
@@ -61,10 +25,10 @@ const Members = async () => {
                     <h2 className=" text-4xl font-semibold">Azolar</h2>
                 </div>
 
-                <div className="flex items-center  flex-wrap gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 duration-1000">
                     {data_members.map((item: any, i: number) => (
 
-                        <div key={i} className="card" data-aos="fade-up" data-aos-delay={(i + 1) * 100}>
+                        <div key={i} className="flex items-center justify-center flex-col gap-2 p-5 w-full bg-gray-100 duration-1000 shadow hover:shadow-xl  rounded-2xl" data-aos="fade-up" data-aos-delay={(i + 1) * 100}>
                             <Image
                                 src={'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'}
                                 className="w-24 h-24 rounded-full object-cover transition duration-200 hover:scale-110"

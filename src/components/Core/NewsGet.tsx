@@ -1,3 +1,4 @@
+"use client"
 import { newsGetAPI } from "@/api/AdminRequest";
 import { useQuery } from "@tanstack/react-query";
 import { ClockIcon } from "lucide-react";
@@ -5,6 +6,7 @@ import moment from "moment";
 import { useLocale } from "next-intl";
 import Image from "next/image"
 import Link from "next/link";
+import { useMemo } from "react";
 
 const NewsGet = ({ height = 60, search = "", amount = 0 }) => {
     const locale = useLocale();
@@ -14,15 +16,21 @@ const NewsGet = ({ height = 60, search = "", amount = 0 }) => {
             return await newsGetAPI({ search });
         }
     });
-    let data_item = [];
-    if (amount != 0) {
-        data_item = data?.data.news.slice(0, amount);
-    } else {
-        data_item = data?.data.news;
-    }
+
+
+    const dataItem = useMemo(() => {
+        if (data && data.data && data.data.news) {
+            if (amount !== 0) {
+                return data.data.news.slice(0, amount);
+            } else {
+                return data.data.news;
+            }
+        }
+        return [];
+    }, [data, amount]);
     return (
         <>
-            {data_item.map((item: any, i: number) => (
+            {dataItem.map((item: any, i: number) => (
                 <div key={i} className=" bg-white border-slate-200 shadow shadow-slate-950/5 rounded overflow-hidden" >
                     <div className={`h-${height} overflow-hidden relative `}>
                         {/* <!-- Image --> */}

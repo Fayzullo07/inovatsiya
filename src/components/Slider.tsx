@@ -4,7 +4,6 @@ import Container from "./Core/Container"
 const Slider = () => {
     return (
         <div>
-
             <Container>
                 <div className="slider py-4">
                     <div className="slide-track *:shadow *:border *:bg-white">

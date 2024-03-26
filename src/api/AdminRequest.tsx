@@ -10,7 +10,7 @@ const API = axios.create({ baseURL: URL });
 
 // -----------------------------------------NEWS-----------------------------
 // GET
-export const newsGetAPI = async ({ search = " " }) =>
+export const newsGetAPI = async ({ search = "" }) =>
     API.get(`/api/news/?search=${search}`);
 
 // POST
