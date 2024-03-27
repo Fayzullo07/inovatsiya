@@ -4,6 +4,8 @@
 
 @layer base {
   :root {
+    /* --main_color: #22C55E; */
+    --main_color: red;
     --scrolbar: #4aff03;
     --scrolbarhover: #4aff0350;
     --background: 0 0% 100%;

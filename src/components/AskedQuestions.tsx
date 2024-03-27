@@ -13,7 +13,7 @@ const AskedQuestions = () => {
         <div>
             <Container>
                 <div className="text-center" data-aos="fade-up" data-aos-delay="100" data-aos-duration="500">
-                    <h2 className=" text-4xl font-semibold py-6 text-green-500">Frequently asked questions</h2>
+                    <h2 className=" text-4xl font-semibold py-6 text-maincolor">Frequently asked questions</h2>
                 </div>
                 <div>
 

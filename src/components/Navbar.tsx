@@ -53,9 +53,9 @@ const Navbar = () => {
                         className="text-xl text-gray-500 lg:flex lg:justify-between">
                         {navbar.map((item, i) => (
                             <li key={item.name}>
-                                <Link href={item.slug} className="*:hover:w-full p-2 font-normal block hover:text-green-500 duration-300" >
+                                <Link href={item.slug} className="*:hover:w-full p-2 font-normal block hover:text-maincolor duration-300" >
                                     {t(`${i}`)}
-                                    <div className="w-0 duration-1000 h-0.5 bg-green-500"></div>
+                                    <div className="w-0 duration-1000 h-0.5 bg-maincolor"></div>
                                 </Link>
                             </li>
                         ))}
@@ -63,23 +63,23 @@ const Navbar = () => {
                 </div>
                 <div className="flex items-center gap-2">
 
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 z-[999]">
                         <LocalSwitcher />
 
-                        <div className="h-6 w-6 cursor-pointer lg:hidden block" >
+                        <div className="h-6 w-6 cursor-pointer lg:hidden block " >
                             <Sheet>
                                 <SheetTrigger>
                                     <AlignRightIcon />
                                 </SheetTrigger>
                                 <SheetContent>
                                     <SheetHeader>
-                                        <SheetDescription>
+                                        <SheetDescription className="z-[999]">
                                             <ul
-                                                className="text-xl text-gray-700 flex flex-col justify-start items-start">
+                                                className="text-xl text-gray-700 flex flex-col justify-start items-start z-[999]">
                                                 {navbar.map((item, i) => (
                                                     <li key={item.name} data-aos="fade-left" data-aos-delay={(i + 1) * 100} data-aos-duration={(i + 1) * 100} >
                                                         <SheetClose asChild>
-                                                            <Link href={item.slug} className="md:p-3 py-2 flex gap-2 items-center hover:text-green-500 duration-300">
+                                                            <Link href={item.slug} className="md:p-3 py-2 flex gap-2 items-center hover:text-maincolor duration-300">
                                                                 {item.icon}
                                                                 <p>
                                                                     {t(`${i}`)}
@@ -99,7 +99,7 @@ const Navbar = () => {
                         </div>
                     </div>
                     <div className={`hidden lg:flex md:items-center gap-2 lg:w-auto overflow-auto bg-white z-10`}>
-                        <Link href={"/#contact"}>
+                        <Link href={"/#contact"} className="duration-300 hover:scale-95">
                             <Button variant="default" className="uppercase tracking-wider">{"Bog'lanish"}</Button>
                         </Link>
                     </div>

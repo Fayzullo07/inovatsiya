@@ -14,6 +14,12 @@ const newSchema = new mongoose.Schema(
             type: String,
             required: [true, "Please provide a description"],
         },
+        // ru: {
+        //     title: {
+        //         type: String,
+        //         required: [true, "Please provide a title"]
+        //     }
+        // }
     },
     {
         timestamps: true,

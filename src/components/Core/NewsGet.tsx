@@ -8,7 +8,7 @@ import Image from "next/image"
 import Link from "next/link";
 import { useMemo } from "react";
 
-const NewsGet = ({ height = 60, search = "", amount = 0 }) => {
+const NewsGet = ({ height = "52", search = "", amount = 0 }) => {
     const locale = useLocale();
     const { data } = useQuery({
         queryKey: ["news", search],

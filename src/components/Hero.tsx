@@ -24,18 +24,18 @@ const Hero = () => {
                             <div className="w-full md:w-1/2 md:px-3" data-aos="fade-up" data-aos-delay="300">
                                 <div className="w-full pb-4 space-y-4 sm:max-w-md lg:max-w-lg md:space-y-4 lg:space-y-8 xl:space-y-9 sm:pr-5 lg:pr-0 md:pb-0">
                                     <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-3xl lg:text-4xl xl:text-5xl">
-                                        <span className="block text-green-500 xl:inline">{t("title").split(" ").slice(0, 2).join(" ")} </span>
+                                        <span className="block text-maincolor xl:inline">{t("title").split(" ").slice(0, 2).join(" ")} </span>
                                         <span className="block xl:inline">{t("title").split(" ").slice(2).join(" ")}</span>
                                     </h1>
                                     <p className="mx-auto min-h-20 text-base text-gray-500 sm:max-w-md lg:text-xl md:max-w-3xl">
                                         {text}
                                     </p>
                                     <div className="relative flex flex-col sm:flex-row sm:space-x-4">
-                                        <a href="#contact" className="flex items-center w-full px-6 py-3 mb-3 text-lg text-white bg-green-500 rounded-md sm:mb-0 hover:bg-green-700 sm:w-auto">
+                                        <a href="#contact" className="flex items-center w-full px-6 py-3 mb-3 text-lg text-white bg-maincolor rounded-md sm:mb-0 hover:scale-105 duration-300 sm:w-auto">
                                             {t("contact")}
                                             <ArrowRightIcon className="w-5 h-5 ml-1" />
                                         </a>
-                                        <a href="#about" className="flex items-center w-full px-6 py-3 mb-3 text-lg text-green-500 bg-white-500 border border-green-500 rounded-md sm:mb-0 hover:bg-green-500 hover:text-white sm:w-auto">
+                                        <a href="#about" className="flex items-center w-full px-6 py-3 mb-3 text-lg text-maincolor bg-white-500 border border-maincolor rounded-md sm:mb-0 hover:bg-maincolor hover:text-white sm:w-auto">
                                             {t("about")}
                                         </a>
 
