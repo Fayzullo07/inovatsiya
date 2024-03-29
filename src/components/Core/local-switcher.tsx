@@ -9,7 +9,7 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { useState, useTransition } from "react"
-import { useRouter } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import Image from "next/image"
 import { useLocale } from "next-intl"
 
@@ -19,9 +19,11 @@ const LocalSwitcher = () => {
     const [lang, setLang] = useState(locale);
     const router = useRouter();
 
+    const pathname = usePathname();
     const onSelectChange = (e: string) => {
+        // alert(pathname.replace("ru", e))
         startTransition(() => {
-            router.replace(`/${e}`);
+            router.replace(pathname.replace(locale, e));
         });
     }
 

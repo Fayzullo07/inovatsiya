@@ -8,7 +8,7 @@ import Image from "next/image"
 import Link from "next/link";
 import { useMemo } from "react";
 
-const NewsGet = ({ height = "52", search = "", amount = 0 }) => {
+const NewsGet = ({ search = "", amount = 0 }) => {
     const locale = useLocale();
     const { data } = useQuery({
         queryKey: ["news", search],
@@ -16,7 +16,6 @@ const NewsGet = ({ height = "52", search = "", amount = 0 }) => {
             return await newsGetAPI({ search });
         }
     });
-
 
     const dataItem = useMemo(() => {
         if (data && data.data && data.data.news) {
@@ -31,13 +30,13 @@ const NewsGet = ({ height = "52", search = "", amount = 0 }) => {
     return (
         <>
             {dataItem.map((item: any, i: number) => (
-                <div key={i} className=" bg-white border-slate-200 shadow shadow-slate-950/5 rounded overflow-hidden" >
-                    <div className={`h-${height} overflow-hidden relative `}>
+                <div key={i} className={`relative bg-white border-slate-200 shadow shadow-slate-950/5 rounded overflow-hidden`} >
+                    <div className={`h-56 overflow-hidden  `}>
                         {/* <!-- Image --> */}
                         <div className="bg-gradient-to-t z-10 from-black opacity-60 w-full h-full absolute top-0 hover_scale"></div>
                         <Image
-                            src={item.img}
-                            className="object-cover w-full hover:scale-110 duration-300 img"
+                            src={item.photo}
+                            className="object-cover h-56 w-full hover:scale-110 duration-300 img"
                             width={0}
                             height={0}
                             sizes="100vw"
@@ -45,7 +44,7 @@ const NewsGet = ({ height = "52", search = "", amount = 0 }) => {
                             alt="Image"
                         />
                         <h2 className=" tracking-wider text-base font-extrabold leading-snug z-10 absolute bottom-2 px-2 text-white drop-shadow-2xl">
-                            {item.title}
+                            {item.translations[`${locale}`].title}
                         </h2>
                         <div className="z-10 flex justify-between items-center space-x-2 absolute top-2 px-2 w-full">
                             <Link href={`/${locale}/main_all/news/${item._id}`} className="inline-flex justify-center whitespace-nowrap rounded-lg bg-green-500 px-3 py-2 text-sm font-medium text-white hover:bg-green-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 transition-colors">Read More</Link>
@@ -58,7 +57,7 @@ const NewsGet = ({ height = "52", search = "", amount = 0 }) => {
                 </div>
             )
 
-            )}
+            ).reverse()}
         </>
     )
 }

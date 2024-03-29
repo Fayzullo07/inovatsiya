@@ -4,16 +4,18 @@ import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Toolbar from "./Toolbar";
 import Underline from "@tiptap/extension-underline";
-import TextAlign from '@tiptap/extension-text-align';
-import Highlight from '@tiptap/extension-highlight';
 import Image from '@tiptap/extension-image'
+import Link from '@tiptap/extension-link'
 
-const TipTap = ({ onChange, content }: any) => {
+const TipTap = ({ onChange, content = '<p></p>'}: any) => {
     const handleChange = (newContent: string) => {
         onChange(newContent);
     };
     const editor = useEditor({
-        extensions: [StarterKit, Underline, Image],
+        extensions: [StarterKit, Underline, Image, Link.configure({
+            openOnClick: false,
+            autolink: true,
+        }),],
         editorProps: {
             attributes: {
                 class:
@@ -22,12 +24,14 @@ const TipTap = ({ onChange, content }: any) => {
         },
         onUpdate: ({ editor }) => {
             handleChange(editor.getHTML());
-        },
+          },
+        content: `${content}`
+
     });
 
     return (
         <div className="w-full">
-            <Toolbar editor={editor} content={content} />
+            <Toolbar editor={editor} />
             <EditorContent editor={editor} />
         </div>
     );

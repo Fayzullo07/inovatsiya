@@ -1,16 +1,15 @@
 import { PickerOverlay } from "filestack-react";
 
-const UploadImage = (props: { setPhoto: any; setIsPicker: any; setDisabled: any; }) => {
-    const { setPhoto, setIsPicker, setDisabled } = props;
+const UploadImage = (props: { setIsPicker: any, setURL: Function }) => {
+    const { setIsPicker, setURL } = props;
     return (
         <>
             <PickerOverlay
                 // apikey={process.env.REACT_APP_FILESTACK_API_KEY}
                 apikey="AF7nRI60DRz2W8VeFOsx4z"
                 onSuccess={(res: any) => {
-                    setPhoto(res.filesUploaded[0].url);
+                    setURL(res.filesUploaded[0].url);
                     setIsPicker(false);
-                    setDisabled(true);
                 }}
                 onError={(res) => alert(res)}
                 pickerOptions={{

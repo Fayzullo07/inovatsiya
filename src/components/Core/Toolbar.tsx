@@ -1,47 +1,53 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { type Editor } from "@tiptap/react";
 import {
     Bold,
     Strikethrough,
     Italic,
-    List,
-    ListOrdered,
     Heading2,
     Underline,
     Quote,
     Undo,
     Redo,
-    Code,
+    ImageIcon,
+    Heading1,
+    Heading3,
 } from "lucide-react";
+import UploadImage from "@/utils/UploadImage";
 
 type Props = {
     editor: Editor | null;
-    content: string;
 };
 
-const Toolbar = ({ editor, content }: Props) => {
+const Toolbar = ({ editor }: Props) => {
+    const [isPicker, setIsPicker] = useState(false);
+
     if (!editor) {
         return null;
     }
 
     const addImage = () => {
-        const url = window.prompt('URL')
-    
-        if (url) {
-          editor.chain().focus().setImage({ src: url }).run()
-          console.log(content);
-          
+        if (isPicker) {
+            setIsPicker(false)
+        } else {
+            setIsPicker(true)
         }
-      }
+    }
+
+    const setImage = (url: any) => {
+        editor.chain().focus().setImage({ src: url }).run()
+    }
     return (
         <div
             className="px-4 py-3 rounded-tl-md rounded-tr-md flex justify-between items-start gap-5 w-full flex-wrap border border-gray-700"
         >
             <div className="flex justify-start items-center gap-5 w-full lg:w-10/12 flex-wrap ">
-                
-            <button onClick={addImage}>add image from URL</button>
+
+                <button onClick={addImage} className="text-sky-400">
+                    <ImageIcon className="h-5 w-5" />
+                </button>
                 <button
                     onClick={(e) => {
                         e.preventDefault();
@@ -105,60 +111,33 @@ const Toolbar = ({ editor, content }: Props) => {
                             : "text-sky-400"
                     }
                 >
+                    <Heading1 className="w-5 h-5" />
+                </button>
+                <button
+                    onClick={(e) => {
+                        e.preventDefault();
+                        editor.chain().focus().toggleHeading({ level: 2 }).run();
+                    }}
+                    className={
+                        editor.isActive("heading", { level: 2 })
+                            ? "bg-sky-700 text-white p-2 rounded-lg"
+                            : "text-sky-400"
+                    }
+                >
                     <Heading2 className="w-5 h-5" />
                 </button>
-
                 <button
                     onClick={(e) => {
                         e.preventDefault();
-                        editor.chain().focus().toggleBulletList().run();
+                        editor.chain().focus().toggleHeading({ level: 3 }).run();
                     }}
                     className={
-                        editor.isActive("bulletList")
+                        editor.isActive("heading", { level: 3 })
                             ? "bg-sky-700 text-white p-2 rounded-lg"
                             : "text-sky-400"
                     }
                 >
-                    <List className="w-5 h-5" />
-                </button>
-                <button
-                    onClick={(e) => {
-                        e.preventDefault();
-                        editor.chain().focus().toggleOrderedList().run();
-                    }}
-                    className={
-                        editor.isActive("orderedList")
-                            ? "bg-sky-700 text-white p-2 rounded-lg"
-                            : "text-sky-400"
-                    }
-                >
-                    <ListOrdered className="w-5 h-5" />
-                </button>
-                <button
-                    onClick={(e) => {
-                        e.preventDefault();
-                        editor.chain().focus().toggleBlockquote().run();
-                    }}
-                    className={
-                        editor.isActive("blockquote")
-                            ? "bg-sky-700 text-white p-2 rounded-lg"
-                            : "text-sky-400"
-                    }
-                >
-                    <Quote className="w-5 h-5" />
-                </button>
-                <button
-                    onClick={(e) => {
-                        e.preventDefault();
-                        editor.chain().focus().setCode().run();
-                    }}
-                    className={
-                        editor.isActive("code")
-                            ? "bg-sky-700 text-white p-2 rounded-lg"
-                            : "text-sky-400"
-                    }
-                >
-                    <Code className="w-5 h-5" />
+                    <Heading3 className="w-5 h-5" />
                 </button>
                 <button
                     onClick={(e) => {
@@ -187,13 +166,13 @@ const Toolbar = ({ editor, content }: Props) => {
                     <Redo className="w-5 h-5" />
                 </button>
             </div>
-            {content && (
-                <button
-                    type="submit"
-                    className="px-4 bg-sky-700 text-white py-2 rounded-md"
-                >
-                    Add
-                </button>
+
+            {/* FileStack */}
+            {isPicker && (
+                <UploadImage
+                    setIsPicker={setIsPicker}
+                    setURL={setImage}
+                />
             )}
         </div>
     );

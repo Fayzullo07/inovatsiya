@@ -2,24 +2,42 @@ import mongoose from "mongoose";
 
 const newSchema = new mongoose.Schema(
     {
-        img: {
+        photo: {
             type: String,
-            required: [true, "Please provide a img"]
+            required: [true, "Please provide a photo"]
         },
-        title: {
-            type: String,
-            required: [true, "Please provide a title"],
-        },
-        desc: {
-            type: String,
-            required: [true, "Please provide a description"],
-        },
-        // ru: {
-        //     title: {
-        //         type: String,
-        //         required: [true, "Please provide a title"]
-        //     }
-        // }
+        translations: {
+            uz: {
+                title: {
+                    type: String,
+                    required: [true, "Please provide a title"]
+                },
+                content: {
+                    type: String,
+                    required: [true, "Please provide a content"]
+                }
+            },
+            ru: {
+                title: {
+                    type: String,
+                    required: [true, "Please provide a title"]
+                },
+                content: {
+                    type: String,
+                    required: [true, "Please provide a content"]
+                }
+            },
+            en: {
+                title: {
+                    type: String,
+                    required: [true, "Please provide a title"]
+                },
+                content: {
+                    type: String,
+                    required: [true, "Please provide a content"]
+                }
+            }
+        }
     },
     {
         timestamps: true,

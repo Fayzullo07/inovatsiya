@@ -95,7 +95,21 @@
   body::-webkit-scrollbar-thumb:hover {
     background-color: var(--scrolbarhover);
   }
+
 }
+
+.tiptap h1 {
+  @apply text-2xl;
+}
+
+.tiptap h2 {
+  @apply text-xl;
+}
+
+.tiptap h3 {
+  @apply text-lg;
+}
+
 
 
 /* Navbar */
@@ -113,6 +127,7 @@
   animation: image 2s;
   animation-duration: 5s;
 }
+
 
 @keyframes image {
   0% {

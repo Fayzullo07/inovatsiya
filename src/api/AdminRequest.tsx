@@ -17,6 +17,14 @@ export const newsGetAPI = async ({ search = "" }) =>
 export const newPostAPI = async (data: any) =>
     API.post(`/api/news`, data);
 
+// PUT
+export const newPutAPI = async (data: any, id: any) =>
+    API.put(`/api/news/${id}/`, data);
+
+// DELETE
+export const newDeleteAPI = async ({ id }: { id: any }) =>
+    API.delete(`/api/news/${id}/`);
+
 // GET BY ID
 export const newGetOneAPI = async ({ id }: { id: any }) =>
     API.get(`/api/news/${id}/`);

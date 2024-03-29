@@ -1,23 +1,47 @@
 "use client"
-import { newsGetAPI } from "@/api/AdminRequest";
+import { newDeleteAPI, newsGetAPI } from "@/api/AdminRequest";
 import { Button } from "@/components/ui/button";
-import { PlusIcon } from "lucide-react";
+import { EditIcon, PlusIcon, TrashIcon } from "lucide-react";
 import { useLocale } from "next-intl";
 import Link from "next/link";
 
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import moment from "moment";
 import Image from "next/image";
+import { toast } from "react-toastify";
 
 const News = () => {
     const locale = useLocale();
+    const queryClient = useQueryClient();
 
-    const { data } = useQuery({
+    const { data, isLoading, isError } = useQuery({
         queryKey: ["news"],
         queryFn: async () => {
             return await newsGetAPI({});
         }
     });
+    const mutationDeleteNew = useMutation(
+        {
+            mutationFn: async (id: any) => {
+                return newDeleteAPI({ id });
+            },
+            onSuccess: () => {
+                queryClient.invalidateQueries(); // Ma'lumotlarni yangilash
+                toast.error("Deleted new!");
+            },
+            onError: () => {
+                toast.error("Something error!");
+            },
+        }
+    );
+    const handeDelete = (id: any) => {
+        const isDelete = confirm("O'chirmoqchimisiz?")
+        if (isDelete) {
+            mutationDeleteNew.mutate(id)
+        }
+    }
+    if (isLoading) return <div>Yuklanmoqda...</div>;
+    if (isError) return <div>Xatolik yuz berdi...</div>;
 
 
 
@@ -51,9 +75,7 @@ const News = () => {
                             <th scope="col" className="px-6 py-3">
                                 Title
                             </th>
-                            <th scope="col" className="px-6 py-3">
-                                Content
-                            </th>
+
                             <th scope="col" className="px-6 py-3">
                                 Date
                             </th>
@@ -69,7 +91,7 @@ const News = () => {
                                 <th scope="row" className="font-medium text-gray-900">
                                     <div className=" max-w-20 h-auto mx-auto flex justify-center">
                                         <Image
-                                            src={item.img}
+                                            src={item.photo}
                                             width={0}
                                             height={0}
                                             // className=" transition hover:scale-110 duration-300"
@@ -80,20 +102,20 @@ const News = () => {
                                     </div>
                                 </th>
                                 <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                    {item.title}
+                                    {item.translations[`${locale}`].title}
                                 </th>
-                                <th scope="row" className="px-6 py-4 font-medium text-gray-500 whitespace-nowrap">
-                                    {item.desc}
-                                </th>
-
                                 <td className="px-6 py-4">
                                     {moment(item.createdAt).format("LLL")}
                                 </td>
                                 <td className="px-6 py-4 flex justify-center gap-4">
                                     <Link href={`/${locale}/admin/news/edit/${item._id}`}>
-                                        <Button >Edit</Button>
+                                        <Button className="bg-yellow-500" size={"icon"}>
+                                            <EditIcon />
+                                        </Button>
                                     </Link>
-                                    <Button variant={"destructive"}>Delete</Button>
+                                    <Button variant={"destructive"} size={"icon"} onClick={() => handeDelete(item._id)} disabled={mutationDeleteNew.isPending}>
+                                        <TrashIcon />
+                                    </Button>
                                 </td>
 
                             </tr>
