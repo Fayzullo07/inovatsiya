@@ -6,45 +6,58 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "@/components/ui/accordion"
+import Loading from "./Core/Loading";
+import { questiosGetAPI } from "@/api/AdminRequest";
+import { useQuery } from "@tanstack/react-query";
+import { useLocale, useTranslations } from "next-intl";
 
 
 const AskedQuestions = () => {
+    const data_questions = [
+        {
+            question: "Savol 1?"
+        },
+        {
+            question: "Savol 2?"
+        },
+        {
+            question: "Savol 3?"
+        },
+    ]
+    const locale = useLocale();
+    const t = useTranslations("Question");
+    const { data, isLoading, isError } = useQuery({
+        queryKey: ["questions"],
+        queryFn: async () => {
+            return await questiosGetAPI();
+        }
+    });
+
+
+    if (isLoading) return <Loading />;
+    if (isError) return <div>Xatolik yuz berdi...</div>;
     return (
-        <div>
+        <div className="pb-5 sm:pb-10">
             <Container>
-                <div className="text-center" data-aos="fade-up" data-aos-delay="100" data-aos-duration="500">
-                    <h2 className=" text-4xl font-semibold py-6 text-maincolor">Frequently asked questions</h2>
+                <div className="flex justify-between items-center py-5 md:py-10" >
+                    <h2 className="text-3xl font-bold text-maincolor" data-aos="fade-up" data-aos-delay="100" data-aos-duration="500">{t("hero_title")}</h2>
                 </div>
-                <div>
+                <div className="px-0 md:px-6">
 
                     <Accordion type="single" collapsible>
-                        <AccordionItem value="item-1">
-                            <AccordionTrigger>Nimaga bizni tanlashiz kerak?</AccordionTrigger>
-                            <AccordionContent>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae ad vel beatae, necessitatibus veniam modi ipsum id minima cum. Eos exercitationem inventore nostrum deleniti fugit pariatur, dolor odit, aliquid distinctio voluptate, consequatur tempore. Impedit dignissimos eaque tenetur commodi, quidem alias! Aut, tempore necessitatibus! Accusantium laudantium consequuntur atque eaque dolore, ipsam libero quaerat molestias saepe, iure sit quo nostrum reiciendis! Tenetur facilis consequatur iure labore enim architecto animi atque consequuntur molestiae laudantium, beatae magnam perspiciatis soluta! Maiores omnis eos sequi in, reiciendis veritatis cum, incidunt alias, deserunt quia sint? Sunt soluta et optio velit? Ad placeat iste velit magnam mollitia saepe.
-                            </AccordionContent>
-                        </AccordionItem>
+                        {data?.data.questions.map((item: any, i: number) => (
 
-                        <AccordionItem value="item-2">
-                            <AccordionTrigger>Nimaga bizni tanlashiz kerak?</AccordionTrigger>
-                            <AccordionContent>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae ad vel beatae, necessitatibus veniam modi ipsum id minima cum. Eos exercitationem inventore nostrum deleniti fugit pariatur, dolor odit, aliquid distinctio voluptate, consequatur tempore. Impedit dignissimos eaque tenetur commodi, quidem alias! Aut, tempore necessitatibus! Accusantium laudantium consequuntur atque eaque dolore, ipsam libero quaerat molestias saepe, iure sit quo nostrum reiciendis! Tenetur facilis consequatur iure labore enim architecto animi atque consequuntur molestiae laudantium, beatae magnam perspiciatis soluta! Maiores omnis eos sequi in, reiciendis veritatis cum, incidunt alias, deserunt quia sint? Sunt soluta et optio velit? Ad placeat iste velit magnam mollitia saepe.
-                            </AccordionContent>
-                        </AccordionItem>
-
-                        <AccordionItem value="item-3">
-                            <AccordionTrigger>Nimaga bizni tanlashiz kerak?</AccordionTrigger>
-                            <AccordionContent>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae ad vel beatae, necessitatibus veniam modi ipsum id minima cum. Eos exercitationem inventore nostrum deleniti fugit pariatur, dolor odit, aliquid distinctio voluptate, consequatur tempore. Impedit dignissimos eaque tenetur commodi, quidem alias! Aut, tempore necessitatibus! Accusantium laudantium consequuntur atque eaque dolore, ipsam libero quaerat molestias saepe, iure sit quo nostrum reiciendis! Tenetur facilis consequatur iure labore enim architecto animi atque consequuntur molestiae laudantium, beatae magnam perspiciatis soluta! Maiores omnis eos sequi in, reiciendis veritatis cum, incidunt alias, deserunt quia sint? Sunt soluta et optio velit? Ad placeat iste velit magnam mollitia saepe.
-                            </AccordionContent>
-                        </AccordionItem>
-
-                        <AccordionItem value="item-4">
-                            <AccordionTrigger>Nimaga bizni tanlashiz kerak?</AccordionTrigger>
-                            <AccordionContent>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae ad vel beatae, necessitatibus veniam modi ipsum id minima cum. Eos exercitationem inventore nostrum deleniti fugit pariatur, dolor odit, aliquid distinctio voluptate, consequatur tempore. Impedit dignissimos eaque tenetur commodi, quidem alias! Aut, tempore necessitatibus! Accusantium laudantium consequuntur atque eaque dolore, ipsam libero quaerat molestias saepe, iure sit quo nostrum reiciendis! Tenetur facilis consequatur iure labore enim architecto animi atque consequuntur molestiae laudantium, beatae magnam perspiciatis soluta! Maiores omnis eos sequi in, reiciendis veritatis cum, incidunt alias, deserunt quia sint? Sunt soluta et optio velit? Ad placeat iste velit magnam mollitia saepe.
-                            </AccordionContent>
-                        </AccordionItem>
+                            <AccordionItem key={i} value={`item-${i}`}>
+                                <AccordionTrigger>{item[`${locale}`].question}</AccordionTrigger>
+                                <AccordionContent>
+                                    <div
+                                        className=" whitespace-pre-line mb-3 tiptap"
+                                        style={{ whiteSpace: "pre-line" }}
+                                        dangerouslySetInnerHTML={{ __html: item[`${locale}`].desc }}
+                                    />
+                                </AccordionContent>
+                            </AccordionItem>
+                        ))}
                     </Accordion>
                 </div>
 

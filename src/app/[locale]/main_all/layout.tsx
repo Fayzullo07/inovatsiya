@@ -11,20 +11,33 @@ const Layout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
             title: "Yangiliklar"
         },
         {
+            slug: "/projects",
+            title: "Loyihalarimiz"
+        },
+        {
+            slug: "/members",
+            title: "A'zolar"
+        },
+        {
             slug: "/events",
             title: "Tadbirlar"
         },
+        
         {
-            slug: "/news",
+            slug: "/partners",
+            title: "Hamkorlar"
+        },
+        {
+            slug: "/initiators",
+            title: "Tashabbuskorlar"
+        },
+        {
+            slug: "/services",
+            title: "Xizmatlar"
+        },
+        {
+            slug: "/about_us",
             title: "Biz haqimizda"
-        },
-        {
-            slug: "/news",
-            title: "Yangiliklar"
-        },
-        {
-            slug: "/news",
-            title: "Yangiliklar"
         },
     ]
     return (

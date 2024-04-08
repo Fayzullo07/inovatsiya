@@ -1,118 +1,113 @@
+"use client"
+import { messageDeleteAPI, messagesGetAPI } from "@/api/AdminRequest";
+import Loading from "@/components/Core/Loading";
+import Modal from "@/components/Core/Modal";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { LucideTrash2 } from "lucide-react";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import moment from "moment";
 
-import Image from "next/image";
+import { toast } from "react-toastify";
 
-const getMessages = async () => {
-    try {
-        const res = await fetch(`${process.env.BACKEND_API}/api/messages`, { cache: 'no-store' })
-
-        if (!res.ok) {
-            throw Error('Failed to fetch users')
+const Messages = () => {
+    const queryClient = useQueryClient();
+    const { data, isLoading, isError } = useQuery({
+        queryKey: ["messages"],
+        queryFn: async () => {
+            return await messagesGetAPI({ role: "member" });
         }
+    });
 
-        return res.json()
-    } catch (error) {
-        console.log("Error", error);
+    const mutationDeleteNew = useMutation(
+        {
+            mutationFn: async (id: any) => {
+                return messageDeleteAPI({ id });
+            },
+            onSuccess: () => {
+                queryClient.invalidateQueries(); // Ma'lumotlarni yangilash
+                toast.error("Deleted message!");
+            },
+            onError: () => {
+                toast.error("Something error!");
+            },
+        }
+    );
+    const handeDelete = (id: any) => {
+        const isDelete = confirm("O'chirmoqchimisiz?")
+        if (isDelete) {
+            mutationDeleteNew.mutate(id)
+        }
     }
-}
 
 
-const Messages = async () => {
-    const { messages } = await getMessages();
+    if (isLoading) return <Loading />;
+    if (isError) return <div>Xatolik yuz berdi...</div>;
     return (
         <div>
-            <div className="flex justify-start items-center gap-4">
-                <h2 className="text-xl font-semibold leading-tight">{"Xabarlar"}</h2>
-            </div>
 
-            <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-                <div
-                    className="inline-block min-w-full shadow-md rounded-lg overflow-hidden"
-                >
-                    <table className="min-w-full leading-normal" style={{
-                        width: "max-content",
-                    }}>
-                        <thead>
-                            <tr>
-                                <th
-                                    className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"
-                                >
-                                    Client / Invoice
-                                </th>
-                                <th
-                                    className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"
-                                >
-                                    Phone
-                                </th>
-                                <th
-                                    className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"
-                                >
-                                    Vaqt
-                                </th>
-                                <th
-                                    className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider"
-                                >
-                                    Izoh
-                                </th>
+            <table className="min-w-full divide-y divide-gray-200 overflow-x-auto">
+                <thead className="bg-gray-50">
+                    <tr>
+                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Name
+                        </th>
+                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Phone
+                        </th>
+                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Desc
+                        </th>
+                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Yuridik / Jismoniy
+                        </th>
 
-                                {/* <th
-                                    className="text-right px-5 py-3 border-b-2 border-gray-200 bg-gray-100  text-xs font-semibold text-gray-700 uppercase tracking-wider"
-                                >
-                                    Delete
-                                </th> */}
+                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Date
+                        </th>
 
-                            </tr>
-                        </thead>
-                        <tbody >
-                            {messages.map((user: any) => (
-                                <tr key={user._id}>
-                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <div className="flex items-center">
-                                            <div className="flex-shrink-0 w-10 h-10">
-                                                <Image
-                                                    src="/user.png"
-                                                    width={0}
-                                                    height={0}
-                                                    sizes="100vw"
-                                                    className="rounded-full"
-                                                    style={{ width: '100%', height: 'auto' }} // optional
-                                                    alt="Image"
-                                                />
+                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Actions
+                        </th>
+                    </tr>
+                </thead>
+                <tbody className="bg-white divide-y divide-gray-200">
+                    {data?.data.messages.map((item: any, i: number) => (
+                        <tr key={i}>
 
+                            <td className="px-6 py-4 whitespace-nowrap">
+                                <div className="text-sm text-gray-900">{item.name}</div>
+                            </td>
+
+                            <td className="px-6 py-4 whitespace-nowrap">
+                                <div className="text-sm text-gray-900">{item.phone}</div>
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap">
+                                <div className="text-sm text-gray-900">{item.desc.substring(0, 20)}...</div>
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap">
+                                <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">{item.isLegal ? "Yuridik" : "Jismoniy"}</span>
+                            </td>
+
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                {moment(item.createdAt).format("LLL")}
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap  text-sm font-medium">
+                                <Modal button={<button className="ml-2 text-maincolor" >View</button>}>
+                                    <div className="">
+                                        <ScrollArea className="h-[70vh] py-4">
+                                            <div className="text-start py-4 sm:text-xl text-base">
+                                                {item.desc}
                                             </div>
-                                            <div className="ml-3">
-                                                <p className="text-gray-900 text-base">
-                                                    {user.name}
-                                                </p>
-                                                {/* <p className="text-gray-600 whitespace-no-wrap">{user.phone}</p> */}
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <p className="text-gray-900 whitespace-no-wrap">{user.phone}</p>
-                                    </td>
-                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <p className="text-gray-900 whitespace-no-wrap">{moment(user.createdAt).calendar()}</p>
-                                    </td>
-                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm max-w-lg">
-                                        <ScrollArea className="h-[10vh]">
-                                            <p className="text-gray-900 whitespace-no-wrap">{user.desc}</p>
+
                                         </ScrollArea>
-                                    </td>
-                                    {/* <td className=" text-right px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <button className=" text-red-600">
-                                            <LucideTrash2 size={24} className=" cursor-pointer" />
-                                        </button>
-                                    </td> */}
-                                </tr>
-                            )).reverse()}
+                                    </div>
+                                </Modal>
+                                <button className="ml-2 text-red-600 hover:text-red-900" onClick={() => handeDelete(item._id)} disabled={mutationDeleteNew.isPending}>Delete</button>
+                            </td>
 
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+                        </tr>
+                    )).reverse()}
+                </tbody>
+            </table>
         </div>
     )
 }

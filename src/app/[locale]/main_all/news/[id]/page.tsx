@@ -1,6 +1,6 @@
 "use client"
 import { newGetOneAPI } from "@/api/AdminRequest";
-import NewsGet from "@/components/Core/NewsGet";
+import NewsGet from "@/components/GetComponents/NewsGet";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useQuery } from "@tanstack/react-query";
@@ -22,20 +22,11 @@ const New = ({ params }: { params: any }) => {
 
     if (isLoading) return <div>Yuklanmoqda...</div>;
     if (isError) return <div>Xatolik yuz berdi...</div>;
-    
+
     return (
         <div>
             <div className="">
-                <div className="flex items-center mb-4">
-                    <Link href={"/"}>
-                        <Button variant={"link"} className="text-lg pl-0">Bosh sahifa</Button>
-                    </Link>
-                    <ChevronRightIcon size={16} />
-                    <div className=" text-lg text-gray-400">Yangiliklar</div>
-                    <ChevronRightIcon size={16} />
-                    <div className=" text-lg text-gray-400">Title</div>
 
-                </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
 
                     <div className="">
@@ -53,7 +44,6 @@ const New = ({ params }: { params: any }) => {
 
                             <div className=" overflow-hidden ">
 
-
                                 {/* <!-- Image --> */}
                                 <div className="w-full h-auto mx-auto flex justify-center border p-2">
                                     <Image
@@ -66,18 +56,9 @@ const New = ({ params }: { params: any }) => {
                                         alt="Image"
                                     />
                                 </div>
-                                {/* <Image
-                                    src={data.data.news.img}
-                                    className="object-cover h-48 w-full"
-                                    width={0}
-                                    height={0}
-                                    sizes="100vw"
-                                    style={{ width: '100%', height: 'auto' }} // optional
-                                    alt="Image"
-                                /> */}
 
-                                <div className="z-10 flex justify-between items-center space-x-2 text-green-500 w-full p-2">
-                                    <h2 className=" tracking-wider text-xl font-extrabold  ">
+                                <div className="z-10 flex justify-between items-center space-x-2 text-maincolor w-full p-2">
+                                    <h2 className=" tracking-wider text-2xl font-extrabold  ">
                                         {data.data.news.translations[`${locale}`].title}
                                     </h2>
                                     <div className="text-sm text-black flex items-center gap-2">
@@ -95,10 +76,6 @@ const New = ({ params }: { params: any }) => {
                             </div>
                         )}
                     </div>
-
-
-
-
                 </div>
             </div>
         </div>

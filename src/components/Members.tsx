@@ -1,59 +1,57 @@
-import Image from "next/image";
+"use client"
 import Container from "./Core/Container";
+import { useLocale, useTranslations } from "next-intl";
+import Link from "next/link";
+
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { useState } from "react";
+import LegalUsersGet from "./GetComponents/LegalUsersGet";
+import PhysicalUsersGet from "./GetComponents/PhysicalUsersGet";
 
 const Members = () => {
-    const data_members = [
-        {
-            img: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-        },
+    const t = useTranslations("Members");
+    const locale = useLocale();
+    const [isYuridik, setIsYuridik] = useState(false);
 
-        {
-            img: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-        },
-
-        {
-            img: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-        },
-
-    ]
 
     return (
-        <div>
+        <div className="pb-5 sm:pb-10">
             <Container>
+                <div className="flex justify-between items-center py-5 md:py-10" >
+                    <h2 className="text-3xl font-bold text-maincolor" data-aos="fade-up" data-aos-delay="100" data-aos-duration="500">{t('hero_title')}</h2>
+                    <div className="flex  items-center gap-2">
+                        <DropdownMenu >
+                            <DropdownMenuTrigger asChild>
+                                <button className="w-full sm:w-auto px-2 py-1 text-lg text-maincolor bg-white border border-maincolor rounded-md hover:bg-maincolor hover:text-white duration-300">{isYuridik ? t('legal') : t('physical')}</button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent>
+                                <DropdownMenuItem className=" text-base">
+                                    <Link href={`/${locale}/main_all/members`}>
+                                        {t("all_members")}
+                                    </Link>
+                                </DropdownMenuItem>
+                                <DropdownMenuItem className=" text-base" onClick={() => setIsYuridik(true)}>{t('legal')}</DropdownMenuItem>
+                                <DropdownMenuItem className=" text-base" onClick={() => setIsYuridik(false)}>{t('physical')}</DropdownMenuItem>
+                            </DropdownMenuContent>
+                        </DropdownMenu>
 
-                <div className="text-center py-6">
-                    <h2 className=" text-4xl font-semibold">Azolar</h2>
+                    </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 duration-1000">
-                    {data_members.map((item: any, i: number) => (
-
-                        <div key={i} className="flex items-center justify-center flex-col gap-2 p-5 w-full bg-gray-100 duration-1000 shadow hover:shadow-xl  rounded-2xl" data-aos="fade-up" data-aos-delay={(i + 1) * 100}>
-                            <Image
-                                src={'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'}
-                                className="w-24 h-24 rounded-full object-cover transition duration-200 hover:scale-110"
-                                width={0}
-                                height={0}
-                                sizes="100vw"
-                                // style={{ width: '100%', height: 'auto' }} // optional
-                                alt="Image"
-                            />
-
-                            <div className="text-gray-900 text-lg font-bold">{item.username}</div>
-
-                            <div className="text-purple-600">{item.desc}</div>
-
-                            <div className="text-gray-600">Lead engineering teams at Figma, Pitch, and Protocol Labs.</div>
-
-                            <div className="flex items-center justify-center gap-3 mt-2 w-auto h-5 text-gray-600">
-                                <i className="fa-brands fa-twitter fa-lg cursor-pointer transition duration-200 hover:text-gray-400"></i>
-                                <i className="fa-brands fa-linkedin fa-lg cursor-pointer transition duration-200 hover:text-gray-400"></i>
-                                <i className="fa-brands fa-dribbble fa-lg cursor-pointer transition duration-200 hover:text-gray-400"></i>
-                            </div>
-
-                        </div>
-                    ))}
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 duration-100">
+                    {isYuridik ? (
+                        <LegalUsersGet amount={3} />
+                    ) : (
+                        <PhysicalUsersGet amount={3} />
+                    )
+                    }
                 </div>
+
             </Container>
         </div>
     )

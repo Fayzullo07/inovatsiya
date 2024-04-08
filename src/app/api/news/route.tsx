@@ -25,7 +25,7 @@ export const POST = async (req: any) => {
                 },
             }
         });
-        
+
         return NextResponse.json({ message: "Created new succesfully" }, { status: 201 })
     } catch (error) {
         console.log(error);
@@ -40,6 +40,7 @@ export const GET = async (req: NextRequest) => {
     await connectMongoDB();
     try {
         let news;
+
         // Agar `search` parametri bo'sh bo'lsa, barcha ma'lumotlarni qidirish
         if (!search) {
             news = await News.find({});
@@ -47,10 +48,12 @@ export const GET = async (req: NextRequest) => {
             // Agar `search` parametri bo'sh bo'lmasa, MongoDB'dan ma'lumotlarni qidirish
             news = await News.find({
                 $or: [
-                    { title: { $regex: search, $options: 'i' } }, // title ustuni bo'yicha qidirish
-                    // { desc: { $regex: search, $options: 'i' } } // desc ustuni bo'yicha qidirish
+                    { 'translations.uz.title': { $regex: search, $options: 'i' } },
+                    { 'translations.ru.title': { $regex: search, $options: 'i' } },
+                    { 'translations.en.title': { $regex: search, $options: 'i' } }
                 ]
             });
+
         }
         return NextResponse.json({ news }, { status: 200 })
     } catch (error) {

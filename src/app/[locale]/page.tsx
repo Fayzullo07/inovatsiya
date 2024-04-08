@@ -2,7 +2,6 @@
 import AboutUs from '@/components/AboutUs';
 import Contact from '@/components/Contact';
 import Hero from '@/components/Hero';
-import Statistics from '@/components/Statisticts';
 
 import { useEffect } from 'react';
 
@@ -13,10 +12,12 @@ import Events from '@/components/Events';
 import Partners from '@/components/Partners';
 import Members from '@/components/Members';
 import Services from '@/components/Services';
-import Projects from '@/components/Projects';
 import Slider from '@/components/Slider';
 import AskedQuestions from '@/components/AskedQuestions';
 import Initiators from '@/components/Initiators';
+import Projects from '@/components/Projects';
+import RegMembers from '@/components/RegMembers';
+import InitiatorsApplication from '@/components/InitiatorsApplication';
 
 export default function Index() {
   useEffect(() => {
@@ -30,20 +31,18 @@ export default function Index() {
   return (
     <>
       <Hero />
-      <Slider />
+      {/* <Slider /> */}
+      <AboutUs />
       <Projects />
       <Members />
-      <h1>{"Azo bo'lish"}</h1>
+      <RegMembers />
       <Events />
-      {/* <AboutUs /> */}
       <News />
-      <Statistics />
+      {/* <Statistics /> */}
       <Partners />
-      <h1>Hamkorlik uchun aziza qoldirish</h1>
+      <InitiatorsApplication />
       <Initiators />
       <Services />
-      <h1>Hizbatlardan foydalanish uchun aziza qoldirish</h1>
-
       <Contact />
       <AskedQuestions />
     </>

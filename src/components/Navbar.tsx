@@ -18,8 +18,6 @@ import {
 import { navbar } from "../../data/data";
 import Image from "next/image";
 
-
-
 const Navbar = () => {
     const [stickyNav, setStickyNav] = useState(false);
 
@@ -35,10 +33,11 @@ const Navbar = () => {
     });
 
     const t = useTranslations('Navbar');
+    const h = useTranslations('Hero');
 
     return (
         <header className={`${pathname.split("/")[2] == "admin" ? "hidden" : ""}`}>
-            <nav className={`${stickyNav ? "active" : ""} flex flex-wrap items-center justify-between w-full px-4 text-lg text-gray-700 bg-white z-[100] shadow`}>
+            <nav className={`${stickyNav ? "active" : ""} flex flex-wrap items-center justify-between w-full px-4 text-lg text-gray-700 bg-white z-[100]`}>
 
                 <Link href={"/"}>
                     <Image
@@ -53,10 +52,10 @@ const Navbar = () => {
                         className="text-xl text-gray-500 lg:flex lg:justify-between">
                         {navbar.map((item, i) => (
                             <li key={item.name}>
-                                <Link href={item.slug} className="*:hover:w-full p-2 font-normal block hover:text-maincolor duration-300" >
+                                <a href={item.slug} className="*:hover:w-full p-2 font-normal block hover:text-maincolor duration-300" >
                                     {t(`${i}`)}
                                     <div className="w-0 duration-1000 h-0.5 bg-maincolor"></div>
-                                </Link>
+                                </a>
                             </li>
                         ))}
                     </ul>
@@ -79,17 +78,21 @@ const Navbar = () => {
                                                 {navbar.map((item, i) => (
                                                     <li key={item.name} data-aos="fade-left" data-aos-delay={(i + 1) * 100} data-aos-duration={(i + 1) * 100} >
                                                         <SheetClose asChild>
-                                                            <Link href={item.slug} className="md:p-3 py-2 flex gap-2 items-center hover:text-maincolor duration-300">
+                                                            <a href={item.slug} className="md:p-3 py-2 flex gap-2 items-center hover:text-maincolor duration-300">
                                                                 {item.icon}
                                                                 <p>
                                                                     {t(`${i}`)}
                                                                 </p>
 
-                                                            </Link>
+                                                            </a>
                                                         </SheetClose>
                                                     </li>
                                                 ))}
-                                                <Button className="w-full" data-aos="fade-left" data-aos-delay={8 * 100} data-aos-duration={8 * 100} variant="default">{"Bog'lanish"}</Button>
+                                                <SheetClose asChild>
+                                                    <a href="#contact" className="duration-300 hover:scale-95">
+                                                        <Button className="w-full" data-aos="fade-left" data-aos-delay={8 * 100} data-aos-duration={8 * 100} variant="default">{"Bog'lanish"}</Button>
+                                                    </a>
+                                                </SheetClose>
                                             </ul>
                                         </SheetDescription>
                                     </SheetHeader>
@@ -99,9 +102,9 @@ const Navbar = () => {
                         </div>
                     </div>
                     <div className={`hidden lg:flex md:items-center gap-2 lg:w-auto overflow-auto bg-white z-10`}>
-                        <Link href={"/#contact"} className="duration-300 hover:scale-95">
-                            <Button variant="default" className="uppercase tracking-wider">{"Bog'lanish"}</Button>
-                        </Link>
+                        <a href="#contact" className="duration-300 hover:scale-95">
+                            <Button variant="default" className="uppercase tracking-wider">{h("contact")}</Button>
+                        </a>
                     </div>
                 </div>
 

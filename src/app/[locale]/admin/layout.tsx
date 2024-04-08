@@ -1,15 +1,62 @@
-import { ArchiveIcon, BellIcon, BriefcaseIcon, CalendarIcon, HomeIcon, MessageCircleIcon, UserIcon, UsersIcon } from "lucide-react";
+import { AppWindowIcon, ArchiveIcon, BellIcon, BriefcaseIcon, CalendarIcon, FileTextIcon, FoldersIcon, Handshake, HomeIcon, MessageCircleIcon, MessageCircleQuestionIcon, RssIcon, UserIcon, UserRoundCogIcon, UsersIcon } from "lucide-react";
 import { useLocale } from "next-intl";
 import Link from "next/link";
 
 export default function Layout({ children }: Readonly<{ children: React.ReactNode }>) {
     const locale = useLocale();
-    
+    const data_links = [
+        {
+            slug: "/main",
+            title: "Main",
+            icon: <RssIcon />
+        },
+        {
+            slug: "/news",
+            title: "Yangiliklar",
+            icon: <RssIcon />
+        },
+        {
+            slug: "/projects",
+            title: "Loyihalarimiz",
+            icon: <FoldersIcon />
+        },
+        {
+            slug: "/members",
+            title: "A'zolar",
+            icon: <UsersIcon />
+        },
+        {
+            slug: "/events",
+            title: "Tadbirlar",
+            icon: <CalendarIcon />
+        },
+
+        {
+            slug: "/partners",
+            title: "Hamkorlar",
+            icon: <Handshake />
+        },
+        {
+            slug: "/initiators",
+            title: "Tashabbuskorlar",
+            icon: <AppWindowIcon />
+        },
+        {
+            slug: "/services",
+            title: "Xizmatlar",
+            icon: <UserRoundCogIcon />
+        },
+        {
+            slug: "/question",
+            title: "Questions",
+            icon: <MessageCircleQuestionIcon />
+        },
+    ]
 
     return (
         <div>
             <div className='flex bg-gray-100'>
-                <aside className='h-screen bg-white fixed lg:sticky top-0 border-r-2 p-6 pt-10 whitespace-nowrap z-10 closed shadow-xl '>
+                <aside className='h-screen bg-white fixed lg:sticky top-0 border-r-2 p-4  whitespace-nowrap z-10 closed shadow-xl '>
 
                     <ul className='text-gray-500 font-semibold flex flex-col gap-2'>
                         <li>
@@ -18,83 +65,27 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
                                 <span className='flex-grow'>Bosh sahifa</span>
                             </Link>
                         </li>
-
-                        <li>
-                            <a href="#!" className='flex rounded px-3 py-2 hover:text-black hover:bg-gray-50 transition-all'>
-                                <BellIcon className="mr-3" />
-                                <span className='flex items-center gap-3'>
-                                    Notifications
-                                    <span className='bg-red-500 text-white leading-none px-2 py-1 rounded-full text-xs'>2</span>
-                                </span>
-                            </a>
-                        </li>
-                        <li className='border my-2'></li>
                         <li>
                             <Link href={`/${locale}/admin/messages`} className='flex rounded px-3 py-2 hover:text-black hover:bg-gray-50 transition-all'>
+                                <BellIcon className="mr-3" />
                                 <span className='flex items-center gap-3'>
-                                    <MessageCircleIcon />
-                                    Messages
-                                    {/* <span className='bg-red-500 text-white leading-none px-2 py-1 rounded-full text-xs'>99+</span> */}
+                                    Habarlar
+                                    {/* <span className='bg-red-500 text-white leading-none px-2 py-1 rounded-full text-xs'>2</span> */}
                                 </span>
                             </Link>
                         </li>
-
-                        <li>
-                            <Link href={`/${locale}/admin/news`} className='flex items-center rounded px-3 py-2 hover:text-black hover:bg-gray-50 transition-all'>
-
-                                <CalendarIcon className="mr-3" />
-
-                                <span className='flex-grow'>Yangiliklar</span>
-
-                            </Link>
-                        </li>
-
-                        <li>
-                            <a href="#!" className='flex items-center rounded px-3 py-2 hover:text-black hover:bg-gray-50 transition-all'>
-
-                                <UserIcon className="mr-3" />
-
-                                <span className='flex-grow'>People</span>
-
-                                {/* <i data-feather="chevron-down" style='width: 1.2em'></i> */}
-
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#!" className='flex items-center rounded px-3 py-2 hover:text-black hover:bg-gray-50 transition-all'>
-
-                                <UsersIcon className="mr-3" />
-
-                                <span className='flex-grow'>Groups</span>
-
-                                {/* <i data-feather="chevron-down" style='width: 1.2em'></i> */}
-
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#!" className='flex items-center rounded px-3 py-2 hover:text-black hover:bg-gray-50 transition-all'>
-
-                                {/* <i data-feather="archive" style='width: 1.2em' className='mr-3'></i> */}
-                                <ArchiveIcon className="mr-3" />
-
-                                <span className='flex-grow'>Resources</span>
-
-                                {/* <i data-feather="chevron-down" style='width: 1.2em'></i> */}
-
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#!" className='flex items-center rounded px-3 py-2 hover:text-black hover:bg-gray-50 transition-all'>
-
-                                <BriefcaseIcon className="mr-3" />
-
-                                <span className='flex-grow'>Offices</span>
-
-                            </a>
-                        </li>
+                        <li className='border my-1'></li>
+                        {data_links.map((item, i) => (
+                            <li key={i}>
+                                <Link href={`/${locale}/admin${item.slug}`} className='flex rounded px-3 py-2 hover:text-black hover:bg-gray-50 transition-all'>
+                                    <span className='flex items-center gap-3'>
+                                        {item.icon}
+                                        {item.title}
+                                        {/* <span className='bg-red-500 text-white leading-none px-2 py-1 rounded-full text-xs'>99+</span> */}
+                                    </span>
+                                </Link>
+                            </li>
+                        ))}
                     </ul>
                 </aside>
 

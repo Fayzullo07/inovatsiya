@@ -4,7 +4,8 @@ import NextTopLoader from "nextjs-toploader";
 const TopLoader = () => {
   return (
     <NextTopLoader
-      color="#3AB2F1"
+      color="var(--main_color)"
+      
       initialPosition={0.08}
       crawlSpeed={200}
       height={5}

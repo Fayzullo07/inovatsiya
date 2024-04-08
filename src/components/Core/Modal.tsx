@@ -11,16 +11,14 @@ import React from "react";
 import { Button } from "../ui/button";
 
 
-const Modal = ({ children, button }: Readonly<{ children: React.ReactNode, button: string }>) => {
+const Modal = ({ children, button }: Readonly<{ children: React.ReactNode, button: React.ReactNode }>) => {
 
     return (
-        <Dialog >
+        <Dialog   >
             <DialogTrigger asChild>
-                <Button variant={"outline"} className="">
-                    {button}
-                </Button>
+                {button}
             </DialogTrigger>
-            <DialogContent className=" min-w-[80vw] max-h-[80vh]" >
+            <DialogContent className="min-w-[70vw] max-h-[80vh]" >
                 <DialogHeader >
                     {/* <DialogTitle>Add User</DialogTitle> */}
                     <DialogDescription>

@@ -9,15 +9,18 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import moment from "moment";
 import Image from "next/image";
 import { toast } from "react-toastify";
+import { Input } from "@/components/ui/input";
+import { useState } from "react";
 
 const News = () => {
     const locale = useLocale();
     const queryClient = useQueryClient();
+    const [search, setSearch] = useState("");
 
     const { data, isLoading, isError } = useQuery({
         queryKey: ["news"],
         queryFn: async () => {
-            return await newsGetAPI({});
+            return await newsGetAPI({ search });
         }
     });
     const mutationDeleteNew = useMutation(
@@ -40,7 +43,7 @@ const News = () => {
             mutationDeleteNew.mutate(id)
         }
     }
-    if (isLoading) return <div>Yuklanmoqda...</div>;
+    if (isLoading) return <div>Loading...</div>;
     if (isError) return <div>Xatolik yuz berdi...</div>;
 
 
@@ -50,12 +53,8 @@ const News = () => {
             <div className="relative overflow-x-auto  sm:rounded-lg">
                 <div className="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
 
-                    <label htmlFor="table-search" className="sr-only">Search</label>
-                    <div className="relative">
-                        <div className="absolute inset-y-0 left-0 rtl:inset-r-0 rtl:right-0 flex items-center ps-3 pointer-events-none">
-                            <svg className="w-5 h-5 text-gray-500 dark:text-gray-400" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
-                        </div>
-                        <input type="text" id="table-search" className="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for items" />
+                    <div className="flex w-full max-w-sm items-center space-x-2">
+                        <Input type="search" placeholder="Search . . ." value={search} onChange={(e) => setSearch(e.target.value)} />
                     </div>
                     <div>
 
@@ -66,60 +65,59 @@ const News = () => {
                         </Link>
                     </div>
                 </div>
-                <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                    <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <table className="min-w-full divide-y divide-gray-200 overflow-x-auto">
+                    <thead className="bg-gray-50">
                         <tr>
-                            <th scope="col" className="px-6 py-3">
-                                Image
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Photo
                             </th>
-                            <th scope="col" className="px-6 py-3">
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Title
                             </th>
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Content
+                            </th>
 
-                            <th scope="col" className="px-6 py-3">
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Date
                             </th>
-                            <th scope="col" className="px-6 py-3 text-center">
-                                Action
-                            </th>
 
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Actions
+                            </th>
                         </tr>
                     </thead>
-                    <tbody className="">
+                    <tbody className="bg-white divide-y divide-gray-200">
                         {data?.data.news.map((item: any, i: number) => (
-                            <tr key={i} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                <th scope="row" className="font-medium text-gray-900">
-                                    <div className=" max-w-20 h-auto mx-auto flex justify-center">
-                                        <Image
-                                            src={item.photo}
-                                            width={0}
-                                            height={0}
-                                            // className=" transition hover:scale-110 duration-300"
-                                            sizes="100vw"
-                                            style={{ width: 'auto', height: 'auto' }} // optional
-                                            alt="Image"
-                                        />
+                            <tr key={i}>
+                                <td className="px-6 py-4 whitespace-nowrap">
+                                    <div className="flex items-center">
+                                        <div className="flex-shrink-0 h-10 w-10">
+                                            <Image width={100} height={100} className="h-10 w-10" src={item.photo} alt="" />
+                                        </div>
                                     </div>
-                                </th>
-                                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                    {item.translations[`${locale}`].title}
-                                </th>
-                                <td className="px-6 py-4">
-                                    {moment(item.createdAt).format("LLL")}
                                 </td>
-                                <td className="px-6 py-4 flex justify-center gap-4">
-                                    <Link href={`/${locale}/admin/news/edit/${item._id}`}>
-                                        <Button className="bg-yellow-500" size={"icon"}>
-                                            <EditIcon />
-                                        </Button>
-                                    </Link>
-                                    <Button variant={"destructive"} size={"icon"} onClick={() => handeDelete(item._id)} disabled={mutationDeleteNew.isPending}>
-                                        <TrashIcon />
-                                    </Button>
+                                <td className="px-6 py-4 whitespace-nowrap">
+                                    <div className="text-sm text-gray-900">{item.translations[`${locale}`].title}</div>
+                                </td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    <div
+                                        className=" whitespace-pre-line"
+                                        style={{ whiteSpace: "pre-line" }}
+                                        dangerouslySetInnerHTML={{ __html: `${item.translations[`${locale}`].content.substring(0, 20)} ...` }}
+                                    />
                                 </td>
 
+
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    {moment(item.createdAt).format("LLL")}
+                                </td>
+                                <td className="px-6 py-4 whitespace-nowrap  text-sm font-medium">
+                                    <Link href={`/${locale}/admin/news/edit/${item._id}`} className="text-indigo-600 hover:text-indigo-900">Edit</Link>
+                                    <button className="ml-2 text-red-600 hover:text-red-900" onClick={() => handeDelete(item._id)} disabled={mutationDeleteNew.isPending}>Delete</button>
+                                </td>
                             </tr>
-                        ))}
+                        )).reverse()}
                     </tbody>
                 </table>
             </div>

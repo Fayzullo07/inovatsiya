@@ -5,95 +5,49 @@
         "Hamkorlar",
         "Tadbirlar",
         "Tashabbuskorlar",
-        "Xizmatlar",
-        "Aql Markazi"
+        "Xizmatlar"
     ],
     "Hero": {
-        "title": "Osiyo Konsalting Kompaniyalari Assotsiatsiyasi",
-        "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
         "contact": "Bog'lanish",
         "about": "Biz haqimizda"
     },
-    "Stats": {
-        "title": "Muhim bo'lgan statistika",
-        "desc": "Bizning qat'iy xavfsizlik va muvofiqlik standartlarimiz biz qilayotgan barcha ishlarimizning markazidir. Biz sizni va mijozlaringizni himoya qilish uchun tinmay ishlaymiz.",
-        "companies": "KOMPANIYALAR",
-        "winners": "MAQOMOTI",
-        "consulting": "MASLAHATCHILARIMIZ",
-        "clients": "HURMATLI MIJOLAR"
-    },
-    "OurServices": {
-        "hero_title": "Bizning Xizmatlarimiz",
-        "hero_desc": "\"OKKA\" xizmatlari va assotsiatsiya a'zolari tashkilotlarining xizmatlari o'zining egasi bo'lgan sifatli va tajribali konsultantlar va trenerlar jamoasi orqali bajariladi. Qo'shimcha ravishda, assotsiatsiya, kerak bo'lgan holatda, har xil sohalar va sohalarni tasvir etuvchi yuqori malakali va tajribali konsultantlar va trenerlardan iborat bo'lgan bir guruhning xizmatlaridan foydalanadi.",
-        "button": "Ko'proq o'qish",
-        "data": [
-            {
-                "title": "Konsultatsiyalar",
-                "desc": "Maxsus Biznes Konsultatsiyalari Mahalliy korxonalar uchun umumiy biznes konsultatsiyalarining keng doirasini ta'minlash; Biznes va Investitsiyalarni Rivojlantirish; Strategik rejalashtirish; Korxonalar rivojlantirilishi va qayta tashkil etilishi; Korxona kadrlari rivojlanishi; Biznes loyihalarining amalga oshirishning aniqligini o'rganish; Texnik-ta'limiy sabablarga asoslangan ma'lumotnoma; Bozor tadqiqotlari va tahlillari; Ishlab chiqarish sohalarini tahlil qilish va tahlil qilish; Qishloq xo'jaligi/agrobiznes sohalarini tahlil qilish va tahlil qilish; Yangi mahsulotlarni rivojlantirish va rag'batlantirish; Maxsus fermachilik/agrobiznes kuchlari, assotsiatsiyalar va boshqa o'xshash birliklarni yaratish va rivojlantirishga yordam berish; Maxsus fermachilik/agrobiznes loyihalarining rivojlanishini ta'minlash; Kichik kreditlar va grantlarning berilishi va ulardan monitoring qilish bo'yicha konsultatsiyalar;",
-                "desc_2": "Jamoa/Regional Rivojlantirish: Jamoa tashkilotlarining, assotsiatsiyalarining, birliklarining va boshqa qishloq/jamoa ittifoqlarining yaratilishi va rivojlantirilishida yordam berish; Mahalliy jamoa tashkilotlari tomonidan boshlang'ich va amalga oshirilayotgan qishloq xo'jaligi/agrobiznes loyihalarini rivojlantirishni ta'minlash; Xalqaro donor tashkilotlari tomonidan moliyaviy qo'llab-quvvatlangan jamoa rivojlanishiga yo'naltirilgan loyihalar boshqarish va monitoringi; Regional rivojlantirish va regional iqtisodiy strategiyalar bo'yicha tadqiqotlar ishlab chiqish.",
-                "desc_3": "Chet el investorlari qo'llab-quvvatlash Mahalliy investitsiya takliflarini o'rganish va mos keluvchi ma'lumotlarni tayyorlash; Potentsial sheriklarni qidirish va baholash; Potentsial sheriklar tomonidan taklif etilgan investitsiya loyihalari baholanishi; Mashvare jarayonida qo'llab-quvvatlash; Logistik qo'llab-quvvatlash; Kompaniyalarning barqarorligini o'rganish va shu bo'yicha ma'lumotlarni tayyorlash (Due Diligence maqolalari);"
-            },
-            {
-                "title": "Treninglar",
-                "desc": "Assotsiatsiya turli xil turlarda va yo'nalishlarda ko'plab trening dasturlarini tuzdi, ular maqsadli guruhlar talablaridan talab etilgan bo'limlar va modullar bo'yicha amalga oshiriladi. Joriy kunda, assotsiatsiya quyidagi turdagi treninglarni taklif etadi:",
-                "desc_2": "Biznes Treninglari Umumiy biznes trening dasturlari - kurslar, seminarlar, ishlab chiqarishlar (turli formatlar va davomiyliklar); Biznesni rejalashtirish; Moliyaviy/To'lov/Natijaviy; Marketinq; Moliyaviy boshqaruv; Maxsus shakllarda biznes trening dasturlari maqsadli guruhlar (boshlang'ich biznesmenlar, ayollar biznesmenlar, yoshlar, majburiy o'chirilgan shaxslar va boshqalar); Treninglar/seminarlar/ishlab chiqarishlar regional biznes markazlari xodimlari, qishloq xo'jalik xizmatlari markazlari/o'rnatish/mexanizatsiyasi, kredit birliklari, boshqa o'xshash biznes assotsiatsiyalari va xizmatlarni taqdim etuvchi agentliklar xodimlari uchun; Assotsiatsiya a'zolari tomonidan amalga oshirilgan amaliy treninglar/o'qishlar.",
-                "desc_3": ""
-            }
-        ]
-    },
-    "OurMembers": {
-        "hero_title": "Bizning A'zolarimiz",
-        "desc": "",
-        "data": [
-            {
-                "company": "INNOVATIVE BUSINESS TECHNOLOGY",
-                "desc": "Sanoat va ishlab chiqarish konsaltingi. Boshqaruv konsaltingi."
-            },
-            {
-                "company": "DIGITAL BUSINESS TECHNOLOGIES",
-                "desc": "Ma'lumot texnologiyalari sohasida konsalting. Dasturlar mahsulotlarini ishlab chiqarish, qo'llab-quvvatlash va ishlab chiqarish. IT texnologiyalari sohasida ta'lim."
-            },
-            {
-                "company": "DASSTYOUR CONSULTING",
-                "desc": "Marketing konsaltingi. Ekologik konsalting. O'qituvchi konsalting. Hisob-kitob xizmatlari."
-            },
-            {
-                "company": "VA-TAN BUSINESS",
-                "desc": "Bozor kon'yukturasi tadqiqoti. Reklama. Brendlashtirish. Dizayn. Kommunikatsiyalar."
-            },
-            {
-                "company": "AL-MAHMUD MASLAHATI",
-                "desc": "Huquqiy konsalting. Tashkilotning huquqiy ekspertizasi."
-            },
-            {
-                "company": "INNOVATIVE AGRO CLUSTER",
-                "desc": "Qishloq xo'jaligida kompleks konsalting."
-            },
-            {
-                "company": "ADVERTISING PROMOTION",
-                "desc": "Reklama sohasida faoliyat."
-            },
-            {
-                "company": "INSURANCE DEVELOPMENT",
-                "desc": "Moliyaviy, soliq, hisob-kitob konsaltingi. Sug'urta kompaniyalarini yaratish va boshqarish."
-            }
-        ]
-    },
     "AboutUs": {
         "hero_title": "Biz Haqimizda",
-        "desc3_title": "Maqsad",
-        "desc1": "Osiyo Konsalting Kompaniyalar Assotsiatsiyasi O'zbekistonda va chet elda yetakchi biznes konsalting kompaniyalarini birlashtiruvchi professional assotsiatsiyadir. OKKA a'zolari mahalliy va xalqaro bozorlarda ko'plab yillar ishlab kelgan tajribaga ega bo'lib, biznes konsalting, marketing, umumiy boshqaruv, moliyaviy boshqaruv, ta'lim, IT konsalting, reklama, tibbiy konsalting hamda qishloq xo'jaligi va sanoatning turli sohalarida yuqori sifatli xizmatlar taqdim etishadi.",
-        "desc2": "Osiyo Konsalting Kompaniyalar Assotsiatsiyasi 2021-yilda O'zbekistondagi yetakchi biznes konsalting tashkilotlari tomonidan moliyalashtirish resurslarini birlashtirish maqsadida mamlakatda va chet elda biznes konsalting xizmatlarini taqdim etuvchi qo'lli tashkilotlar uchun birlashtirilgan va samarali tarmoqni yaratish maqsadida tuzilgan.",
-        "desc3": "OKKA maqsadi - mamlakat bo'ylab va chet elda mavjud tadbirkorliklar va boshlang'ich biznesni konsalting xizmatlariga murojaat qilishini ta'minlash.",
-        "contact": "Aloqa",
-        "target_title": "OKKA maqsadlari quyidagilar:",
-        "target_desc1": "Assotsiatsiya a'zolarining faoliyatini rivojlantirish, ularning imkoniyatlarini oshirish, xizmatlarning doirasini kengaytirish, yaqin aloqani rivojlantirish va tashkilotlar o'rtasida mehnat ko'rsatishni ta'minlash, shuningdek, ularning qo'llab-quvvatlash va maqsadlarini himoya qilishda ko'mak ko'rsatish;",
-        "target_desc2": "Mavjud biznes konsalting tashkilotlarini rivojlantirish va yangi konsaltinglar yaratish orqali, mahalliy tadbirkorlik rivojini ta'minlash, mahalliy kompaniyalar boshqaruvchilarining bilim va tajribasini oshirish va rivojlanish darajasini yuqori darajaga olib chiqarish orqali o'z hissasiga ega bo'lish;",
-        "task_title": "Vazifalar",
-        "task_desc1": "Assotsiatsiyaga tashrif buyurgan maqsadlarga asosan, OKKA quyidagi vazifalarni o'ziga olishdi: Mahalliy biznes konsalting tashkilotlariga o'zining imkoniyatlarini rivojlantirishda, texnik, metodologik, ekspert qo'llab-quvvat, yordam va boshqa yordam ko'rsatish orqali xizmatlarining doirasini kengaytirish va faollik darajasini oshirish uchun muvofiq yordam ko'rsatish; O'zbekistonning turli mintaqalarida yangi biznes konsalting tashkilotlarini yaratish va rivojlantirishni boshlash va qo'llab-quvvatlash; Assotsiatsiya a'zolarining shaxsiy faoliyati va birgalikdagi loyihalarini qo'llab-quvvatlash, ularni shunday loyihalarni amalga oshirish uchun kerakli moliyalashni jalb etishda yordam berish;",
-        "task_desc2": "Mahalliy tadbirkorlikni rivojlantirishga yo'naltirilgan, assotsiatsiya a'zolari yig'ilgan texnik, odam, moliya resurslarini jalb qilish va foydalanish orqali turli loyihalarni boshlash, rivojlanish va amalga oshirish; Xalqaro donorlar va xalqaro rivojlanish tashkilotlari bilan hamkorlik qilib, O'zbekistonda kichik va o'rtacha biznesni rivojlantirishga yo'naltirilgan qatiy va samarali strategiyalar va dasturlarni rivojlantirish, mavjud donor resurslarini samarali foydalanish maqsadida;",
-        "task_desc3": "Assotsiatsiya a'zolari intereslarini himoya qilish, O'zbekistonda va tashqi mamlakatlarda, ularni xalqaro hamkorlar va donor tashkilotlari bilan aloqalarini qurish va rivojlantirishda yordam berish, shuningdek, assotsiatsiya a'zolari mamlakatning kichik va o'rtacha biznes sohasida faollik ko'rsatish va xizmatlarini taqdim etishlari uchun murojaat qilish orqali, ularni faol faoliyat olib borishadi;",
-        "task_desc4": "Tashkilotning tashkiloti tizimi orqali, mamlakatning turli mintaqalaridagi mahalliy kichik va o'rtacha korxonalar uchun yuqori sifatli biznes konsalting xizmatlari, biznes sohasida tashkilotlarning tayyorlash dasturlari (turli formatlarda) va shunga o'xshash axborot, texnik va boshqa xizmatlarni taqdim etish orqali keng xizmatlarni taqdim etish;"
+        "button": "Ko'proq o'qish"
+    },
+    "Projects": {
+        "hero_title": "Loyihalarimiz",
+        "button": "Barcha loyihalarimiz"
+    },
+    "News": {
+        "hero_title": "Yangiliklar",
+        "button": "Barcha yangiliklar"
+    },
+    "Services": {
+        "hero_title": "Xizmatlarimiz"
+    },
+    "Question": {
+        "hero_title": "Tez-tez so'raladigan savollar"
+    },
+    "Members": {
+        "hero_title": "A'zolar",
+        "position": "Lavozimi",
+        "work": "Ish joyi",
+        "activity": "Faoliyati",
+        "legal": "Yuridik shaxs",
+        "physical": "Jismoniy shaxs",
+        "all_members": "Barcha a'zolar",
+        "more": "Ko'proq o'qish",
+        "organ_type": "Tashkilot faoliyat turi",
+        "organ_address": "Tashkilot manzili"
+    },
+    "Initiators": {
+        "hero_title": "Tashabbuskorlar",
+        "all_initiators": "Barcha Tashabbuskorlar",
+        "birthday": "Tug'ilgan sana",
+        "life_address": "Yashash manzili",
+        "birthplace": "Tug'ilgan joyi",
+        "workplace": "Ish joyi"
     },
     "Contact": {
         "hero_title": "Bog'lanish",
@@ -104,79 +58,5 @@
         "comment": "Har qanday izohingiz",
         "send": "Yuborish",
         "fedback": "Yuborildi aloqaga chiqamiz rahmat!"
-    },
-    "OurTeam": {
-        "hero_title": "Azolar",
-        "desc": "",
-        "data": [
-            {
-                "id": 1,
-                "name": "Isroilov Shuhratxon Ahmatxonovich",
-                "job": "Assotsiatsiya Raisi"
-            },
-            {
-                "id": 2,
-                "name": "Ismoilov Dustmurod",
-                "job": "Loyiha Boshqaruvchisi"
-            },
-            {
-                "id": 3,
-                "name": "Hotamboev Islom Muminboevich",
-                "job": "Assotsiatsiya Ekspertlar Kengashi Boshqaruvi"
-            },
-            {
-                "id": 4,
-                "name": "Hakimov Masumxon Luqmonovich",
-                "job": "Rais o'rinbosari"
-            },
-            {
-                "id": 5,
-                "name": "Abduhalikov Mahmut Abduganiyevich",
-                "job": "Yurist"
-            },
-            {
-                "id": 6,
-                "name": "Karimov Toshpulat Gulamjanovich",
-                "job": "Audit"
-            },
-            {
-                "id": 7,
-                "name": "Kudratov Navruzbeck",
-                "job": "Moliyachilar"
-            },
-            {
-                "id": 8,
-                "name": "Bobonazarov Xokim Ubaydullaevich",
-                "job": "Boshqaruvchi Maslahatchisi"
-            },
-            {
-                "id": 9,
-                "name": "Telovov Asilbek Temirovich",
-                "job": "Boshqaruvchi Maslahatchisi"
-            },
-            {
-                "id": 10,
-                "name": "Xolmirzaev Jassur Abdumajidovich",
-                "job": "Boshqaruvchi Maslahatchisi"
-            },
-            {
-                "id": 11,
-                "name": "Yuldashev Akramjon Kurbonnazarovich",
-                "job": "Boshqaruvchi Maslahatchisi"
-            },
-            {
-                "id": 12,
-                "name": "Xusanov Murod Ne'matovich",
-                "job": "Boshqaruvchi Maslahatchisi"
-            },
-            {
-                "id": 13,
-                "name": "Tsarakov Elbrus Sergeevich",
-                "job": "Boshqaruvchi Maslahatchisi"
-            }
-        ]
-    },
-    "Footer": {
-        "title": "Biz bilan bog'laning"
     }
 }

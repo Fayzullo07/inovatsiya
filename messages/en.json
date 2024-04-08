@@ -1,99 +1,53 @@
 {
     "Navbar": [
-        "Yangiliklar",
-        "Loyihalar",
-        "Hamkorlar",
-        "Tadbirlar",
-        "Tashabbuskorlar",
-        "Xizmatlar",
-        "Aql Markazi"
+        "News",
+        "Projects",
+        "Partners",
+        "Events",
+        "Sponsors",
+        "Services"
     ],
     "Hero": {
-        "title": "Asian Association Of Consulting Companies",
-        "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
         "contact": "Connection",
         "about": "About Us"
     },
-    "Stats": {
-        "title": "Stats that matter",
-        "desc": "Our rigorous security and compliance standards are at the heart of all we do. We work tirelessly to protect you and your customers.",
-        "companies": "COMPANIES",
-        "winners": "AWARDS WINNING",
-        "consulting": "OUR CONSULTANTS",
-        "clients": "HAPPY CLIENTS"
-    },
-    "OurServices": {
-        "hero_title": "Our Services",
-        "hero_desc": "Services of \"AACC\" and association member organizations are carried out through its own staff of qualified and experienced consultants and trainers. Additionally, the association, as needed, utilizes the services of a group of collaborating independent experts who bring together highly qualified and experienced consultants and trainers representing various industries and spheres.",
-        "button": "Read more",
-        "data": [
-            {
-                "title": "Consulting",
-                "desc": "Private Business Consulting A wide range of general business consultations for local enterprises; Business and Investment Planning; Strategic planning; Restructuring and development of enterprises; Company human resources development; Feasibility study of business projects; Techno-economic justification; Market research and analysis; Review and analysis of manufacturing sectors; Review and analysis of agriculture/agribusiness sectors; Development and stimulation of new products; Support and assistance in creating and developing private agricultural/agribusiness cooperatives, associations, and similar unions; Support for the development of private agricultural/agribusiness projects; Consultations on small loans and grants issuance and monitoring;",
-                "desc_2": "Community/Regional Development: Support and assistance in creating and developing community organizations, associations, cooperatives, and other rural/community unions; Support for the development of agricultural/agribusiness projects initiated and implemented by local community organizations; Project management and monitoring aimed at community development and financed by international donor organizations; Development of research on regional development and regional economic strategies.",
-                "desc_3": "Support for Foreign Investments Studying local investment proposals and preparing corresponding reports; Searching for and evaluating potential partners; Evaluation of investment proposals presented by potential partners; Support and assistance in the negotiation process; Logistic support; Studying the sustainability of companies and preparing corresponding reports (Due Diligence reports);"
-            },
-            {
-                "title": "Training",
-                "desc": "The association has developed a wide range of training programs of various types and directions, which are implemented according to various educational formats and modules based on the needs and demand of target participant groups. Currently, the association offers the following types of training:",
-                "desc_2": "Business Trainings General business training programs – courses, seminars, workshops (of various formats and durations); Business planning; Financial/Tax/Accounting; Marketing; Financial management; Special format business training programs for specific target groups (start-up entrepreneurs, women entrepreneurs, youth, forcibly displaced persons, etc.); Trainings/seminars/workshops for employees of regional business centers, centers for agricultural services/extension/mechanization, credit unions, other similar business associations and service agencies; Practical trainings/internships based on association member organizations.",
-                "desc_3": ""
-            }
-        ]
-    },
-    "OurMembers": {
-        "hero_title": "Our Members",
-        "desc": "",
-        "data": [
-            {
-                "company": "INNOVATIVE BUSINESS TECHNOLOGY",
-                "desc": "Industrial and manufacturing consulting. Management consulting."
-            },
-            {
-                "company": "DIGITAL BUSINESS TECHNOLOGIES",
-                "desc": "Consulting in the field of information technology. Development, implementation, and support of software products. Training in IT technologies."
-            },
-            {
-                "company": "DASSTYOUR CONSULTING",
-                "desc": "Marketing consulting. Environmental consulting. Educational consulting. Accounting services."
-            },
-            {
-                "company": "VA-TAN BUSINESS",
-                "desc": "Market research. Advertising. Branding. Design. Communications."
-            },
-            {
-                "company": "AL-MAHMUD MASLAHATI",
-                "desc": "Legal consulting. Legal expertise of the enterprise."
-            },
-            {
-                "company": "INNOVATIVE AGRO CLUSTER",
-                "desc": "Comprehensive consulting in agriculture."
-            },
-            {
-                "company": "ADVERTISING PROMOTION",
-                "desc": "Activity in the field of advertising."
-            },
-            {
-                "company": "INSURANCE DEVELOPMENT",
-                "desc": "Financial, tax, accounting consulting. Creation and management of insurance companies."
-            }
-        ]
-    },
     "AboutUs": {
         "hero_title": "About Us",
-        "desc3_title": "Mission",
-        "desc1": "The Asian Association of Consulting Companies is a professional association that brings together leading business consulting companies in Uzbekistan and abroad. Members of the AACC have years of experience in local and international markets and provide high-quality services in the field of business consulting, marketing, general management, financial management, education, IT consulting, advertising, medical consulting, as well as various sectors of agriculture and industry.",
-        "desc2": "The Asian Association of Consulting Companies was founded in 2021 by leading business consulting organizations in Uzbekistan with the aim of pooling resources to create a unified and effective network of qualified organizations providing business consulting services in the country and abroad.",
-        "desc3": "The mission of the AACC is to ensure the accessibility of business consulting services for existing enterprises and aspiring entrepreneurs throughout the country and abroad.",
-        "contact": "Contact",
-        "target_title": "The goals of the AACC are as follows:",
-        "target_desc1": "To promote the activities of member business consulting organizations in further developing, enhancing their capabilities, expanding the range of services, developing close relationships, and ensuring fruitful cooperation between organizations, as well as providing comprehensive support and protection of their interests;",
-        "target_desc2": "By developing existing business consulting organizations and supporting the creation of new consultancies, to contribute to the development of local entrepreneurship by increasing the knowledge and experience of local company managers and achieving a higher level of development quality.",
-        "task_title": "Tasks",
-        "task_desc1": "Based on the above-mentioned goals of the association, the AACC sets the following tasks for itself: Providing appropriate assistance to local business consulting organizations in developing their own capabilities through technical, methodological, expert support, and assistance, with the aim of expanding the scope and increasing the efficiency of their activities; Initiating and supporting the creation and development of new business consulting organizations in various regions of Uzbekistan; Supporting and coordinating the individual activities of association member organizations and their joint projects, assisting them in attracting necessary financing for such projects;",
-        "task_desc2": "Initiating, developing, and implementing various projects aimed at the development of local entrepreneurship by attracting and using the combined technical, human, and financial resources of association members; Cooperation with international donors and organizations in international development to develop more targeted and effective strategies and programs for the development of small and medium-sized enterprises in Uzbekistan, in order to more effectively utilize existing donor resources;",
-        "task_desc3": "Representing and defending the interests of association member organizations, both in Uzbekistan and beyond, assisting them in establishing and developing contacts with potential foreign partners and donor organizations, so that association members can more effectively carry out their activities and provide their services in the small and medium-sized enterprise sector of the country;",
-        "task_desc4": "Through its organizational network, providing local small and medium-sized enterprises in various regions of the country with a wide range of high-quality business consulting services, training programs (of various formats) in the field of business, as well as information, technical, and other services of a corresponding nature;"
+        "button": "Read more"
+    },
+    "Projects": {
+        "hero_title": "Our projects",
+        "button": "All our projects"
+    },
+    "News": {
+        "hero_title": "News",
+        "button": "All news"
+    },
+    "Services": {
+        "hero_title": "Our services"
+    },
+    "Question": {
+        "hero_title": "Frequently asked questions"
+    },
+    "Members": {
+        "hero_title": "Members",
+        "position": "Position",
+        "work": "Workplace",
+        "activity": "Activity",
+        "legal": "Legal person",
+        "physical": "Physical person",
+        "all_members": "All members",
+        "more": "Read more",
+        "organ_type": "Organization activity",
+        "organ_address": "Organization address"
+    },
+    "Initiators": {
+        "hero_title": "Initiators",
+        "all_initiators": "All Initiators",
+        "birthday": "Birthday",
+        "life_address": "Residential address",
+        "birthplace": "Place of Birth",
+        "workplace": "Workplace"
     },
     "Contact": {
         "hero_title": "Contact",
@@ -104,77 +58,6 @@
         "comment": "Any comments you have",
         "send": "Send",
         "fedback": "Sent, we will contact you, thank you!"
-    },
-    "OurTeam": {
-        "hero_title": "Our Team",
-        "desc": "",
-        "data": [
-            {
-                "id": 1,
-                "name": "Isroilov Shukhrathon Akhmatkhonovich",
-                "job": "Chairman of the Association"
-            },
-            {
-                "id": 2,
-                "name": "Ismoilov Dustmurod",
-                "job": "Project Manager"
-            },
-            {
-                "id": 3,
-                "name": "Khotamboev Islom Muminboevich",
-                "job": "Chairman of the Association's Expert Council"
-            },
-            {
-                "id": 4,
-                "name": "Hakimov Ma'sumxon Lukmonovich",
-                "job": "Vice Chairman"
-            },
-            {
-                "id": 5,
-                "name": "Abduhalikov Mahmud Abduganievich",
-                "job": "Lawyer"
-            },
-            {
-                "id": 6,
-                "name": "Karimov Toshpulat Gulamjanovich",
-                "job": "Auditor"
-            },
-            {
-                "id": 7,
-                "name": "Kudratov Navruzbeck",
-                "job": "Accountant"
-            },
-            {
-                "id": 8,
-                "name": "Bobonazarov Hokim Ubaydullaevich",
-                "job": "Advisor to the Chairman"
-            },
-            {
-                "id": 9,
-                "name": "Telovov Asilbek Temirovich",
-                "job": "Advisor to the Chairman"
-            },
-            {
-                "id": 10,
-                "name": "Kholmirzaev Zhasur Abdumadjidovich",
-                "job": "Advisor to the Chairman"
-            },
-            {
-                "id": 11,
-                "name": "Yuldashev Akramjon Kurbonnazarovich",
-                "job": "Advisor to the Chairman"
-            },
-            {
-                "id": 12,
-                "name": "Khusanov Murod Ne'matovich",
-                "job": "Advisor to the Chairman"
-            },
-            {
-                "id": 13,
-                "name": "Tsarakov Elbrus Sergeevich",
-                "job": "Advisor to the Chairman"
-            }
-        ]
     },
     "Footer": {
         "title": "Get connected with us"

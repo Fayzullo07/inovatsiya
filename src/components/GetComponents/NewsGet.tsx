@@ -3,14 +3,16 @@ import { newsGetAPI } from "@/api/AdminRequest";
 import { useQuery } from "@tanstack/react-query";
 import { ClockIcon } from "lucide-react";
 import moment from "moment";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image"
 import Link from "next/link";
 import { useMemo } from "react";
+import Loading from "../Core/Loading";
 
 const NewsGet = ({ search = "", amount = 0 }) => {
     const locale = useLocale();
-    const { data } = useQuery({
+    const t = useTranslations("AboutUs");
+    const { data, isLoading, isError } = useQuery({
         queryKey: ["news", search],
         queryFn: async () => {
             return await newsGetAPI({ search });
@@ -27,6 +29,9 @@ const NewsGet = ({ search = "", amount = 0 }) => {
         }
         return [];
     }, [data, amount]);
+    if (isLoading) return <Loading />;
+    if (isError) return <div>Xatolik yuz berdi...</div>;
+
     return (
         <>
             {dataItem.map((item: any, i: number) => (
@@ -43,15 +48,15 @@ const NewsGet = ({ search = "", amount = 0 }) => {
                             style={{ width: '100%', height: '100%' }} // optional
                             alt="Image"
                         />
-                        <h2 className=" tracking-wider text-base font-extrabold leading-snug z-10 absolute bottom-2 px-2 text-white drop-shadow-2xl">
-                            {item.translations[`${locale}`].title}
+                        <h2 className=" tracking-wider text-base font-extrabold leading-snug z-10 absolute bottom-0 p-2 text-white bg-maincolor rounded-tr-3xl drop-shadow-2xl">
+                            {item.translations[`${locale}`].title.substr(0, 25)}
                         </h2>
-                        <div className="z-10 flex justify-between items-center space-x-2 absolute top-2 px-2 w-full">
-                            <Link href={`/${locale}/main_all/news/${item._id}`} className="inline-flex justify-center whitespace-nowrap rounded-lg bg-green-500 px-3 py-2 text-sm font-medium text-white hover:bg-green-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 transition-colors">Read More</Link>
-                            <div className="text-sm text-white flex items-center gap-2">
-                                <ClockIcon size={20} />
-                                <p className=" drop-shadow-2xl">{moment(item.createdAt).format("ll")}</p>
-                            </div>
+
+                        <Link href={`/${locale}/main_all/news/${item._id}`} className="absolute top-0 left-0 z-10 inline-flex justify-center whitespace-nowrap rounded-br-3xl bg-maincolor px-3 py-2 text-base font-medium text-white hover:px-4 hover:py-3 duration-300">{t("button")}</Link>
+
+                        <div className=" absolute top-0 right-0 text-sm bg-maincolor p-2 rounded-bl-3xl text-white flex items-center gap-2">
+                            <ClockIcon size={20} className="ml-2" />
+                            <p className=" drop-shadow-2xl">{moment(item.createdAt).format("ll")}</p>
                         </div>
                     </div>
                 </div>

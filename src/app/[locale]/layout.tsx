@@ -39,7 +39,7 @@ export default function LocaleLayout({ children, params: { locale }, }: Readonly
           <NextIntlClientProvider locale={locale} messages={messages}>
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
               <ToastContainer
-                position="top-left"
+                position="top-right"
                 autoClose={5000}
                 hideProgressBar={false}
                 newestOnTop={false}
