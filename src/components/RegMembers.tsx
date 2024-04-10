@@ -3,7 +3,6 @@ import Container from "./Core/Container"
 import Modal from "./Core/Modal";
 import { useMutation } from "@tanstack/react-query";
 import { messagePostAPI } from "@/api/AdminRequest";
-import { useLocale } from "next-intl";
 import { toast } from "react-toastify";
 
 const RegMembers = () => {
@@ -18,6 +17,17 @@ const RegMembers = () => {
     const handleInputChange = (e: any) => {
         const { name, value } = e.target;
 
+        if (name === "phone") {
+            if (value.length > 13) {
+                return;
+            } else {
+                e.target.value = value.slice(0, 13);
+                if (typeof value === "string") {
+                    // Raqam matn (string) turida kiritilgan
+                    e.target.value = value.replace(/[^0-9+]|(?<=^[\s\S]*?\+)[+]+/g, "");
+                }
+            }
+        }
         setFormData({ ...formData, [name]: value });
     };
     const mutation = useMutation(
@@ -60,14 +70,14 @@ const RegMembers = () => {
 
                         <div className="flex items-center justify-between flex-wrap">
                             <div className="grid gap-2 text-center sm:text-start">
-                                <h1 className="text-3xl text-white font-semibold">{"Azo bo'lish"}</h1>
-                                <p className=" text-lg text-white">{"Biz ning assatsiyaga a'zo bo'lish uchun ariza qoldiring"}</p>
+                                <h1 className="text-xl text-white font-semibold">{"Azo bo'lish"}</h1>
+                                <p className=" text-sm md:text-base text-white">{"Biz ning assatsiyaga a'zo bo'lish uchun ariza qoldiring"}</p>
                             </div>
                             <div className="rounded-full p-1 border border-maincolor">
                                 <div className="flex items-center rounded-full bg-white ">
                                     <input value={formData.phone}
-                                        onChange={handleInputChange} name="phone" type="tel" className="px-2 sm:px-4 py-2 focus:outline-none bg-transparent w-full rounded-full" placeholder="+998 XX XXX XX XX" />
-                                    <Modal button={<button className="px-2 sm:px-5 py-1 sm:py-2 text-lg text-white bg-maincolor rounded-full hover:scale-105 duration-300 m-1">Button</button>}>
+                                        onChange={handleInputChange} name="phone" type="tel" className="px-2 sm:px-4 py-2 focus:outline-none bg-transparent text-lg w-full rounded-full" placeholder="+998 XX XXX XX XX" />
+                                    <Modal button={<button className="px-4 sm:px-5 py-1 sm:py-2 text-lg text-white bg-maincolor rounded-full hover:scale-105 duration-300 m-1 tracking-wide">Ariza</button>}>
                                         <form onSubmit={handleSubmit}>
                                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 md:gap-6">
                                                 <div className="mb-5">
@@ -140,7 +150,6 @@ const RegMembers = () => {
                                                 </button>
                                             </div>
                                         </form>
-
 
                                     </Modal>
                                 </div>

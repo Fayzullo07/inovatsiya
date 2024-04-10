@@ -1,5 +1,4 @@
 "use client"
-import Link from "next/link";
 import Container from "./Core/Container"
 import { ArrowUpIcon } from "lucide-react";
 import { messagePostAPI } from "@/api/AdminRequest";

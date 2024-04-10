@@ -1,19 +1,16 @@
 "use client"
-import { aboutGetOneAPI, aboutPutAPI, heroGetOneAPI, heroPutAPI } from "@/api/AdminRequest";
+import { aboutGetOneAPI, aboutPutAPI } from "@/api/AdminRequest";
+import Loading from "@/components/Core/Loading";
 import TipTap from "@/components/Core/TipTap";
 import UploadImage from "@/utils/UploadImage";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { ImageIcon, XIcon } from "lucide-react";
-import { useLocale } from "next-intl";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 const About = () => {
     const id = "660ce53d9982414aa6f44ded"
-    const locale = useLocale();
-    const router = useRouter();
     const [isPicker, setIsPicker] = useState(false);
     const [formData, setFormData] = useState({
         photo: "",
@@ -21,12 +18,6 @@ const About = () => {
         ruDesc: "",
         enDesc: "",
     });
-
-    const handleInputChange = (e: any) => {
-        const { name, value } = e.target;
-
-        setFormData({ ...formData, [name]: value });
-    };
 
     const setURLPhoto = (url: string) => {
         setFormData({ ...formData, photo: url });
@@ -72,7 +63,7 @@ const About = () => {
         }
     }, [data]);
 
-    if (isLoading) return <div>Yuklanmoqda...</div>;
+    if (isLoading) return <Loading />;
     if (isError) return <div>Xatolik yuz berdi...</div>;
 
     const handleSubmit = (e: any) => {

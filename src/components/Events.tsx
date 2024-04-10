@@ -7,11 +7,16 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { useState } from "react";
+import React, { useState } from "react";
 import { useLocale } from "next-intl";
 import Image from "next/image";
+import ImagesCarusel from "./Core/ImagesCarusel";
+
+
+
 
 const Events = () => {
+
     const locale = useLocale();
     const [isYuridik, setIsYuridik] = useState(false);
     const data_events = [
@@ -19,26 +24,31 @@ const Events = () => {
         {},
         {}
     ]
+
+    const images = [
+        'https://source.unsplash.com/random/800x600',
+        'https://source.unsplash.com/random/800x600?2',
+        'https://source.unsplash.com/random/800x600?3'
+    ];
     return (
         <div className="pb-5 sm:pb-10">
             <Container>
                 <div className="flex justify-between items-center py-5 md:py-10" >
-                    <h2 className="text-3xl font-bold text-maincolor" data-aos="fade-up" data-aos-delay="100" data-aos-duration="500">{"Tadbirlar"}</h2>
+                    <h2 className="text-2xl font-semibold" data-aos="fade-up" data-aos-delay="100" data-aos-duration="500">{"Tadbirlar"}</h2>
                     <div className="flex  items-center gap-2">
 
                         <DropdownMenu >
                             <DropdownMenuTrigger asChild>
-                                <button className="w-full sm:w-auto px-2 py-1 text-lg text-maincolor bg-white border border-maincolor rounded-md hover:bg-maincolor hover:text-white duration-300">{isYuridik ? "Jismoniy shaxs" : "Yuridik shaxs"}</button>
-
+                                <button className="w-full sm:w-auto px-2 py-1 text-base text-maincolor bg-white border border-maincolor rounded-md hover:bg-maincolor hover:text-white duration-300">{isYuridik ? "Bo'lib o'tgan tadbilar" : "Kutilayotgan tadbirlar"}</button>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent>
                                 <DropdownMenuItem className=" text-base">
                                     <Link href={`/${locale}/main_all/news`}>
-                                        {"Barcha a'zolar"}
+                                        {"Barcha tadbirlar"}
                                     </Link>
                                 </DropdownMenuItem>
-                                <DropdownMenuItem className=" text-base" onClick={() => setIsYuridik(false)}>Yuridik shaxslar</DropdownMenuItem>
-                                <DropdownMenuItem className=" text-base" onClick={() => setIsYuridik(true)}>Jismoniy shaxslar</DropdownMenuItem>
+                                <DropdownMenuItem className=" text-base" onClick={() => setIsYuridik(false)}>Kutilayotgan tadbirlar</DropdownMenuItem>
+                                <DropdownMenuItem className=" text-base" onClick={() => setIsYuridik(true)}>{"Bo'lib o'tgan tadbilar"}</DropdownMenuItem>
                             </DropdownMenuContent>
                         </DropdownMenu>
 
@@ -55,8 +65,8 @@ const Events = () => {
                                     {"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"}
                                 </p>
                                 <div className=" overflow-hidden">
-
-                                    <Image
+                                    <ImagesCarusel images={images} />
+                                    {/* <Image
                                         src={'https://images.pexels.com/photos/461077/pexels-photo-461077.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500'}
                                         width={0}
                                         height={0}
@@ -64,7 +74,7 @@ const Events = () => {
                                         sizes="100vw"
                                         style={{ width: '100%', height: 'auto' }} // optional
                                         alt="Image"
-                                    />
+                                    /> */}
                                 </div>
 
                                 <hr className="mt-4" />

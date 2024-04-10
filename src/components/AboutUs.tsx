@@ -23,12 +23,7 @@ const AboutUs = () => {
     });
 
 
-    if (isLoading) {
-
-        return (
-            <Loading />
-        );
-    }
+    if (isLoading) return <Loading />;
     if (isError) return <div>Xatolik yuz berdi...</div>;
     return (
         <div className="bg-slate-100 py-10">
@@ -46,14 +41,14 @@ const AboutUs = () => {
                         />
                     </div>
                     <div className="max-w-lg">
-                        <h2 className="text-3xl font-bold text-maincolor sm:text-4xl">{t("hero_title")}</h2>
+                        <h2 className="text-2xl font-semibold sm:text-3xl">{t("hero_title")}</h2>
                         <div
-                            className=" whitespace-pre-line mt-4 text-gray-600 text-lg"
+                            className=" whitespace-pre-line mt-4 text-gray-600 text-base sm:text-lg text-justify"
                             style={{ whiteSpace: "pre-line" }}
                             dangerouslySetInnerHTML={{ __html: `${data?.data.about.translations[`${locale}`].desc.substring(0, 500)} ...` }}
                         />
-                        <div className="mt-8">
-                            <Link href={`/${locale}/main_all/about`} className="text-maincolor hover:underline flex items-center gap-2 font-medium">
+                        <div className="mt-8 inline-block">
+                            <Link href={`/${locale}/main_all/about`} className="hover:underline hover:text-maincolor flex items-center gap-2 text-lg">
                                 <span>{t("button")}</span>
                                 <ArrowRightIcon />
                             </Link>

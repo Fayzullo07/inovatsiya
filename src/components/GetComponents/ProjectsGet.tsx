@@ -34,20 +34,20 @@ const ProjectsGet = ({ search = "", amount = 0 }) => {
     return (
         <>
             {dataItem.map((item: any, i: number) => (
-                <div key={i} className="flex flex-col justify-between items-start p-4 bg-white border border-gray-100 rounded-lg shadow" data-aos="fade-up" data-aos-delay={(i + 1) * 100} data-aos-duration={(i + 1) * 100}>
+                <div key={i} className="flex flex-col justify-between items-start p-4 bg-white border border-gray-100 rounded-lg shadow hover:shadow-xl duration-300" data-aos="fade-up" data-aos-delay={(i + 1) * 100} data-aos-duration={(i + 1) * 100}>
                     <div>
                         <div className="flex items-center gap-2 sm:gap-4 text-maincolor mb-2">
                             <Building2Icon />
-                            <h5 className="text-base sm:text-2xl font-bold tracking-tight text-maincolor">{item.title}</h5>
+                            <h5 className="text-base sm:text-2xl font-semibold tracking-wide">{item.title}</h5>
                         </div>
                         <div
-                            className=" whitespace-pre-line mb-3 font-normal text-base sm:text-xl text-gray-700 dark:text-gray-400"
+                            className=" whitespace-pre-line mb-3 font-normal text-sm sm:text-base text-gray-700"
                             style={{ whiteSpace: "pre-line" }}
-                            dangerouslySetInnerHTML={{ __html: `${item.translations[`${locale}`].content.substring(0, 160)} ...` }}
+                            dangerouslySetInnerHTML={{ __html: `${item.translations[`${locale}`].content.substring(0, 200)} ...` }}
                         />
                         {/* <p className="mb-3 font-normal text-base sm:text-xl text-gray-700 dark:text-gray-400">{item.translations[`${locale}`].content.substring(0, 100)}</p> */}
                     </div>
-                    <Link href={`/${locale}/main_all/projects/${item._id}`} className="inline-flex items-center text-base font-medium text-center text-white bg-maincolor rounded-lg px-3 py-2 hover:px-6 duration-300">
+                    <Link href={`/${locale}/main_all/projects/${item._id}`} className="inline-flex items-center text-base font-medium text-center text-maincolor border border-maincolor hover:text-white hover:bg-maincolor rounded-lg px-2 py-1 hover:px-6 duration-300">
                         {t('button')}
                         <ArrowRightIcon className="ms-2 w-5 h-5" />
                     </Link>

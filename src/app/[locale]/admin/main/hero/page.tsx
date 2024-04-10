@@ -1,18 +1,15 @@
 "use client"
 import { heroGetOneAPI, heroPutAPI } from "@/api/AdminRequest";
+import Loading from "@/components/Core/Loading";
 import UploadImage from "@/utils/UploadImage";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { ImageIcon, XIcon } from "lucide-react";
-import { useLocale } from "next-intl";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 const Hero = () => {
     const id = "660cd8c79982414aa6f44d17"
-    const locale = useLocale();
-    const router = useRouter();
     const [isPicker, setIsPicker] = useState(false);
     const [formData, setFormData] = useState({
         photo: "",
@@ -26,6 +23,30 @@ const Hero = () => {
 
     const handleInputChange = (e: any) => {
         const { name, value } = e.target;
+
+        if (name === "uzTitle" && value.length > 50) {
+            return;
+        }
+
+        if (name === "ruTitle" && value.length > 50) {
+            return;
+        }
+
+        if (name === "enTitle" && value.length > 50) {
+            return;
+        }
+
+        if (name === "uzDesc" && value.length > 250) {
+            return;
+        }
+
+        if (name === "ruDesc" && value.length > 250) {
+            return;
+        }
+
+        if (name === "enDesc" && value.length > 250) {
+            return;
+        }
 
         setFormData({ ...formData, [name]: value });
     };
@@ -65,7 +86,7 @@ const Hero = () => {
         }
     }, [data]);
 
-    if (isLoading) return <div>Yuklanmoqda...</div>;
+    if (isLoading) return <Loading />;
     if (isError) return <div>Xatolik yuz berdi...</div>;
 
     const handleSubmit = (e: any) => {
@@ -89,8 +110,7 @@ const Hero = () => {
                 <div className="mb-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     <div>
                         <label htmlFor="uztitle" className="block mb-2 text-sm font-medium text-gray-900">Title UZ</label>
-                        <input
-                            type="text"
+                        <textarea
                             name="uzTitle"
                             id="uztitle"
                             value={formData.uzTitle}
@@ -101,8 +121,7 @@ const Hero = () => {
                     </div>
                     <div>
                         <label htmlFor="rutitle" className="block mb-2 text-sm font-medium text-gray-900">Title RU</label>
-                        <input
-                            type="text"
+                        <textarea
                             name="ruTitle"
                             id="rutitle"
                             value={formData.ruTitle}
@@ -113,8 +132,7 @@ const Hero = () => {
                     </div>
                     <div>
                         <label htmlFor="entitle" className="block mb-2 text-sm font-medium text-gray-900">Title EN</label>
-                        <input
-                            type="text"
+                        <textarea
                             name="enTitle"
                             id="entitle"
                             value={formData.enTitle}
@@ -127,10 +145,11 @@ const Hero = () => {
 
                 <div className="mb-5 grid grid-cols-1  gap-4">
                     <div>
-                        <label htmlFor="uzdesc" className="block mb-2 text-sm font-medium text-gray-900">Desc UZ</label>
+                        <label htmlFor="uzDesc" className="block mb-2 text-sm font-medium text-gray-900">Desc UZ</label>
                         <textarea
+                            rows={5}
                             name="uzDesc"
-                            id="uzdesc"
+                            id="uzDesc"
                             value={formData.uzDesc}
                             onChange={handleInputChange}
                             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
@@ -140,6 +159,7 @@ const Hero = () => {
                     <div>
                         <label htmlFor="rudesc" className="block mb-2 text-sm font-medium text-gray-900">Desc RU</label>
                         <textarea
+                            rows={5}
                             name="ruDesc"
                             id="rudesc"
                             value={formData.ruDesc}
@@ -151,6 +171,7 @@ const Hero = () => {
                     <div>
                         <label htmlFor="endesc" className="block mb-2 text-sm font-medium text-gray-900">Desc EN</label>
                         <textarea
+                            rows={5}
                             name="enDesc"
                             id="endesc"
                             value={formData.enDesc}
@@ -167,7 +188,6 @@ const Hero = () => {
             <div className="mb-5">
                 <label className="block mb-2 text-sm font-medium text-gray-900">Hero Image</label>
                 {!formData.photo ? (
-
                     <div
                         className="container border-[5px] border-dashed border-green-500 cursor-pointer flex justify-center p-8"
                         onClick={() => (isPicker ? setIsPicker(false) : setIsPicker(true))}

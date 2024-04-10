@@ -15,7 +15,7 @@ const nextConfig = {
       "etimg.etb2bimg.com",
       "ngoshivam.org",
       "nojhanco.ir",
-      "cdn.filestackcontent.com"
+      "cdn.filestackcontent.com",
     ],
   },
 };

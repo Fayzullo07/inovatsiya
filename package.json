@@ -1,5 +1,5 @@
 {
-  "name": "aacc1",
+  "name": "innovation",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -31,6 +31,9 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "date-fns": "^3.6.0",
+    "embla-carousel-auto-scroll": "^8.0.1",
+    "embla-carousel-autoplay": "^8.0.1",
+    "embla-carousel-react": "^8.0.1",
     "filestack-react": "^5.0.0",
     "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.344.0",

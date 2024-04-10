@@ -14,38 +14,7 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
             slug: "/about",
             title: "About",
             icon: <FoldersIcon />
-        },
-        {
-            slug: "/members",
-            title: "A'zolar",
-            icon: <UsersIcon />
-        },
-        {
-            slug: "/events",
-            title: "Tadbirlar",
-            icon: <CalendarIcon />
-        },
-
-        {
-            slug: "/partners",
-            title: "Hamkorlar",
-            icon: <Handshake />
-        },
-        {
-            slug: "/initiators",
-            title: "Tashabbuskorlar",
-            icon: <AppWindowIcon />
-        },
-        {
-            slug: "/services",
-            title: "Xizmatlar",
-            icon: <UserRoundCogIcon />
-        },
-        {
-            slug: "/about_us",
-            title: "Biz haqimizda",
-            icon: <FileTextIcon />
-        },
+        }
     ]
 
     return (

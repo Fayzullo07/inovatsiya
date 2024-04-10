@@ -31,7 +31,7 @@ export default function Index() {
   return (
     <>
       <Hero />
-      {/* <Slider /> */}
+      <Slider />
       <AboutUs />
       <Projects />
       <Members />
