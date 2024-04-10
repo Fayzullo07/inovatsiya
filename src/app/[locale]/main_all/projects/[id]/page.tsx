@@ -10,6 +10,7 @@ import { useLocale } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import ProjectsGet from "@/components/GetComponents/ProjectsGet";
+import Loading from "@/components/Core/Loading";
 
 const Project = ({ params }: { params: any }) => {
     const { id } = params;
@@ -21,51 +22,48 @@ const Project = ({ params }: { params: any }) => {
         }
     });
 
-    if (isLoading) return <div>Yuklanmoqda...</div>;
+    if (isLoading) return <Loading />;
     if (isError) return <div>Xatolik yuz berdi...</div>;
 
     return (
-        <div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
+
             <div className="">
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
+                <div className="sticky top-24">
 
-                    <div className="">
-                        <div className="sticky top-24">
-
-                            <ScrollArea className="h-[85vh]">
-                                <div className="grid grid-cols-1 gap-4 md:gap-8">
-                                    <ProjectsGet />
-                                </div>
-                            </ScrollArea>
+                    <ScrollArea className="h-[80vh]">
+                        <div className="grid grid-cols-1 gap-4 md:gap-8">
+                            <ProjectsGet />
                         </div>
-                    </div>
-                    <div className=" col-span-2 bg-white border-slate-200 shadow shadow-slate-950/5 rounded overflow-hidden" >
-                        {data?.data.projects && (
+                    </ScrollArea>
+                </div>
+            </div>
+            <div className=" col-span-2 bg-white border-slate-200 shadow shadow-slate-950/5 rounded overflow-hidden" >
+                {data?.data.projects && (
 
-                            <div className=" overflow-hidden ">
+                    <div className=" overflow-hidden p-4">
 
-                                <div className="z-10 flex justify-between items-center space-x-2 text-maincolor w-full p-2">
-                                    <h2 className=" tracking-wider text-2xl font-extrabold  ">
-                                        {data.data.projects.title}
-                                    </h2>
-                                    {/* <div className="text-sm text-black flex items-center gap-2">
+                        <div className="z-10 flex justify-between items-center space-x-2 text-maincolor w-full">
+                            <h2 className=" tracking-wide text-xl font-semibold  ">
+                                {data.data.projects.title}
+                            </h2>
+                            {/* <div className="text-sm text-black flex items-center gap-2">
                                         <ClockIcon size={20} />
                                         <b className=" drop-shadow-2xl">{moment(data.data.projects.createdAt).format("ll")}</b>
                                     </div> */}
-                                </div>
-                                <div className="p-4 text-gray-600 text-lg">
-                                    <div
-                                        className=" whitespace-pre-line tiptap"
-                                        style={{ whiteSpace: "pre-line" }}
-                                        dangerouslySetInnerHTML={{ __html: data.data.projects.translations[`${locale}`].content }}
-                                    />
-                                </div>
-                            </div>
-                        )}
+                        </div>
+                        <div className=" text-gray-600">
+                            <div
+                                className=" whitespace-pre-line tiptap"
+                                style={{ whiteSpace: "pre-line" }}
+                                dangerouslySetInnerHTML={{ __html: data.data.projects.translations[`${locale}`].content }}
+                            />
+                        </div>
                     </div>
-                </div>
+                )}
             </div>
         </div>
+
     )
 }
 

@@ -162,8 +162,8 @@ export const serviceGetOneAPI = async ({ id }: { id: any }) =>
 
 // -----------------------------------------INITIATORS-----------------------------
 // GET
-export const initiatorsGetAPI = async () =>
-    API.get(`/api/initiator`);
+export const initiatorsGetAPI = async ({ search = "" }) =>
+    API.get(`/api/initiator/?search=${search}`);
 
 // POST
 export const initiatorPostAPI = async (data: any) =>

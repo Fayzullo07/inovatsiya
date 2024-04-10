@@ -24,7 +24,8 @@
         "button": "Barcha yangiliklar"
     },
     "Services": {
-        "hero_title": "Xizmatlarimiz"
+        "hero_title": "Xizmatlarimiz",
+        "button": "Barcha xizmatlar"
     },
     "Question": {
         "hero_title": "Tez-tez so'raladigan savollar"

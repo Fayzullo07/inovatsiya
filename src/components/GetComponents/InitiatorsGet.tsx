@@ -6,13 +6,13 @@ import Image from "next/image";
 import { useMemo } from "react";
 import { useTranslations } from "next-intl";
 
-const InitiatorsGet = ({ amount = 0 }) => {
+const InitiatorsGet = ({ search = "", amount = 0 }) => {
     const t = useTranslations("Initiators");
 
     const { data, isLoading, isError } = useQuery({
         queryKey: ["initiators"],
         queryFn: async () => {
-            return await initiatorsGetAPI();
+            return await initiatorsGetAPI({search});
         }
     });
 

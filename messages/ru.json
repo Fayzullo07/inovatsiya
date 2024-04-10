@@ -24,7 +24,8 @@
         "button": "Все новости"
     },
     "Services": {
-        "hero_title": "Наши сервисы"
+        "hero_title": "Наши сервисы",
+        "button": "Все услуги"
     },
     "Question": {
         "hero_title": "Часто задаваемые вопросы"

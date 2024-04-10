@@ -24,7 +24,8 @@
         "button": "All news"
     },
     "Services": {
-        "hero_title": "Our services"
+        "hero_title": "Our services",
+        "button": "All services"
     },
     "Question": {
         "hero_title": "Frequently asked questions"

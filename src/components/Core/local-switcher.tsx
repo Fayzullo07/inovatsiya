@@ -35,12 +35,12 @@ const LocalSwitcher = () => {
 
                         <Image
                             src={`/languages/${lang == 'uz' ? "uzbekistan" : lang == 'en' ? "english" : "russia"}.png`}
-                            width={25}
-                            height={25}
+                            width={20}
+                            height={20}
                             alt="Image"
                         />
                     </div>
-                    <div className="text-base font-medium uppercase mr-1">
+                    <div className="text-base font-normal uppercase mr-1">
                         {lang}
                     </div>
                     <ChevronDownIcon size={20}  />
@@ -51,11 +51,11 @@ const LocalSwitcher = () => {
                     <div className="flex justify-between items-center w-full">
                         <Image
                             src="/languages/english.png"
-                            width={25}
-                            height={25}
+                            width={20}
+                            height={20}
                             alt="Image"
                         />
-                        <p className=" text-lg font-semibold">EN</p>
+                        <p className="text-base font-normal">EN</p>
                     </div>
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => onSelectChange("ru")}>
@@ -63,11 +63,11 @@ const LocalSwitcher = () => {
 
                         <Image
                             src="/languages/russia.png"
-                            width={25}
-                            height={25}
+                            width={20}
+                            height={20}
                             alt="Image"
                         />
-                        <p className=" text-lg font-semibold">RU</p>
+                        <p className=" text-base font-normal">RU</p>
                     </div>
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => onSelectChange("uz")}>
@@ -75,11 +75,11 @@ const LocalSwitcher = () => {
 
                         <Image
                             src="/languages/uzbekistan.png"
-                            width={25}
-                            height={25}
+                            width={20}
+                            height={20}
                             alt="Image"
                         />
-                        <p className=" text-lg font-semibold">UZ</p>
+                        <p className=" text-base font-normal">UZ</p>
                     </div>
                 </DropdownMenuItem>
             </DropdownMenuContent>

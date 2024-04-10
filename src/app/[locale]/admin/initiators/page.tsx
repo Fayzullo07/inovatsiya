@@ -16,7 +16,7 @@ const Initiators = () => {
     const { data, isLoading, isError } = useQuery({
         queryKey: ["initiators"],
         queryFn: async () => {
-            return await initiatorsGetAPI();
+            return await initiatorsGetAPI({ search: "" });
         }
     });
     const mutationDeleteNew = useMutation(

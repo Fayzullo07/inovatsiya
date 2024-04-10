@@ -4,8 +4,9 @@ import { useLocale, useTranslations } from "next-intl";
 import Loading from "../Core/Loading";
 import Link from "next/link";
 import { ArrowRightIcon } from "lucide-react";
+import { useMemo } from "react";
 
-const ServicesGet = () => {
+const ServicesGet = ({ search = "", amount = 0 }) => {
     const t = useTranslations("AboutUs");
     const locale = useLocale();
     const { data, isLoading, isError } = useQuery({
@@ -14,14 +15,22 @@ const ServicesGet = () => {
             return await servicesGetAPI();
         }
     });
-
-
+    const dataItem = useMemo(() => {
+        if (data && data.data && data.data.services) {
+            if (amount !== 0) {
+                return data.data.services.slice(0, amount);
+            } else {
+                return data.data.services;
+            }
+        }
+        return [];
+    }, [data, amount]);
 
     if (isLoading) return <Loading />;
     if (isError) return <div>Xatolik yuz berdi...</div>;
     return (
         <>
-            {data?.data.services.map((item: any, i: number) => (
+            {dataItem.map((item: any, i: number) => (
                 <div key={i}
                     className="group relative cursor-pointer overflow-hidden bg-white p-6 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl  sm:rounded-lg">
                     <span className="absolute top-6 z-0 h-16 w-16 rounded-full bg-sky-500 transition-all duration-300 group-hover:scale-[11]"></span>
@@ -33,21 +42,29 @@ const ServicesGet = () => {
                             </svg>
                         </span>
                         <div
-                            className=" pt-4 text-base leading-7 text-gray-600 transition-all duration-300 group-hover:text-white/90">
+                            className="mb-6 pt-4 text-base leading-7 text-gray-600 transition-all duration-300 group-hover:text-white/90">
+                            {item.translations[`${locale}`].desc.length > 100 ? (
+                                <div
+                                    className=" whitespace-pre-line"
+                                    style={{ whiteSpace: "pre-line" }}
+                                    dangerouslySetInnerHTML={{ __html: `${item.translations[`${locale}`].desc.substring(0, 100)} ...` }}
+                                />
+                            ) : (
+                                <div
+                                    className=" whitespace-pre-line"
+                                    style={{ whiteSpace: "pre-line" }}
+                                    dangerouslySetInnerHTML={{ __html: `${item.translations[`${locale}`].desc}` }}
+                                />
+                            )}
 
-                            <div
-                                className=" whitespace-pre-line"
-                                style={{ whiteSpace: "pre-line" }}
-                                dangerouslySetInnerHTML={{ __html: `${item.translations[`${locale}`].desc.substring(0, 100)} ...` }}
-                            />
                         </div>
-                        <div className="pt-5 text-base font-semibold leading-7">
-                            <p>
-                                <Link href={`/${locale}/main_all//services/${item._id}`} className=" text-base flex items-center gap-2 text-sky-500 transition-all duration-300 group-hover:text-white">{t("button")}
-                                    <ArrowRightIcon />
-                                </Link>
-                            </p>
-                        </div>
+                    </div>
+                    <div className=" absolute bottom-4  text-base font-semibold leading-7">
+                        <p>
+                            <Link href={`/${locale}/main_all//services/${item._id}`} className=" text-base flex items-center gap-2 text-sky-500 transition-all duration-300 group-hover:text-white">{t("button")}
+                                <ArrowRightIcon />
+                            </Link>
+                        </p>
                     </div>
                 </div>
             ))}

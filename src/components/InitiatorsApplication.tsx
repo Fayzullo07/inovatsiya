@@ -17,7 +17,17 @@ const InitiatorsApplication = () => {
 
     const handleInputChange = (e: any) => {
         const { name, value } = e.target;
-
+        if (name === "phone") {
+            if (value.length > 13) {
+                return;
+            } else {
+                e.target.value = value.slice(0, 13);
+                if (typeof value === "string") {
+                    // Raqam matn (string) turida kiritilgan
+                    e.target.value = value.replace(/[^0-9+]|(?<=^[\s\S]*?\+)[+]+/g, "");
+                }
+            }
+        }
         setFormData({ ...formData, [name]: value });
     };
     const mutation = useMutation(
@@ -61,13 +71,13 @@ const InitiatorsApplication = () => {
                         </path>
                     </svg>
                 </div>
-                <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+                <div className="px-4 py-6 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-10">
                     <div className="relative max-w-2xl sm:mx-auto sm:max-w-xl md:max-w-2xl sm:text-center">
-                        <h2 className="mb-6  text-3xl text-center font-bold tracking-tight text-white sm:text-4xl ">
+                        <h2 className="mb-6  text-xl text-center font-semibold tracking-whide text-white sm:text-3xl ">
                             Hamkorlik uchun ariza qoldiring
                         </h2>
 
-                        <div className="flex flex-col items-center w-full mb-4 md:flex-row md:px-16">
+                        <div className="flex flex-wrap justify-center items-center  mb-4">
                             <input
                                 placeholder="+998 XX XXX XX XX"
                                 value={formData.phone}
@@ -75,10 +85,10 @@ const InitiatorsApplication = () => {
                                 name="phone"
                                 required
                                 type="tel"
-                                className="flex-grow w-full h-12 px-4 mb-3 transition duration-200 border-2 border-transparent rounded appearance-none md:mr-2 md:mb-0 bg-deep-purple-900 focus:border-teal-accent-700 focus:outline-none focus:shadow-outline"
+                                className="h-10 px-4 mb-3 bg-white text-lg transition duration-200 border-2 rounded md:mr-2 md:mb-0 focus:outline-none focus:shadow-outline"
                             />
 
-                            <Modal button={<button className="inline-flex items-center justify-center w-full h-12 px-6 font-semibold tracking-wide text-gray-200 transition duration-200 rounded shadow-md md:w-auto hover:text-deep-purple-900 bg-teal-accent-400 hover:bg-teal-accent-700 focus:shadow-outline focus:outline-none">Ariza</button>}>
+                            <Modal button={<button className=" inline-flex items-center justify-center w-full h-12 px-6 font-semibold tracking-wide text-gray-200 transition duration-200 rounded shadow-md md:w-auto hover:text-deep-purple-900 bg-teal-accent-400 hover:bg-teal-accent-700 focus:shadow-outline focus:outline-none">Ariza</button>}>
                                 <form onSubmit={handleSubmit}>
                                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 md:gap-6">
                                         <div className="mb-5">
@@ -128,11 +138,11 @@ const InitiatorsApplication = () => {
 
                             </Modal>
                         </div>
-                        <p className="max-w-md mb-10 text-xs tracking-wide text-indigo-100 sm:text-sm sm:mx-auto md:mb-16">
+                        <p className="max-w-md mb-6 text-xs tracking-wide text-indigo-100 sm:text-sm sm:mx-auto md:mb-10">
                             Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.
                         </p>
                         <a href="#"
-                            className="flex items-center justify-center w-10 h-10 mx-auto text-white duration-300 transform border border-gray-400 rounded-full hover:text-teal-accent-400 hover:border-teal-accent-400 hover:shadow hover:scale-110">
+                            className="flex items-center justify-center w-10 h-10 mx-auto text-white duration-300 transform border border-gray-400 rounded-full  hover:shadow hover:scale-110">
                             <ArrowUpIcon />
                         </a>
                     </div>

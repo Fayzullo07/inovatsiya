@@ -13,24 +13,22 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { Input } from "@/components/ui/input";
 
 const Members = () => {
     const [isLegal, setLegal] = useState(false);
+    const [search, setSearch] = useState("");
     return (
         <div className=" bg-slate-50">
             <Container>
-                <div className="flex items-center mb-4">
-                    <Link href={"/"}>
-                        <Button variant={"link"} className="text-lg pl-0">Bosh sahifa</Button>
-                    </Link>
-                    <ChevronRightIcon size={16} />
-                    <div className=" text-lg text-gray-400">{"A'zolar"}</div>
-                </div>
-                <div className="flex mb-4 gap-4">
+                <div className="flex mb-4 gap-4 justify-between items-center">
+                    <div className="flex w-full max-w-sm items-center space-x-2">
+                        <Input type="search" placeholder="Search . . ." value={search} onChange={(e) => setSearch(e.target.value)} />
+                    </div>
 
                     <DropdownMenu >
                         <DropdownMenuTrigger asChild>
-                            <button className="w-full sm:w-auto px-2 py-1 text-lg text-maincolor bg-white border border-maincolor rounded-md hover:bg-maincolor hover:text-white duration-300">{isLegal ? "Yuridik shaxs" : "Jismoniy shaxs"}</button>
+                            <button className="w-full sm:w-auto px-2 py-1 text-base text-maincolor bg-white border border-maincolor rounded-md hover:bg-maincolor hover:text-white duration-300">{isLegal ? "Yuridik shaxs" : "Jismoniy shaxs"}</button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent>
                             <DropdownMenuItem className=" text-base" onClick={() => setLegal(true)}>Yuridik shaxslar</DropdownMenuItem>

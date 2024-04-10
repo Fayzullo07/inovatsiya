@@ -1,5 +1,6 @@
 "use client"
 import { newGetOneAPI } from "@/api/AdminRequest";
+import Loading from "@/components/Core/Loading";
 import NewsGet from "@/components/GetComponents/NewsGet";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -14,13 +15,13 @@ const New = ({ params }: { params: any }) => {
     const { id } = params;
     const locale = useLocale();
     const { data, isLoading, isError } = useQuery({
-        queryKey: ["new", id],
+        queryKey: ["newID", id],
         queryFn: async () => {
             return await newGetOneAPI({ id });
         }
     });
 
-    if (isLoading) return <div>Yuklanmoqda...</div>;
+    if (isLoading) return <Loading />;
     if (isError) return <div>Xatolik yuz berdi...</div>;
 
     return (
@@ -32,7 +33,7 @@ const New = ({ params }: { params: any }) => {
                     <div className="">
                         <div className="sticky top-24">
 
-                            <ScrollArea className="h-[85vh]">
+                            <ScrollArea className="h-[80vh]">
                                 <div className="grid grid-cols-1 gap-4 md:gap-8">
                                     <NewsGet />
                                 </div>
@@ -57,13 +58,13 @@ const New = ({ params }: { params: any }) => {
                                     />
                                 </div>
 
-                                <div className="z-10 flex justify-between items-center space-x-2 text-maincolor w-full p-2">
-                                    <h2 className=" tracking-wider text-2xl font-extrabold  ">
+                                <div className="z-10 flex justify-between items-center space-x-2 text-maincolor w-full p-4">
+                                    <h2 className=" tracking-wide text-xl font-semibold  ">
                                         {data.data.news.translations[`${locale}`].title}
                                     </h2>
                                     <div className="text-sm text-black flex items-center gap-2">
                                         <ClockIcon size={20} />
-                                        <b className=" drop-shadow-2xl">{moment(data.data.news.createdAt).format("ll")}</b>
+                                        <p className=" drop-shadow-2xl">{moment(data.data.news.createdAt).format("ll")}</p>
                                     </div>
                                 </div>
                                 <div className="p-4 text-gray-600 text-lg">
