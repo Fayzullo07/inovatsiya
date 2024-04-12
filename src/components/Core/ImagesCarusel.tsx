@@ -18,7 +18,7 @@ const ImagesCarusel = ({ images }: { images: any }) => {
     return (
         <Carousel
             plugins={[plugin1.current]}
-            className="w-full max-w-xs"
+            className="w-full"
             onMouseEnter={plugin1.current.stop}
             onMouseLeave={plugin1.current.play}
         >
