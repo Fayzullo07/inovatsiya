@@ -35,7 +35,7 @@ const EventFinishedGet = ({ search = "", amount = 0 }) => {
 
                 <div key={i} data-aos="fade-up" data-aos-delay={(i + 1) * 100} data-aos-duration={(i + 1) * 100}
                     className="relative cursor-pointer hover:shadow-2xl transition duration-300  rounded overflow-hidden shadow-lg">
-                    <Link href={`/${locale}/main_all/events/finished/6606753cea81b0c505459fcc`}>
+                    <Link href={`/${locale}/main_all/events/finished/${item._id}`}>
                         <div className="py-4 px-8">
                             <h4 className="text-xl tracking-wide mb-3 font-semibold text-red-500">{item.translations[`${locale}`].name}</h4>
                             <p className="text-sm">Tadbirdan erishgan natijalar</p>

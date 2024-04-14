@@ -1,5 +1,5 @@
 "use client"
-import { newGetOneAPI } from "@/api/AdminRequest";
+import { eventFinishedGetOneAPI, eventsFinishedGetAPI, newGetOneAPI } from "@/api/AdminRequest";
 import ImagesCarusel from "@/components/Core/ImagesCarusel";
 import Loading from "@/components/Core/Loading";
 import EventFinishedGet from "@/components/GetComponents/EventFinishedGet";
@@ -21,9 +21,9 @@ const EventFinished = ({ params }: { params: any }) => {
     const { id } = params;
     const locale = useLocale();
     const { data, isLoading, isError } = useQuery({
-        queryKey: ["newID", id],
+        queryKey: ["eventFinishedID", id],
         queryFn: async () => {
-            return await newGetOneAPI({ id });
+            return await eventFinishedGetOneAPI({ id });
         }
     });
     const images = [
@@ -54,29 +54,49 @@ const EventFinished = ({ params }: { params: any }) => {
                 </div>
             </div>
             <div className=" col-span-2 bg-white border-slate-200 shadow shadow-slate-950/5 rounded overflow-hidden" >
-                {data?.data.news && (
+                {data?.data.eventsFinished && (
 
                     <div className=" overflow-hidden ">
                         {/* <!-- Image --> */}
                         <div className="w-full h-auto mx-auto flex justify-center border p-2">
-                            <ImagesCarusel images={images} button={false} />
+                            <ImagesCarusel images={data.data.eventsFinished.photos} button={false} />
                         </div>
 
-                        <div className="z-10 flex justify-between items-center space-x-2 text-maincolor w-full p-4">
+                        <div className="z-10 flex justify-between items-center space-x-2 text-maincolor w-full p-4  text-red-500">
                             <h2 className=" tracking-wide text-xl font-semibold  ">
-                                {data.data.news.translations[`${locale}`].title}
+                                {data.data.eventsFinished.translations[`${locale}`].name}
                             </h2>
-                            <div className="text-sm text-black flex items-center gap-2">
+                            <div className="text-sm flex items-center gap-2">
                                 <ClockIcon size={20} />
-                                <p className=" drop-shadow-2xl">{moment(data.data.news.createdAt).format("ll")}</p>
+                                <p className=" drop-shadow-2xl">{moment(data.data.eventsFinished.date).format("L")} {moment(data.data.eventsFinished.date).format("LT")}</p>
                             </div>
                         </div>
+
                         <div className="p-4 text-gray-600 text-lg">
-                            <div
-                                className=" whitespace-pre-line tiptap"
-                                style={{ whiteSpace: "pre-line" }}
-                                dangerouslySetInnerHTML={{ __html: data.data.news.translations[`${locale}`].content }}
-                            />
+                            <p className="text-sm">Tadbirdan kutilayotgan natigalar</p>
+                            <p className="mb-2 ml-2 text-sm text-gray-500">
+                                {data.data.eventsFinished.translations[`${locale}`].result}
+                            </p>
+                            <p className="text-sm">Tadbir maqsadi</p>
+                            <p className="mb-2 ml-2 text-sm text-gray-500">
+                                {data.data.eventsFinished.translations[`${locale}`].target}
+                            </p>
+                            <p className="text-sm">Tadbir shakli</p>
+                            <p className="mb-2 ml-2 text-sm text-gray-500">
+                                {data.data.eventsFinished.translations[`${locale}`].form}
+                                {"Lorem Ipsum is simply dummy text of the printing and typesetting since the 1500s"}
+                            </p>
+                            <p className="text-sm">{"Tadbir bo'lib o'tadigan joyi"}</p>
+                            <p className="mb-2 ml-2 text-sm text-gray-500">
+                                {data.data.eventsFinished.place}
+                            </p>
+                            <hr className="mt-4" />
+                            <p className="text-sm">Hamkorlar</p>
+                            <div>
+                                {data.data.eventsFinished.partners.map((item: any, i: number) => (
+                                    <span key={i} className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-medium text-gray-700 m-1">{item}</span>
+                                ))}
+                            </div>
                             <Accordion type="single" collapsible>
 
                                 <AccordionItem value={`item-1`}>

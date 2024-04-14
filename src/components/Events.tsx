@@ -12,12 +12,9 @@ import { useLocale } from "next-intl";
 import EventFinishedGet from "./GetComponents/EventFinishedGet";
 import EventWaitGet from "./GetComponents/EventWaitGet";
 
-
-
-
 const Events = () => {
     const locale = useLocale();
-    const [isFinished, setIsFinished] = useState(true);
+    const [isFinished, setIsFinished] = useState(false);
 
 
     return (
@@ -48,7 +45,6 @@ const Events = () => {
                     {isFinished ? (
                         <EventFinishedGet />
                     ) : (
-
                         <EventWaitGet />
                     )}
                 </div>

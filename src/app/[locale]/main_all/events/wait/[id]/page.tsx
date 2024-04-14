@@ -1,5 +1,5 @@
 "use client"
-import { newGetOneAPI } from "@/api/AdminRequest";
+import { eventWaitGetOneAPI, newGetOneAPI } from "@/api/AdminRequest";
 import Loading from "@/components/Core/Loading";
 import EventWaitGet from "@/components/GetComponents/EventWaitGet";
 import NewsGet from "@/components/GetComponents/NewsGet";
@@ -21,9 +21,9 @@ const EventWait = ({ params }: { params: any }) => {
     const { id } = params;
     const locale = useLocale();
     const { data, isLoading, isError } = useQuery({
-        queryKey: ["newID", id],
+        queryKey: ["eventWaitID", id],
         queryFn: async () => {
-            return await newGetOneAPI({ id });
+            return await eventWaitGetOneAPI({ id });
         }
     });
 
@@ -43,7 +43,6 @@ const EventWait = ({ params }: { params: any }) => {
 
             <div className="">
                 <div className="sticky top-24">
-
                     <ScrollArea className="h-[80vh]">
                         <div className="grid grid-cols-1 gap-4 md:gap-8">
                             <EventWaitGet />
@@ -52,14 +51,12 @@ const EventWait = ({ params }: { params: any }) => {
                 </div>
             </div>
             <div className=" col-span-2 bg-white border-slate-200 shadow shadow-slate-950/5 rounded overflow-hidden" >
-                {data?.data.news && (
-
+                {data?.data.eventsWait && (
                     <div className=" overflow-hidden ">
-
                         {/* <!-- Image --> */}
                         <div className="w-full h-auto mx-auto flex justify-center border p-2">
                             <Image
-                                src={data.data.news.photo}
+                                src={data.data.eventsWait.photo}
                                 width={0}
                                 height={0}
                                 className="object-cover"
@@ -71,19 +68,38 @@ const EventWait = ({ params }: { params: any }) => {
 
                         <div className="z-10 flex justify-between items-center space-x-2 text-maincolor w-full p-4">
                             <h2 className=" tracking-wide text-xl font-semibold  ">
-                                {data.data.news.translations[`${locale}`].title}
+                                {data.data.eventsWait.translations[`${locale}`].name}
                             </h2>
-                            <div className="text-sm text-black flex items-center gap-2">
+                            <div className="text-sm flex items-center gap-2 text-green-500">
                                 <ClockIcon size={20} />
-                                <p className=" drop-shadow-2xl">{moment(data.data.news.createdAt).format("ll")}</p>
+                                <p className=" drop-shadow-2xl">{moment(data.data.eventsWait.date).format("L")} {moment(data.data.eventsWait.date).format("LT")}</p>
                             </div>
                         </div>
                         <div className="p-4 text-gray-600 text-lg">
-                            <div
-                                className=" whitespace-pre-line tiptap"
-                                style={{ whiteSpace: "pre-line" }}
-                                dangerouslySetInnerHTML={{ __html: data.data.news.translations[`${locale}`].content }}
-                            />
+                            <p className="text-sm">Tadbirdan kutilayotgan natigalar</p>
+                            <p className="mb-2 ml-2 text-sm text-gray-500">
+                                {data.data.eventsWait.translations[`${locale}`].result}
+                            </p>
+                            <p className="text-sm">Tadbir maqsadi</p>
+                            <p className="mb-2 ml-2 text-sm text-gray-500">
+                                {data.data.eventsWait.translations[`${locale}`].target}
+                            </p>
+                            <p className="text-sm">Tadbir shakli</p>
+                            <p className="mb-2 ml-2 text-sm text-gray-500">
+                                {data.data.eventsWait.translations[`${locale}`].form}
+                                {"Lorem Ipsum is simply dummy text of the printing and typesetting since the 1500s"}
+                            </p>
+                            <p className="text-sm">{"Tadbir bo'lib o'tadigan joyi"}</p>
+                            <p className="mb-2 ml-2 text-sm text-gray-500">
+                                {data.data.eventsWait.place}
+                            </p>
+                            <hr className="mt-4" />
+                            <p className="text-sm">Hamkorlar</p>
+                            <div>
+                                {data.data.eventsWait.partners.map((item: any, i: number) => (
+                                    <span key={i} className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-medium text-gray-700 m-1">{item}</span>
+                                ))}
+                            </div>
                             <Accordion type="single" collapsible>
 
                                 <AccordionItem value={`item-1`}>

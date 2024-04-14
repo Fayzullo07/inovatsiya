@@ -35,7 +35,7 @@ const EventWaitGet = ({ search = "", amount = 0 }) => {
             {dataItem.map((item: any, i: number) => (
                 <div key={i} data-aos="fade-up" data-aos-delay={(i + 1) * 100} data-aos-duration={(i + 1) * 100}
                     className="relative cursor-pointer hover:shadow-2xl transition duration-300 rounded overflow-hidden shadow-lg">
-                    <Link href={`/${locale}/main_all/events/wait/6606753cea81b0c505459fcc`}>
+                    <Link href={`/${locale}/main_all/events/wait/${item._id}`}>
                         <div className="py-4 px-8">
                             <h4 className="text-xl tracking-wide mb-3 font-semibold text-maincolor capitalize">{item.translations[`${locale}`].name}</h4>
                             <p className="text-sm">Tadbirdan kutilayotgan natigalar</p>
