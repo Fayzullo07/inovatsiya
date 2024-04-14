@@ -1,5 +1,5 @@
 "use client"
-import { eventWaitDeleteAPI, eventsWaitdGetAPI, newDeleteAPI, newsGetAPI } from "@/api/AdminRequest";
+import { eventFinishedDeleteAPI, eventWaitDeleteAPI, eventsFinishedGetAPI, eventsWaitdGetAPI, newDeleteAPI, newsGetAPI } from "@/api/AdminRequest";
 import { Button } from "@/components/ui/button";
 import { EditIcon, PlusIcon, TrashIcon } from "lucide-react";
 import { useLocale } from "next-intl";
@@ -12,22 +12,25 @@ import { toast } from "react-toastify";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import Loading from "@/components/Core/Loading";
+import ImagesCarusel from "@/components/Core/ImagesCarusel";
 
-const Events = () => {
+const EventsFinished = () => {
     const locale = useLocale();
     const queryClient = useQueryClient();
     const [search, setSearch] = useState("");
 
     const { data, isLoading, isError } = useQuery({
-        queryKey: ["eventsWait"],
+        queryKey: ["eventsFinished"],
         queryFn: async () => {
-            return await eventsWaitdGetAPI({ search });
+            return await eventsFinishedGetAPI({ search });
         }
     });
     const mutationDeleteNew = useMutation(
         {
-            mutationFn: async (id: any) => {
-                return eventWaitDeleteAPI({ id });
+            mutationFn: async ({ id, idWait }: { id: any, idWait: any }) => {
+
+                return eventFinishedDeleteAPI(id, idWait);
+
             },
             onSuccess: () => {
                 queryClient.invalidateQueries(); // Ma'lumotlarni yangilash
@@ -38,16 +41,14 @@ const Events = () => {
             },
         }
     );
-    const handeDelete = (id: any) => {
+    const handeDelete = (id: any, idWait: any) => {
         const isDelete = confirm("O'chirmoqchimisiz?")
         if (isDelete) {
-            mutationDeleteNew.mutate(id)
+            mutationDeleteNew.mutate({ id, idWait })
         }
     }
     if (isLoading) return <Loading />;
     if (isError) return <div>Xatolik yuz berdi...</div>;
-    let currentDate = new Date();
-    console.log(currentDate.getMonth());
 
     return (
         <div>
@@ -57,14 +58,14 @@ const Events = () => {
                     <div className="flex w-full max-w-sm items-center space-x-2">
                         <Input type="search" placeholder="Search . . ." value={search} onChange={(e) => setSearch(e.target.value)} />
                     </div>
-                    <div>
+                    {/* <div>
 
                         <Link href={`/${locale}/admin/events/addwait`} >
                             <Button size={"icon"}>
                                 <PlusIcon />
                             </Button>
                         </Link>
-                    </div>
+                    </div> */}
                 </div>
                 <table className="min-w-full divide-y divide-gray-200 overflow-x-auto">
                     <thead className="bg-gray-50">
@@ -73,17 +74,14 @@ const Events = () => {
                                 Photo
                             </th>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Name
+                                Title
                             </th>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Address
+                                Content
                             </th>
 
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Date
-                            </th>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Created
                             </th>
 
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -92,12 +90,13 @@ const Events = () => {
                         </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
-                        {data?.data.eventsWait.map((item: any, i: number) => (
+                        {data?.data.eventsFinished.map((item: any, i: number) => (
                             <tr key={i}>
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     <div className="flex items-center">
                                         <div className="flex-shrink-0 h-10 w-10">
-                                            <Image width={100} height={100} className="h-10 w-10" src={item.photo} alt="" />
+                                            <ImagesCarusel images={item.photos} button={true} />
+                                            {/* <Image width={100} height={100} className="h-10 w-10" src={item.photos[1]} alt="" /> */}
                                         </div>
                                     </div>
                                 </td>
@@ -105,21 +104,16 @@ const Events = () => {
                                     <div className="text-sm text-gray-900">{item.translations[`${locale}`].name}</div>
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    <div className="text-sm text-gray-900">{item.place}</div>
+                                    <div className="text-sm text-gray-900">{item.translations[`${locale}`].place}</div>
+
                                 </td>
-                                <td className={`px-6 py-4 whitespace-nowrap text-sm ${currentDate > new Date(item.date) ? 'text-red-500' : 'text-green-500'}`}>
-                                    {moment(item.date).format("L")} {moment(item.date).format("LT")}
-                                </td>
+
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     {moment(item.createdAt).format("LLL")}
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap  text-sm font-medium">
-                                    {currentDate > new Date(item.date) && (
-
-                                        <Link href={`/${locale}/admin/events/addFinished/${item._id}`} className="text-yellow-600 hover:text-yellow-900 mr-1">Finished</Link>
-                                    )}
-                                    <Link href={`/${locale}/admin/events/editWait/${item._id}`} className="text-indigo-600 hover:text-indigo-900">Edit</Link>
-                                    <button className="ml-2 text-red-600 hover:text-red-900" onClick={() => handeDelete(item._id)} disabled={mutationDeleteNew.isPending}>Delete</button>
+                                    <Link href={`/${locale}/admin/events/editFinished/${item._id}`} className="text-indigo-600 hover:text-indigo-900">Edit</Link>
+                                    <button className="ml-2 text-red-600 hover:text-red-900" onClick={() => handeDelete(item._id, item.idWait)} disabled={mutationDeleteNew.isPending}>Delete</button>
                                 </td>
                             </tr>
                         )).reverse()}
@@ -131,4 +125,4 @@ const Events = () => {
     )
 }
 
-export default Events;
+export default EventsFinished;

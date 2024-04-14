@@ -11,6 +11,7 @@ import Image from "next/image";
 import { toast } from "react-toastify";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
+import Loading from "@/components/Core/Loading";
 
 const News = () => {
     const locale = useLocale();
@@ -43,7 +44,7 @@ const News = () => {
             mutationDeleteNew.mutate(id)
         }
     }
-    if (isLoading) return <div>Loading...</div>;
+    if (isLoading) return <Loading />;
     if (isError) return <div>Xatolik yuz berdi...</div>;
 
 

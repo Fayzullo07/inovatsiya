@@ -3,6 +3,11 @@ import { Schema } from "mongoose";
 
 const eventFinishedSchema = new mongoose.Schema(
     {
+        idWait: {
+            type: String,
+            required: [true, "Please provide a id wait"],
+        },
+        photos: [String],
         place: {
             type: String,
             required: [true, "Please provide a place"],
@@ -18,10 +23,6 @@ const eventFinishedSchema = new mongoose.Schema(
             }
         ],
         partners: [String],
-        status: {
-            type: Boolean,
-            default: true
-        },
         translations: {
             uz: {
                 name: {
@@ -31,10 +32,6 @@ const eventFinishedSchema = new mongoose.Schema(
                 form: {
                     type: String,
                     required: [true, "Please provide a form uz"]
-                },
-                target: {
-                    type: String,
-                    required: [true, "Please provide a desc uz"]
                 },
                 result: {
                     type: String,
@@ -50,10 +47,6 @@ const eventFinishedSchema = new mongoose.Schema(
                     type: String,
                     required: [true, "Please provide a desc ru"]
                 },
-                target: {
-                    type: String,
-                    required: [true, "Please provide a desc ru"]
-                },
                 result: {
                     type: String,
                     required: [true, "Please provide a desc ru"]
@@ -65,10 +58,6 @@ const eventFinishedSchema = new mongoose.Schema(
                     required: [true, "Please provide a title en"]
                 },
                 form: {
-                    type: String,
-                    required: [true, "Please provide a desc en"]
-                },
-                target: {
                     type: String,
                     required: [true, "Please provide a desc en"]
                 },

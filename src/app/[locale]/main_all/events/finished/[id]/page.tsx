@@ -59,7 +59,7 @@ const EventFinished = ({ params }: { params: any }) => {
                     <div className=" overflow-hidden ">
                         {/* <!-- Image --> */}
                         <div className="w-full h-auto mx-auto flex justify-center border p-2">
-                            <ImagesCarusel images={images} />
+                            <ImagesCarusel images={images} button={false} />
                         </div>
 
                         <div className="z-10 flex justify-between items-center space-x-2 text-maincolor w-full p-4">
@@ -88,7 +88,7 @@ const EventFinished = ({ params }: { params: any }) => {
                                                 <li key={i} className="flex items-center justify-between py-2 border-b border-gray-300">
                                                     <div className="flex items-center">
                                                         <span className="text-lg font-medium mr-4">{i + 1}</span>
-                                                        <UserIcon className="w-8 h-8 rounded-full mr-4 bg-gray-200"/>
+                                                        <UserIcon className="w-8 h-8 rounded-full mr-4 bg-gray-200" />
                                                         <span className="text-gray-800 font-medium">Fayzullo Jurayev</span>
                                                     </div>
                                                     <span className="text-maincolor font-medium">+998 93 917 99 33</span>

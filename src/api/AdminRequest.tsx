@@ -201,3 +201,46 @@ export const partnerDeleteAPI = async ({ id }: { id: any }) =>
 // GET BY ID
 export const partnerGetOneAPI = async ({ id }: { id: any }) =>
     API.get(`/api/partner/${id}/`);
+
+
+// -----------------------------------------EVENTS WAIT-----------------------------
+// GET
+export const eventsWaitdGetAPI = async ({ search = "" }) =>
+    API.get(`/api/event/wait/?search=${search}`);
+
+// POST
+export const eventWaitPostAPI = async (data: any) =>
+    API.post(`/api/event/wait`, data);
+
+// PUT
+export const eventWaitPutAPI = async (data: any, id: any) =>
+    API.put(`/api/event/wait/${id}/`, data);
+
+// DELETE
+export const eventWaitDeleteAPI = async ({ id }: { id: any }) =>
+    API.delete(`/api/event/wait/${id}/`);
+
+// GET BY ID
+export const eventWaitGetOneAPI = async ({ id }: { id: any }) =>
+    API.get(`/api/event/wait/${id}/`);
+
+// -----------------------------------------EVENTS FINISHED-----------------------------
+// GET
+export const eventsFinishedGetAPI = async ({ search = "" }) =>
+    API.get(`/api/event/finished/?search=${search}`);
+
+// POST
+export const eventFinishedPostAPI = async (data: any) =>
+    API.post(`/api/event/finished`, data);
+
+// PUT
+export const eventFinishedPutAPI = async (data: any, id: any) =>
+    API.put(`/api/event/finished/${id}/`, data);
+
+// DELETE
+export const eventFinishedDeleteAPI = async (id: any, idWait: any) => {
+    return API.delete(`/api/event/finished/${id}/?idWait=${idWait}`);
+}
+// GET BY ID
+export const eventFinishedGetOneAPI = async ({ id }: { id: any }) =>
+    API.get(`/api/event/finished/${id}/`);
