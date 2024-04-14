@@ -126,7 +126,7 @@ const AddFinished = ({ params }: { params: any }) => {
         <div className="shadow p-4 bg-white rounded-xl">
             <div className="mb-5 p-2 border rounded-md flex items-center flex-wrap gap-3.5">
                 {photos && photos.map((item, i) => (
-                    <div className=" relative border-[2px] rounded w-20 h-20 flex items-center justify-center text-gray-400">
+                    <div key={i} className=" relative border-[2px] rounded w-20 h-20 flex items-center justify-center text-gray-400">
                         <Image
                             src={item}
                             width={150}
