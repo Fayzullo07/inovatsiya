@@ -216,6 +216,10 @@ export const eventWaitPostAPI = async (data: any) =>
 export const eventWaitPutAPI = async (data: any, id: any) =>
     API.put(`/api/event/wait/${id}/`, data);
 
+// PATCH
+export const eventWaitPatchAPI = async (data: any, id: any) =>
+    API.patch(`/api/event/wait/${id}/`, data);
+
 // DELETE
 export const eventWaitDeleteAPI = async ({ id }: { id: any }) =>
     API.delete(`/api/event/wait/${id}/`);

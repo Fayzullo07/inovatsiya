@@ -1,13 +1,89 @@
-import { useQuery } from "@tanstack/react-query";
+"use client"
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { useLocale } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import Loading from "../Core/Loading";
-import { eventsWaitdGetAPI } from "@/api/AdminRequest";
+import { eventWaitPatchAPI, eventsWaitdGetAPI } from "@/api/AdminRequest";
 import moment from "moment";
+import Modal from "../Core/Modal";
+import { ScrollArea } from "../ui/scroll-area";
+import { toast } from "react-toastify";
+import { telegramPostAPI } from "@/api/TelegramRequest";
+import { checkPhoneNumber } from "@/functions/NecessaryFunctions";
 
 const EventWaitGet = ({ search = "", amount = 0 }) => {
+    const [formData, setFormData] = useState({
+        name: "",
+        phone: "+998",
+    });
+
+    const handleInputChange = (e: any) => {
+        const { name, value } = e.target;
+        if (name === "name" && value.length > 50) {
+            return;
+        }
+        if (name === "phone") {
+            if (value.length > 13) {
+                return;
+            } else {
+                e.target.value = value.slice(0, 13);
+                if (typeof value === "string") {
+                    // Raqam matn (string) turida kiritilgan
+                    e.target.value = value.replace(/[^0-9+]|(?<=^[\s\S]*?\+)[+]+/g, "");
+                }
+            }
+        }
+
+        if (name === "desc" && value.length > 200) {
+            return;
+        }
+        setFormData({ ...formData, [name]: value });
+    };
+
+    const mutationBot = useMutation(
+        {
+            mutationFn: async () => {
+                return telegramPostAPI({
+                    chat_id: -1002094967596,
+                    text: "Service\nIsm: " + formData.name + "\nTel: " + formData.phone
+                });
+            },
+            onSuccess: () => {
+                setFormData({ ...formData, name: "", phone: "", })
+            }
+        }
+    );
+
+    const mutation = useMutation(
+        {
+            mutationFn: async (id: any) => {
+                return eventWaitPatchAPI(formData, id);
+            },
+            onSuccess: () => {
+                toast.success("Yuborildi");
+                document.getElementById('closeDialog')?.click();
+                mutationBot.mutate();
+                // setFormData({ ...formData, name: "", phone: "", desc: "" })
+            }
+        }
+    );
+
+    const handleSubmit = async (id: any) => {
+        if (!formData.name) {
+            toast.warning("Name")
+            return
+        }
+
+        if (checkPhoneNumber(formData.phone)) {
+            toast.warning("Phone")
+            return
+        }
+
+
+        mutation.mutate(id);
+    };
     const locale = useLocale();
     const { data, isLoading, isError } = useQuery({
         queryKey: ["eventWait"],
@@ -76,9 +152,48 @@ const EventWaitGet = ({ search = "", amount = 0 }) => {
                                 ))}
                             </div>
                             <span className="text-xs text-green-500">{moment(item.date).format("L")} {moment(item.date).format("LT")}</span>
-                            <button className="absolute bottom-0 right-0 inline-flex justify-center border border-maincolor hover:border-white hover:text-white rounded-tl-3xl hover:bg-maincolor px-3 py-2 text-base font-medium hover:px-4 hover:py-2 duration-300">{"Ro'yhatdan o'tish"}</button>
+
                         </div>
                     </Link>
+                    <Modal button={<button className="absolute bottom-0 right-0 inline-flex justify-center border border-maincolor hover:border-white hover:text-white rounded-tl-3xl hover:bg-maincolor px-3 py-1 text-base font-medium hover:px-4 hover:py-2 duration-300">{"Ro'yhatdan o'tish"}</button>}>
+                        <ScrollArea className="h-[60vh] py-4">
+
+                            <h1>HEllo</h1>
+                            <div>
+                                <div className="mb-5">
+                                    <label htmlFor="name" className="mb-3 block text-base font-medium text-[#07074D]">
+                                        Ism familiya
+                                    </label>
+                                    <input type="text" name="name" id="name" placeholder="Ism familiya"
+                                        className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                                        value={formData.name}
+                                        onChange={handleInputChange}
+                                        required
+                                    />
+                                </div>
+                                <div className="mb-5">
+                                    <label htmlFor="phone" className="mb-3 block text-base font-medium text-[#07074D]">
+                                        Telefon raqamingiz
+                                    </label>
+                                    <input type="tel" name="phone" id="phone" placeholder="+998 XX XXX XX XX"
+                                        className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                                        value={formData.phone}
+                                        onChange={handleInputChange}
+                                        required
+                                    />
+                                </div>
+
+
+                                <button
+                                    onClick={() => handleSubmit(item._id)}
+                                    type="submit"
+                                    disabled={mutation.isPending}
+                                    className="mb-6 w-full rounded bg-maincolor text-white px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal   lg:mb-0">
+                                    {!mutation.isPending ? "Yuborish" : "Loaning..."}
+                                </button>
+                            </div>
+                        </ScrollArea>
+                    </Modal>
                 </div>
             ))}
         </>

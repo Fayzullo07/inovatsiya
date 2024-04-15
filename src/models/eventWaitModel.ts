@@ -1,6 +1,21 @@
 import mongoose from "mongoose";
 import { Schema } from "mongoose";
 
+const userSchema = new mongoose.Schema(
+    {
+        name: {
+            type: String,
+            required: [true, "Please provide a name"],
+        },
+        phone: {
+            type: String,
+            required: [true, "Please provide a phone number"],
+        },
+    },
+    {
+        timestamps: true,
+    }
+);
 const eventWaitSchema = new mongoose.Schema(
     {
         photo: {
@@ -15,12 +30,7 @@ const eventWaitSchema = new mongoose.Schema(
             type: String,
             required: [true, "Please provide a place"],
         },
-        users: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: "User",
-            }
-        ],
+        users: [userSchema],
         partners: [String],
         status: {
             type: Boolean,

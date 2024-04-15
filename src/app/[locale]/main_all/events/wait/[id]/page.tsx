@@ -106,15 +106,15 @@ const EventWait = ({ params }: { params: any }) => {
                                     <AccordionTrigger>Users</AccordionTrigger>
                                     <AccordionContent>
                                         <ul>
-                                            {data_users.map((item, i) => (
+                                            {data.data.eventsWait.users.map((item: any, i: number) => (
 
                                                 <li key={i} className="flex items-center justify-between py-2 border-b border-gray-300">
                                                     <div className="flex items-center">
                                                         <span className="text-lg font-medium mr-4">{i + 1}</span>
                                                         <UserIcon className="w-8 h-8 rounded-full mr-4 bg-gray-200" />
-                                                        <span className="text-gray-800 font-medium">Fayzullo Jurayev</span>
+                                                        <span className="text-gray-800 font-medium">{item.name}</span>
                                                     </div>
-                                                    <span className="text-maincolor font-medium">+998 93 917 99 33</span>
+                                                    <span className="text-maincolor font-medium">{item.phone}</span>
                                                 </li>
                                             ))}
                                         </ul>
