@@ -6,8 +6,12 @@ import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import Modal from "./Core/Modal";
+import { useTranslations } from "next-intl";
+import { telegramPostAPI } from "@/api/TelegramRequest";
 
 const InitiatorsApplication = () => {
+    const t = useTranslations("Contact");
+    const i = useTranslations("InitiatorReg");
     const [formData, setFormData] = useState({
         name: "",
         phone: "",
@@ -30,15 +34,30 @@ const InitiatorsApplication = () => {
         }
         setFormData({ ...formData, [name]: value });
     };
+
+    const mutationBot = useMutation(
+        {
+            mutationFn: async () => {
+                return telegramPostAPI({
+                    chat_id: -1002094967596,
+                    text: "Hamkorlik uchun xabar!\n\nIsm: " + formData.name + "\nTel: " + formData.phone + "\nIzoh: " + formData.desc
+                });
+            },
+            onSuccess: () => {
+                setFormData({ ...formData, name: "", phone: "", desc: "" })
+            }
+        }
+    );
     const mutation = useMutation(
         {
             mutationFn: async () => {
                 return messagePostAPI(formData);
             },
             onSuccess: () => {
-                toast.success("Yuborildi");
+                toast.success(t("message"));
                 document.getElementById('closeDialog')?.click();
-                setFormData({ ...formData, name: "", phone: "", desc: "" })
+                mutationBot.mutate();
+                // setFormData({ ...formData, name: "", phone: "", desc: "" })
             }
         }
     );
@@ -46,17 +65,17 @@ const InitiatorsApplication = () => {
     const handleSubmit = async (e: any) => {
         e.preventDefault();
         if (!formData.name) {
-            toast.warning("Name")
+            toast.warning(t("name"))
             return
         }
 
         if (!formData.phone) {
-            toast.warning("Phone")
+            toast.warning(t("phone"))
             return
         }
 
         if (!formData.desc) {
-            toast.warning("Izoh")
+            toast.warning(t("desc"))
             return
         }
         mutation.mutate();
@@ -74,7 +93,7 @@ const InitiatorsApplication = () => {
                 <div className="px-4 py-6 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-10">
                     <div className="relative max-w-2xl sm:mx-auto sm:max-w-xl md:max-w-2xl sm:text-center">
                         <h2 className="mb-6  text-xl text-center font-semibold tracking-whide text-white sm:text-3xl ">
-                            Hamkorlik uchun ariza qoldiring
+                            {i("hero_title")}
                         </h2>
 
                         <div className="flex flex-wrap justify-center items-center  mb-4">
@@ -88,14 +107,14 @@ const InitiatorsApplication = () => {
                                 className="h-10 px-4 mb-3 bg-white text-lg transition duration-200 border-2 rounded md:mr-2 md:mb-0 focus:outline-none focus:shadow-outline"
                             />
 
-                            <Modal button={<button className=" inline-flex items-center justify-center w-full h-12 px-6 font-semibold tracking-wide text-gray-200 transition duration-200 rounded shadow-md md:w-auto hover:text-deep-purple-900 bg-teal-accent-400 hover:bg-teal-accent-700 focus:shadow-outline focus:outline-none">Ariza</button>}>
+                            <Modal button={<button className=" inline-flex items-center justify-center w-full h-12 px-6 font-semibold tracking-wide text-gray-200 transition duration-200 rounded shadow-md md:w-auto hover:text-deep-purple-900 bg-teal-accent-400 hover:bg-teal-accent-700 focus:shadow-outline focus:outline-none">{t("button")}</button>}>
                                 <form onSubmit={handleSubmit}>
                                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 md:gap-6">
                                         <div className="mb-5">
                                             <label htmlFor="name" className="mb-3 block text-base font-medium text-[#07074D]">
-                                                Ism familiya
+                                                {t("name")}
                                             </label>
-                                            <input type="text" name="name" id="name" placeholder="Ism familiya"
+                                            <input type="text" name="name" id="name" placeholder={t("name")}
                                                 className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                                                 value={formData.name}
                                                 onChange={handleInputChange}
@@ -105,7 +124,7 @@ const InitiatorsApplication = () => {
 
                                         <div className="mb-5">
                                             <label htmlFor="phone" className="mb-3 block text-base font-medium text-[#07074D]">
-                                                Telefon raqamingiz
+                                                {t("phone")}
                                             </label>
                                             <input type="tel" name="phone" id="phone" placeholder="+998 XX XXX XX XX"
                                                 className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
@@ -118,9 +137,9 @@ const InitiatorsApplication = () => {
                                     </div>
                                     <div className="mb-5">
                                         <label htmlFor="desc" className="mb-3 block text-base font-medium text-[#07074D]">
-                                            Xabar
+                                            {t("desc")}
                                         </label>
-                                        <textarea name="desc" id="desc" placeholder="Xabaringizni yozing..."
+                                        <textarea name="desc" id="desc" placeholder={t("desc") + "..."}
                                             value={formData.desc}
                                             onChange={handleInputChange}
                                             className="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" required />
@@ -130,7 +149,7 @@ const InitiatorsApplication = () => {
                                         <button
                                             disabled={mutation.isPending}
                                             className="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
-                                            {!mutation.isPending ? "Yuborish" : "Loading. . ."}
+                                            {!mutation.isPending ? t("button") : "Loading. . ."}
                                         </button>
                                     </div>
                                 </form>
@@ -138,9 +157,9 @@ const InitiatorsApplication = () => {
 
                             </Modal>
                         </div>
-                        <p className="max-w-md mb-6 text-xs tracking-wide text-indigo-100 sm:text-sm sm:mx-auto md:mb-10">
+                        {/* <p className="max-w-md mb-6 text-xs tracking-wide text-indigo-100 sm:text-sm sm:mx-auto md:mb-10">
                             Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.
-                        </p>
+                        </p> */}
                         <a href="#"
                             className="flex items-center justify-center w-10 h-10 mx-auto text-white duration-300 transform border border-gray-400 rounded-full  hover:shadow hover:scale-110">
                             <ArrowUpIcon />

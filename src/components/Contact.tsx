@@ -47,7 +47,7 @@ const Contact = () => {
             mutationFn: async () => {
                 return telegramPostAPI({
                     chat_id: -1002094967596,
-                    text: "Bog'lanish uchun xabar!\n\nIsm: " + formData.name + "\nTel: " + formData.phone + "\nIzoh: " + formData.desc
+                    text: "Bog'lanish uchun xabar!\nXizmatlardan foydalish uchun ham!\n\nIsm: " + formData.name + "\nTel: " + formData.phone + "\nIzoh: " + formData.desc
                 });
             },
             onSuccess: () => {
