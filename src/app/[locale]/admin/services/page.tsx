@@ -42,8 +42,6 @@ const Services = () => {
     if (isLoading) return <Loading />;
     if (isError) return <div>Xatolik yuz berdi...</div>;
 
-
-
     return (
         <div>
             <div className="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">

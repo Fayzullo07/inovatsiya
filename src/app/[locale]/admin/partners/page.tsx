@@ -2,21 +2,24 @@
 import { partnerDeleteAPI, partnersGetAPI, serviceDeleteAPI, servicesGetAPI } from "@/api/AdminRequest";
 import Loading from "@/components/Core/Loading";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { PlusIcon } from "lucide-react";
 import moment from "moment";
 import { useLocale } from "next-intl";
 import Link from "next/link";
+import { useState } from "react";
 import { toast } from "react-toastify";
 
-const Services = () => {
+const Partners = () => {
     const locale = useLocale();
     const queryClient = useQueryClient();
+    const [search, setSearch] = useState("");
 
     const { data, isLoading, isError } = useQuery({
-        queryKey: ["partners"],
+        queryKey: ["partners", search],
         queryFn: async () => {
-            return await partnersGetAPI();
+            return await partnersGetAPI({ search });
         }
     });
     const mutationDeleteNew = useMutation(
@@ -49,6 +52,7 @@ const Services = () => {
             <div className="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
 
                 <div className="flex w-full max-w-sm items-center space-x-2">
+                    <Input type="search" placeholder="Search . . ." value={search} onChange={(e) => setSearch(e.target.value)} />
                 </div>
                 <div>
 
@@ -110,4 +114,4 @@ const Services = () => {
     )
 }
 
-export default Services;
+export default Partners;

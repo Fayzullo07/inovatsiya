@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ArrowRightIcon } from "lucide-react";
 import { useMemo } from "react";
 
-const ServicesGet = ({ search = "", amount = 0 }) => {
+const ServicesGet = ({ amount = 0 }) => {
     const t = useTranslations("AboutUs");
     const locale = useLocale();
     const { data, isLoading, isError } = useQuery({
