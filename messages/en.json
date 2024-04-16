@@ -69,5 +69,9 @@
         "is_legal_question": "Legal or physical person?",
         "legal": "Legal person",
         "physical": "Physical person"
+    },
+    "Partners": {
+        "hero_title": "Partners",
+        "button": "All our partners"
     }
 }

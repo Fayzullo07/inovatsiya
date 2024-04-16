@@ -61,13 +61,13 @@ const Layout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
                     <div className="col-span-4">
-                        <div className="flex items-center mb-4 ml-1">
+                        {/* <div className="flex items-center mb-4 ml-1">
                             <Link href={"/"}>
                                 <Button variant={"link"} className="text-base">Bosh sahifa</Button>
                             </Link>
                             <ChevronRightIcon size={15} />
                             <div className="text-base text-gray-400 px-2">Yangiliklar</div>
-                        </div>
+                        </div> */}
                         {children}
                     </div>
                     <div className="hidden sm:flex">

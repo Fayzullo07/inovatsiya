@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AlignRightIcon } from "lucide-react";
 import LocalSwitcher from "./Core/local-switcher";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Button } from "./ui/button";
 
 import {
@@ -19,6 +19,7 @@ import { navbar } from "../../data/data";
 import Image from "next/image";
 
 const Navbar = () => {
+    const locale = useLocale();
     const [stickyNav, setStickyNav] = useState(false);
 
     const pathname = usePathname();
@@ -52,7 +53,7 @@ const Navbar = () => {
                         className="text-xl text-gray-500 lg:flex lg:justify-between">
                         {navbar.map((item, i) => (
                             <li key={item.name}>
-                                <a href={item.slug} className="*:hover:w-full p-2 font-normal block hover:text-maincolor duration-300" >
+                                <a href={`/${locale}${item.slug}`} className="*:hover:w-full p-2 font-normal block hover:text-maincolor duration-300" >
                                     {t(`${i}`)}
                                     <div className="w-0 duration-1000 h-0.5 bg-maincolor"></div>
                                 </a>
@@ -62,7 +63,7 @@ const Navbar = () => {
                 </div>
                 <div className="flex items-center gap-2">
 
-                    <div className="flex items-center gap-2 z-[999]">
+                    <div className="flex items-center gap-2 z-[9]">
                         <LocalSwitcher />
 
                         <div className="h-6 w-6 cursor-pointer lg:hidden block " >
@@ -78,7 +79,7 @@ const Navbar = () => {
                                                 {navbar.map((item, i) => (
                                                     <li key={item.name} data-aos="fade-left" data-aos-delay={(i + 1) * 100} data-aos-duration={(i + 1) * 100} >
                                                         <SheetClose asChild>
-                                                            <a href={item.slug} className="md:p-3 py-2 flex gap-2 items-center hover:text-maincolor duration-300">
+                                                            <a href={`/${locale}${item.slug}`} className="md:p-3 py-2 flex gap-2 items-center hover:text-maincolor duration-300">
                                                                 {item.icon}
                                                                 <p>
                                                                     {t(`${i}`)}

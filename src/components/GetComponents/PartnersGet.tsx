@@ -60,7 +60,7 @@ const PartnersGet = ({ search = "", amount = 0 }) => {
 
                     <div className=" absolute bottom-4 right-4">
                         <Link href={`/${locale}/main_all/partners/${item._id}`}>
-                            <button className="px-2 py-0.5 text-base  text-maincolor hover:text-white border border-maincolor font-normal rounded hover:bg-maincolor">Read more</button>
+                            <button className="px-2 py-0.5 text-base  text-maincolor hover:text-white border border-maincolor font-normal rounded hover:bg-maincolor">{t("button")}</button>
                         </Link>
                     </div>
                 </div>

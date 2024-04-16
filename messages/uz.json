@@ -69,5 +69,9 @@
         "is_legal_question": "Yuridik shaxs yoki jismoniy?",
         "legal": "Yuridik shaxs",
         "physical": "Jismoniy shaxs"
+    },
+    "Partners": {
+        "hero_title": "Hamkorlarimiz",
+        "button": "Barcha hamkorlarimiz"
     }
 }

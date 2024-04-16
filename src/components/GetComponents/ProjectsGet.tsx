@@ -40,11 +40,20 @@ const ProjectsGet = ({ search = "", amount = 0 }) => {
                             <Building2Icon />
                             <h5 className="text-base sm:text-2xl font-semibold tracking-wide">{item.title}</h5>
                         </div>
-                        <div
-                            className=" whitespace-pre-line mb-3 font-normal text-sm sm:text-base text-gray-700"
-                            style={{ whiteSpace: "pre-line" }}
-                            dangerouslySetInnerHTML={{ __html: `${item.translations[`${locale}`].content.substring(0, 200)} ...` }}
-                        />
+                        {item.translations[`${locale}`].content.length > 200 ? (
+
+                            <div
+                                className=" whitespace-pre-line mb-3 font-normal text-sm sm:text-base text-gray-700"
+                                style={{ whiteSpace: "pre-line" }}
+                                dangerouslySetInnerHTML={{ __html: `${item.translations[`${locale}`].content.substring(0, 200)} ...` }}
+                            />
+                        ) : (
+                            <div
+                                className=" whitespace-pre-line mb-3 font-normal text-sm sm:text-base text-gray-700"
+                                style={{ whiteSpace: "pre-line" }}
+                                dangerouslySetInnerHTML={{ __html: `${item.translations[`${locale}`].content}` }}
+                            />
+                        )}
                         {/* <p className="mb-3 font-normal text-base sm:text-xl text-gray-700 dark:text-gray-400">{item.translations[`${locale}`].content.substring(0, 100)}</p> */}
                     </div>
                     <Link href={`/${locale}/main_all/projects/${item._id}`} className="inline-flex items-center text-base font-medium text-center text-maincolor border border-maincolor hover:text-white hover:bg-maincolor rounded-lg px-2 py-1 hover:px-6 duration-300">

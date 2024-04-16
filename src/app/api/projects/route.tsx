@@ -5,7 +5,6 @@ import { NextRequest, NextResponse } from "next/server";
 export const POST = async (req: any) => {
     const { title, uzContent, ruContent, enContent } = await req.json();
     await connectMongoDB()
-    console.log(ruContent);
 
     try {
         await Projects.create({
@@ -25,7 +24,6 @@ export const POST = async (req: any) => {
 
         return NextResponse.json({ message: "Created project succesfully" }, { status: 201 })
     } catch (error) {
-        console.log(error);
         return NextResponse.json({ data: null }, { status: 500 })
     }
 }
