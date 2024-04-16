@@ -8,6 +8,7 @@ import { useMemo } from "react";
 import Loading from "../Core/Loading";
 import { CircleUserRound } from "lucide-react";
 import Modal from "../Core/Modal";
+import { ScrollArea } from "../ui/scroll-area";
 
 const LegalUsersGet = ({ amount = 0 }) => {
     const locale = useLocale();
@@ -43,29 +44,37 @@ const LegalUsersGet = ({ amount = 0 }) => {
                             <CircleUserRound size={40} strokeWidth={1} className="text-maincolor" />
                         </div>
                         <div className="col-span-5 grid">
-                            <h1 className="text-maincolor text-base md:text-xl font-[500] tracking-wide capitalize">{item.translations[`${locale}`].name}</h1>
-                            <p className="text-base">{t('organ_type')}: <span className="text-maincolor text-xl">{item.translations[`${locale}`].activity}</span> </p>
-                            <p className="text-base">{t('organ_address')}: <span className="text-maincolor text-xl">{item.translations[`${locale}`].address}</span> </p>
+                            <h1 className="text-maincolor text-base md:text-lg font-[500] tracking-wide capitalize">{item.translations[`${locale}`].name}</h1>
+                            <p className="text-sm text-gray-500">{t('organ_type')}: <span className=" text-base">{item.translations[`${locale}`].activity}</span> </p>
+                            <p className="text-sm text-gray-500">{t('organ_address')}: <span className=" text-base">{item.translations[`${locale}`].address}</span> </p>
                         </div>
                     </div>
-                    <div
+                    {/* <div
                         className=" whitespace-pre-line text-base mb-6 text-left"
                         style={{ whiteSpace: "pre-line" }}
                         dangerouslySetInnerHTML={{ __html: `${item.translations[`${locale}`].desc.substring(0, 160)}` }}
-                    />
+                    /> */}
 
                     <div className="flex justify-between items-center absolute bottom-0 right-0">
-                        <Modal button={<button className="absolute bottom-0 right-0 z-10 inline-flex justify-center whitespace-nowrap rounded-tl-3xl bg-maincolor px-3 py-2 text-base font-medium text-white hover:px-4 hover:py-3 duration-300">Read More</button>}>
-                            <div className="col-span-3 grid">
-                                <h1 className="text-maincolor text-base md:text-xl font-[500] tracking-wide capitalize">{item.translations[`${locale}`].name}</h1>
-                                <p className="text-base">{t('organ_type')}: <span className="text-maincolor text-xl">{item.translations[`${locale}`].activity}</span> </p>
-                                <p className="text-base">{t('organ_address')}: <span className="text-maincolor text-xl">{item.translations[`${locale}`].address}</span> </p>
-                            </div>
-                            <div
-                                className=" whitespace-pre-line text-base mb-6 text-left tiptap"
-                                style={{ whiteSpace: "pre-line" }}
-                                dangerouslySetInnerHTML={{ __html: `${item.translations[`${locale}`].desc.substring(0, 160)}` }}
-                            />
+                        <Modal button={<button className="absolute bottom-0 right-0 z-10 inline-flex justify-center whitespace-nowrap rounded-tl-3xl bg-maincolor px-4 py-1 text-sm font-medium text-white hover:px-5 duration-300">Read More</button>}>
+                            <ScrollArea className="h-[40vh] py-4">
+
+                                <div className="col-span-3 grid">
+                                    <h1 className="text-maincolor text-base md:text-xl font-[500] tracking-wide capitalize">{item.translations[`${locale}`].name}</h1>
+                                    <p className="text-sm">{t('organ_type')}: <span className="text-lg">{item.translations[`${locale}`].activity}</span> </p>
+                                    <p className="text-sm">{t('organ_address')}: <span className="text-lg">{item.translations[`${locale}`].address}</span> </p>
+                                </div>
+                                {item.translations[`${locale}`].desc && (
+                                    <>
+                                        <p className="text-sm text-maincolor mt-2">{t("extra")}:</p>
+                                        <div
+                                            className=" whitespace-pre-line text-sm ml-2 mb-6 text-left tiptap"
+                                            style={{ whiteSpace: "pre-line" }}
+                                            dangerouslySetInnerHTML={{ __html: `${item.translations[`${locale}`].desc}` }}
+                                        />
+                                    </>
+                                )}
+                            </ScrollArea>
                         </Modal>
                     </div>
                 </div>

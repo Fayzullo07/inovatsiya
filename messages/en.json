@@ -40,7 +40,8 @@
         "all_members": "All members",
         "more": "Read more",
         "organ_type": "Organization activity",
-        "organ_address": "Organization address"
+        "organ_address": "Organization address",
+        "extra": "Additional Information"
     },
     "Initiators": {
         "hero_title": "Initiators",

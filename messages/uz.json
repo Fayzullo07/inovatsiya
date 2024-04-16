@@ -40,7 +40,8 @@
         "all_members": "Barcha a'zolar",
         "more": "Ko'proq o'qish",
         "organ_type": "Tashkilot faoliyat turi",
-        "organ_address": "Tashkilot manzili"
+        "organ_address": "Tashkilot manzili",
+        "extra": "Qo'shimcha ma'lumot"
     },
     "Initiators": {
         "hero_title": "Tashabbuskorlar",

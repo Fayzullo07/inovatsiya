@@ -18,7 +18,6 @@ const Members = () => {
     const locale = useLocale();
     const [isYuridik, setIsYuridik] = useState(false);
 
-
     return (
         <div className="pb-5 sm:pb-10">
             <Container>
@@ -51,7 +50,6 @@ const Members = () => {
                     )
                     }
                 </div>
-
             </Container>
         </div>
     )
