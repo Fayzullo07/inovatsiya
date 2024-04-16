@@ -71,17 +71,20 @@ const EventsFinished = () => {
                     <thead className="bg-gray-50">
                         <tr>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Photo
+                                Photos
                             </th>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Title
+                                Name
                             </th>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Content
+                                Address
                             </th>
 
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Date
+                            </th>
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Created
                             </th>
 
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -104,10 +107,11 @@ const EventsFinished = () => {
                                     <div className="text-sm text-gray-900">{item.translations[`${locale}`].name}</div>
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    <div className="text-sm text-gray-900">{item.translations[`${locale}`].place}</div>
-
+                                    <div className="text-sm text-gray-900">{item.place}</div>
                                 </td>
-
+                                <td className={`px-6 py-4 whitespace-nowrap text-sm text-red-500`}>
+                                    {moment(item.date).format("L")} {moment(item.date).format("LT")}
+                                </td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     {moment(item.createdAt).format("LLL")}
                                 </td>

@@ -52,12 +52,12 @@
     },
     "Contact": {
         "hero_title": "Bog'lanish",
-        "title": "Aloqa uchun ma'lumotlar yuboring!",
-        "desc": "Xabar qoldiring biz sizga aloqaga chiqamiz.",
-        "name": "Ismingiz nima?",
+        "name": "Ismingiz",
         "phone": "Telefon raqamingiz",
-        "comment": "Har qanday izohingiz",
-        "send": "Yuborish",
-        "fedback": "Yuborildi aloqaga chiqamiz rahmat!"
+        "desc": "Xabar qoldiring",
+        "contact_number": "Texnik yordam",
+        "contact_address": "Manzil",
+        "button": "Yuborish",
+        "message": "Xabar yuborildi tez orada aloqaga chiqmiz!"
     }
 }

@@ -51,16 +51,13 @@
         "workplace": "Workplace"
     },
     "Contact": {
-        "hero_title": "Contact",
-        "title": "Send us your contact information!",
-        "desc": "Leave a message and we'll get back to you.",
-        "name": "What's your name?",
+        "hero_title": "Connection",
+        "name": "Your name",
         "phone": "Your phone number",
-        "comment": "Any comments you have",
-        "send": "Send",
-        "fedback": "Sent, we will contact you, thank you!"
-    },
-    "Footer": {
-        "title": "Get connected with us"
+        "desc": "Leave a message",
+        "contact_number": "Technical support",
+        "contact_address": "Address",
+        "button": "Send",
+        "message": "Message sent, we will be in touch soon!"
     }
 }

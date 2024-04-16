@@ -8,11 +8,13 @@ import { telegramPostAPI } from "@/api/TelegramRequest";
 import { checkPhoneNumber } from "@/functions/NecessaryFunctions";
 import { MapPinIcon, PhoneCallIcon } from "lucide-react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 const Contact = () => {
+    const t = useTranslations("Contact");
     const [formData, setFormData] = useState({
         name: "",
-        phone: "+998",
+        phone: "",
         desc: "",
         role: "service",
     });
@@ -45,7 +47,7 @@ const Contact = () => {
             mutationFn: async () => {
                 return telegramPostAPI({
                     chat_id: -1002094967596,
-                    text: "Service\nIsm: " + formData.name + "\nTel: " + formData.phone + "\nIzoh: " + formData.desc
+                    text: "Bog'lanish uchun xabar!\n\nIsm: " + formData.name + "\nTel: " + formData.phone + "\nIzoh: " + formData.desc
                 });
             },
             onSuccess: () => {
@@ -59,7 +61,7 @@ const Contact = () => {
                 return messagePostAPI(formData);
             },
             onSuccess: () => {
-                toast.success("Yuborildi");
+                toast.success(t("message"));
                 mutationBot.mutate();
                 // setFormData({ ...formData, name: "", phone: "", desc: "" })
             }
@@ -69,17 +71,17 @@ const Contact = () => {
     const handleSubmit = async (e: any) => {
         e.preventDefault();
         if (!formData.name) {
-            toast.warning("Name")
+            toast.warning(t("name"))
             return
         }
 
         if (checkPhoneNumber(formData.phone)) {
-            toast.warning("Phone")
+            toast.warning(t("phone"))
             return
         }
 
         if (!formData.desc) {
-            toast.warning("Izoh")
+            toast.warning(t("desc"))
             return
         }
         mutation.mutate();
@@ -88,7 +90,7 @@ const Contact = () => {
         <div id="contact" className="pb-5 sm:pb-10">
             <Container>
                 <div className="flex justify-between items-center py-5 md:py-10" >
-                    <h2 className="text-2xl font-semibold" data-aos="fade-up" data-aos-delay="100" data-aos-duration="100">{"Bog'lanish"}</h2>
+                    <h2 className="text-2xl font-semibold" data-aos="fade-up" data-aos-delay="100" data-aos-duration="100">{t("hero_title")}</h2>
                 </div>
                 <div id="map" className="relative h-auto overflow-hidden bg-cover bg-[50%] bg-no-repeat">
                     <iframe
@@ -103,9 +105,9 @@ const Contact = () => {
                                 <form onSubmit={handleSubmit}>
                                     <div className="mb-5">
                                         <label htmlFor="name" className="mb-3 block text-base font-medium text-[#07074D]">
-                                            Ism familiya
+                                            {t("name")}
                                         </label>
-                                        <input type="text" name="name" id="name" placeholder="Ism familiya"
+                                        <input type="text" name="name" id="name" placeholder={t("name")}
                                             className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                                             value={formData.name}
                                             onChange={handleInputChange}
@@ -114,7 +116,7 @@ const Contact = () => {
                                     </div>
                                     <div className="mb-5">
                                         <label htmlFor="phone" className="mb-3 block text-base font-medium text-[#07074D]">
-                                            Telefon raqamingiz
+                                            {t("phone")}
                                         </label>
                                         <input type="tel" name="phone" id="phone" placeholder="+998 XX XXX XX XX"
                                             className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
@@ -125,9 +127,9 @@ const Contact = () => {
                                     </div>
                                     <div className="mb-5">
                                         <label htmlFor="desc" className="mb-3 block text-base font-medium text-[#07074D]">
-                                            Xabar
+                                            {t("desc")}
                                         </label>
-                                        <textarea name="desc" id="desc" placeholder="Xabaringizni yozing..."
+                                        <textarea name="desc" id="desc" placeholder={t("desc") + "..."}
                                             value={formData.desc}
                                             onChange={handleInputChange}
                                             className="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" required />
@@ -137,7 +139,7 @@ const Contact = () => {
                                         type="submit"
                                         disabled={mutation.isPending}
                                         className="mb-6 w-full rounded bg-maincolor text-white px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal   lg:mb-0">
-                                        {!mutation.isPending ? "Yuborish" : "Loaning..."}
+                                        {!mutation.isPending ? t("button") : "Loaning..."}
                                     </button>
                                 </form>
                             </div>
@@ -151,8 +153,8 @@ const Contact = () => {
                                                 </div>
                                             </div>
                                             <div className="ml-4 grow">
-                                                <p className="font-semibold text-xl ">
-                                                    Technical support
+                                                <p className="font-semibold text-lg">
+                                                    {t("contact_number")}
                                                 </p>
                                                 <a href="tel:+998772807060" className="text-sm text-neutral-500">
                                                     +998 77 280 70 60
@@ -168,8 +170,8 @@ const Contact = () => {
                                                 </div>
                                             </div>
                                             <div className="ml-4 grow">
-                                                <p className="font-semibold text-xl">
-                                                    Address
+                                                <p className="font-semibold text-lg">
+                                                    {t("contact_address")}
                                                 </p>
                                                 <p className="text-sm text-neutral-500">
                                                     Tashkent shaxri,

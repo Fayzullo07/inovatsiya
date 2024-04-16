@@ -4,6 +4,7 @@ import Modal from "./Core/Modal";
 import { useMutation } from "@tanstack/react-query";
 import { messagePostAPI } from "@/api/AdminRequest";
 import { toast } from "react-toastify";
+import { telegramPostAPI } from "@/api/TelegramRequest";
 
 const RegMembers = () => {
     const [formData, setFormData] = useState({
@@ -30,6 +31,20 @@ const RegMembers = () => {
         }
         setFormData({ ...formData, [name]: value });
     };
+
+    const mutationBot = useMutation(
+        {
+            mutationFn: async () => {
+                return telegramPostAPI({
+                    chat_id: -1002094967596,
+                    text: `A'zo bo'lmoqchi!\n${formData.isLegal? "Yuridik ": "Jismoniy "}shaxs bo'lib\nIsm: ` + formData.name + "\nTel: " + formData.phone + "\nIzoh: " + formData.desc
+                });
+            },
+            onSuccess: () => {
+                setFormData({ ...formData, name: "", phone: "", desc: "" })
+            }
+        }
+    );
     const mutation = useMutation(
         {
             mutationFn: async () => {
@@ -38,7 +53,7 @@ const RegMembers = () => {
             onSuccess: () => {
                 toast.success("Yuborildi");
                 document.getElementById('closeDialog')?.click();
-                setFormData({ ...formData, name: "", phone: "", desc: "" })
+                mutationBot.mutate();
             }
         }
     );

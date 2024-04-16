@@ -21,17 +21,16 @@ import InitiatorsApplication from '@/components/InitiatorsApplication';
 
 export default function Index() {
   useEffect(() => {
-    AOS.init({ once: true, easing: "ease-in-sine", delay: 100 });
+    AOS.init({ once: true, easing: "ease-in-sine", delay: 50 });
     AOS.refresh();
 
   }, []);
 
 
-
   return (
     <>
       <Hero />
-      <Slider />
+      {/* <Slider /> */}
       <AboutUs />
       <Projects />
       <Members />
