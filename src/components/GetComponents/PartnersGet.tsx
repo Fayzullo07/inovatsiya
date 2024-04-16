@@ -11,9 +11,9 @@ const PartnersGet = ({ search = "", amount = 0 }) => {
     const locale = useLocale();
     const t = useTranslations("AboutUs");
     const { data, isLoading, isError } = useQuery({
-        queryKey: ["partners"],
+        queryKey: ["partners", search],
         queryFn: async () => {
-            return await partnersGetAPI();
+            return await partnersGetAPI({ search });
         }
     });
 

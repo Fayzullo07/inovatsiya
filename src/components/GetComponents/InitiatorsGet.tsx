@@ -10,9 +10,9 @@ const InitiatorsGet = ({ search = "", amount = 0 }) => {
     const t = useTranslations("Initiators");
 
     const { data, isLoading, isError } = useQuery({
-        queryKey: ["initiators"],
+        queryKey: ["initiators", search],
         queryFn: async () => {
-            return await initiatorsGetAPI({search});
+            return await initiatorsGetAPI({ search });
         }
     });
 

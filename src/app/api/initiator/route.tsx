@@ -25,9 +25,24 @@ export const POST = async (req: any) => {
 
 
 export const GET = async (req: NextRequest) => {
+    const search = req.nextUrl.searchParams.get('search');
     await connectMongoDB();
     try {
-        let initiators = await Initiators.find({});
+        let initiators;
+
+        // Agar `search` parametri bo'sh bo'lsa, barcha ma'lumotlarni qidirish
+        if (!search) {
+            initiators = await Initiators.find({});
+        } else {
+            // Agar `search` parametri bo'sh bo'lmasa, MongoDB'dan ma'lumotlarni qidirish
+            initiators = await Initiators.find({
+                $or: [
+                    { 'firstname': { $regex: search, $options: 'i' } },
+                    { 'lastname': { $regex: search, $options: 'i' } },
+                ]
+            });
+
+        }
 
         return NextResponse.json({ initiators }, { status: 200 })
     } catch (error) {

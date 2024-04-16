@@ -1,10 +1,6 @@
 import { useLocale, useTranslations } from "next-intl";
 import Container from "./Core/Container";
 import Link from "next/link";
-import { useQuery } from "@tanstack/react-query";
-import { initiatorsGetAPI } from "@/api/AdminRequest";
-import Loading from "./Core/Loading";
-import Image from "next/image";
 import InitiatorsGet from "./GetComponents/InitiatorsGet";
 
 const Initiators = () => {

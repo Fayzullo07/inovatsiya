@@ -183,8 +183,8 @@ export const initiatorGetOneAPI = async ({ id }: { id: any }) =>
 
 // -----------------------------------------PARTNERS-----------------------------
 // GET
-export const partnersGetAPI = async () =>
-    API.get(`/api/partner`);
+export const partnersGetAPI = async ({ search = "" }) =>
+    API.get(`/api/partner/?search=${search}`);
 
 // POST
 export const partnerPostAPI = async (data: any) =>
