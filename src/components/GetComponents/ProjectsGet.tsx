@@ -38,18 +38,18 @@ const ProjectsGet = ({ search = "", amount = 0 }) => {
                     <div>
                         <div className="flex items-center gap-2 sm:gap-4 text-maincolor mb-2">
                             <Building2Icon />
-                            <h5 className="text-base sm:text-2xl font-semibold tracking-wide">{item.title}</h5>
+                            <h5 className="text-base sm:text-xl font-semibold tracking-wide">{item.title}</h5>
                         </div>
                         {item.translations[`${locale}`].content.length > 200 ? (
 
                             <div
-                                className=" whitespace-pre-line mb-3 font-normal text-sm sm:text-base text-gray-700"
+                                className=" whitespace-pre-line mb-3 font-normal text-sm sm:text-base text-gray-500"
                                 style={{ whiteSpace: "pre-line" }}
                                 dangerouslySetInnerHTML={{ __html: `${item.translations[`${locale}`].content.substring(0, 200)} ...` }}
                             />
                         ) : (
                             <div
-                                className=" whitespace-pre-line mb-3 font-normal text-sm sm:text-base text-gray-700"
+                                className=" whitespace-pre-line mb-3 font-normal text-sm sm:text-base text-gray-500"
                                 style={{ whiteSpace: "pre-line" }}
                                 dangerouslySetInnerHTML={{ __html: `${item.translations[`${locale}`].content}` }}
                             />
