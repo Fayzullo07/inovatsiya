@@ -19,7 +19,8 @@ const AskedQuestions = () => {
         queryKey: ["questions"],
         queryFn: async () => {
             return await questiosGetAPI();
-        }
+        },
+        refetchInterval: 1000
     });
 
 

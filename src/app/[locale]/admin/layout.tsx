@@ -6,7 +6,7 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
     const locale = useLocale();
     const data_links = [
         {
-            slug: "/main",
+            slug: "/main/hero",
             title: "Main",
             icon: <RssIcon />
         },
