@@ -22,17 +22,17 @@ type Props = {
 };
 
 const Toolbar = ({ editor }: Props) => {
-    const [isPicker, setIsPicker] = useState(false);
+    const [isPickerTip, setIsPickerTip] = useState(false);
 
     if (!editor) {
         return null;
     }
 
     const addImage = () => {
-        if (isPicker) {
-            setIsPicker(false)
+        if (isPickerTip) {
+            setIsPickerTip(false)
         } else {
-            setIsPicker(true)
+            setIsPickerTip(true)
         }
     }
 
@@ -168,9 +168,9 @@ const Toolbar = ({ editor }: Props) => {
             </div>
 
             {/* FileStack */}
-            {isPicker && (
+            {isPickerTip && (
                 <UploadImage
-                    setIsPicker={setIsPicker}
+                    setIsPicker={setIsPickerTip}
                     setURL={setImage}
                 />
             )}

@@ -47,7 +47,6 @@ const Events = () => {
     if (isLoading) return <Loading />;
     if (isError) return <div>Xatolik yuz berdi...</div>;
     let currentDate = new Date();
-    console.log(currentDate.getMonth());
 
     return (
         <div>

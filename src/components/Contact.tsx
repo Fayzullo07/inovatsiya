@@ -99,7 +99,7 @@ const Contact = () => {
                 </div>
                 <div className="px-4 md:px-12">
                     <div
-                        className="block rounded-lg bg-white px-6 py-12 shadow-xl md:py-16 md:px-5 -mt-[15px] backdrop-blur-[30px] border border-gray-300">
+                        className="block rounded-lg bg-white px-6 py-12 shadow-xl md:py-16 md:px-5 mt-[50px] backdrop-blur-[30px] border border-gray-300">
                         <div className="flex flex-wrap">
                             <div className="mb-12 w-full shrink-0 grow-0 basis-auto md:px-3 lg:mb-0 lg:w-5/12 lg:px-6">
                                 <form onSubmit={handleSubmit}>

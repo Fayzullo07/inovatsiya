@@ -16,12 +16,14 @@ export const GET = async (req: any, { params }: { params: any }) => {
 
 export const PUT = async (req: any, { params }: { params: any }) => {
     const { id } = params;
-    const { photo, uzDesc, ruDesc, enDesc } = await req.json();
+    const { photo, secondPhoto, uzDesc, ruDesc, enDesc } = await req.json();
     await connectMongoDB()
+    console.log(secondPhoto);
 
     try {
         await About.findByIdAndUpdate(id, {
             photo,
+            secondPhoto,
             translations: {
                 uz: {
                     desc: uzDesc

@@ -12,8 +12,10 @@ import { toast } from "react-toastify";
 const About = () => {
     const id = "660ce53d9982414aa6f44ded"
     const [isPicker, setIsPicker] = useState(false);
+    const [isPickerSecond, setIsPickerSecond] = useState(false);
     const [formData, setFormData] = useState({
         photo: "",
+        secondPhoto: "",
         uzDesc: "",
         ruDesc: "",
         enDesc: "",
@@ -21,6 +23,9 @@ const About = () => {
 
     const setURLPhoto = (url: string) => {
         setFormData({ ...formData, photo: url });
+    }
+    const setURLPhotoSecond = (url: string) => {
+        setFormData({ ...formData, secondPhoto: url });
     }
 
     const handleContentChangeUz = (reason: any) => {
@@ -56,6 +61,7 @@ const About = () => {
         if (data) {
             setFormData({
                 photo: data.data.about.photo,
+                secondPhoto: data.data.about.secondPhoto,
                 uzDesc: data.data.about.translations.uz.desc,
                 ruDesc: data.data.about.translations.ru.desc,
                 enDesc: data.data.about.translations.en.desc,
@@ -111,6 +117,37 @@ const About = () => {
                 )}
             </div>
             <div className="mb-5">
+                <label className="block mb-2 text-sm font-medium text-gray-900">Second Image</label>
+                {!formData.secondPhoto ? (
+
+                    <div
+                        className="container border-[5px] border-dashed border-green-500 cursor-pointer flex justify-center p-8"
+                        onClick={() => (isPickerSecond ? setIsPickerSecond(false) : setIsPickerSecond(true))}
+                        title="Choose Image"
+                    >
+                        <ImageIcon size={"50"} strokeWidth={1} />
+                    </div>
+                ) : (
+                    <div className="border-[5px] border-dashed border-green-500 min-h-10 relative p-1">
+                        <div className="absolute right-0">
+                            <XIcon className=" cursor-pointer" onClick={() => setFormData({ ...formData, secondPhoto: "" })} />
+                        </div>
+
+                        <div className="max-w-xl h-auto mx-auto flex justify-center">
+                            <Image
+                                src={formData.secondPhoto}
+                                width={0}
+                                height={0}
+                                // className=" transition hover:scale-110 duration-300"
+                                sizes="100vw"
+                                style={{ width: 'auto', height: 'auto' }} // optional
+                                alt="Image"
+                            />
+                        </div>
+                    </div>
+                )}
+            </div>
+            <div className="mb-5">
                 <label htmlFor="title" className="block mb-2 text-sm font-medium text-gray-900">Content UZ</label>
                 <TipTap
                     content={data?.data.about.translations.uz.desc}
@@ -146,6 +183,14 @@ const About = () => {
                 <UploadImage
                     setIsPicker={setIsPicker}
                     setURL={setURLPhoto}
+                />
+            )}
+
+            {/* FileStack */}
+            {isPickerSecond && (
+                <UploadImage
+                    setIsPicker={setIsPickerSecond}
+                    setURL={setURLPhotoSecond}
                 />
             )}
         </div>

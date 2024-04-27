@@ -6,6 +6,10 @@ const aboutSchema = new mongoose.Schema(
             type: String,
             required: [true, "Please provide a photo"],
         },
+        secondPhoto: {
+            type: String,
+            required: [true, "Please provide a second photo"],
+        },
         translations: {
             uz: {
                 desc: {

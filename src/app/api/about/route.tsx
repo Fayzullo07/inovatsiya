@@ -3,12 +3,13 @@ import About from "@/models/aboutModel";
 import { NextResponse } from "next/server";
 
 export const POST = async (req: any) => {
-    const { photo, uzDesc, ruDesc, enDesc } = await req.json();
+    const { photo, secondPhoto, uzDesc, ruDesc, enDesc } = await req.json();
     await connectMongoDB()
 
     try {
         const about = await About.create({
             photo,
+            secondPhoto,
             translations: {
                 uz: {
                     desc: uzDesc
