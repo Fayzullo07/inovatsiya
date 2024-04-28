@@ -35,6 +35,41 @@ export const aboutPutAPI = async (data: any, id: any) =>
 export const aboutGetOneAPI = async ({ id = "" }: { id: any }) =>
     API.get(`/api/about/${id}/`);
 
+// -----------------------------------------CENTER MIND-----------------------------
+// POST
+export const centerMindPostAPI = async (data: any) =>
+    API.post(`/api/center_mind`, data);
+
+// PUT
+export const centerMindPutAPI = async (data: any, id: any) =>
+    API.put(`/api/center_mind/${id}/`, data);
+
+// PATCH
+export const centerMindPatchAPI = async (data: any, id: any) =>
+    API.patch(`/api/center_mind/${id}/`, data);
+
+
+// GET ONE
+export const centerMindGetOneAPI = async () =>
+    API.get(`/api/center_mind`);
+
+// -----------------------------------------ILMIY ETIKA-----------------------------
+// POST
+export const ilmiyEtikaPostAPI = async (data: any) =>
+    API.post(`/api/ilmiy_etika`, data);
+
+// PUT
+export const ilmiyEtikaPutAPI = async (data: any, id: any) =>
+    API.put(`/api/ilmiy_etika/${id}/`, data);
+
+// PATCH
+export const ilmiyEtikaPatchAPI = async (data: any, id: any) =>
+    API.patch(`/api/ilmiy_etika/${id}/`, data);
+
+// GET ONE
+export const ilmiyEtikaGetOneAPI = async () =>
+    API.get(`/api/ilmiy_etika`);
+
 
 // -----------------------------------------NEWS-----------------------------
 // GET

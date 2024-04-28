@@ -38,6 +38,14 @@ const Layout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
             title: "Xizmatlar"
         },
         {
+            slug: "/center_mind",
+            title: "Aql Markazi"
+        },
+        {
+            slug: "/ilmiy_etika",
+            title: "Ilmiy etika"
+        },
+        {
             slug: "/about",
             title: "Biz haqimizda"
         },
@@ -71,10 +79,10 @@ const Layout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
                         {children}
                     </div>
                     <div className="hidden sm:flex">
-                        <div className="p-4 bg-white shadow *:cursor-pointer sticky top-24 h-[65vh]">
+                        <div className="p-4 bg-white shadow *:cursor-pointer sticky top-24 h-[70vh]">
                             {data_links.map((item, i) => (
                                 <Link key={i} href={`/${locale}/main_all${item.slug}`}>
-                                    <div className="p-2 border border-white hover:bg-slate-200 duration-300 hover:border-gray-200">
+                                    <div className="p-1.5 border border-white hover:bg-slate-200 duration-300 hover:border-gray-200">
                                         <h1 className=" text-xl tracking-wide">{item.title}</h1>
                                     </div>
                                 </Link>

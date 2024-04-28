@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { type Editor } from "@tiptap/react";
 import {
     Bold,
@@ -8,32 +8,23 @@ import {
     Italic,
     Heading2,
     Underline,
-    Quote,
     Undo,
     Redo,
     ImageIcon,
     Heading1,
     Heading3,
 } from "lucide-react";
-import UploadImage from "@/utils/UploadImage";
+import ModalUploadImage from "@/utils/ModalUploadImage";
+import Modal from "./Modal";
 
 type Props = {
     editor: Editor | null;
 };
 
 const Toolbar = ({ editor }: Props) => {
-    const [isPickerTip, setIsPickerTip] = useState(false);
 
     if (!editor) {
         return null;
-    }
-
-    const addImage = () => {
-        if (isPickerTip) {
-            setIsPickerTip(false)
-        } else {
-            setIsPickerTip(true)
-        }
     }
 
     const setImage = (url: any) => {
@@ -44,10 +35,15 @@ const Toolbar = ({ editor }: Props) => {
             className="px-4 py-3 rounded-tl-md rounded-tr-md flex justify-between items-start gap-5 w-full flex-wrap border border-gray-700"
         >
             <div className="flex justify-start items-center gap-5 w-full lg:w-10/12 flex-wrap ">
-
-                <button onClick={addImage} className="text-sky-400">
-                    <ImageIcon className="h-5 w-5" />
-                </button>
+                <Modal button={
+                    <button className="text-sky-400">
+                        <ImageIcon className="h-5 w-5" />
+                    </button>
+                }>
+                    <ModalUploadImage
+                        setURL={setImage}
+                    />
+                </Modal>
                 <button
                     onClick={(e) => {
                         e.preventDefault();
@@ -166,14 +162,6 @@ const Toolbar = ({ editor }: Props) => {
                     <Redo className="w-5 h-5" />
                 </button>
             </div>
-
-            {/* FileStack */}
-            {isPickerTip && (
-                <UploadImage
-                    setIsPicker={setIsPickerTip}
-                    setURL={setImage}
-                />
-            )}
         </div>
     );
 };

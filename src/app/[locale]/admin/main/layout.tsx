@@ -8,13 +8,19 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
         {
             slug: "/hero",
             title: "Hero",
-            icon: <RssIcon />
         },
         {
             slug: "/about",
             title: "About",
-            icon: <FoldersIcon />
-        }
+        },
+        {
+            slug: "/center_mind",
+            title: "Aql makazi",
+        },
+        {
+            slug: "/ilmiy_etika",
+            title: "Ilmiy Etika",
+        },
     ]
 
     return (

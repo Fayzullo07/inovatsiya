@@ -47,6 +47,18 @@ const AboutUs = () => {
                             dangerouslySetInnerHTML={{ __html: data.data.about.translations[`${locale}`].desc }}
                         />
                     </div>
+                     {/* <!-- SECOND IMAGE --> */}
+                     <div className="w-full h-auto mx-auto flex justify-center border p-2">
+                        <Image
+                            src={data.data.about.secondPhoto}
+                            width={0}
+                            height={0}
+                            className="object-cover"
+                            sizes="100vw"
+                            style={{ width: 'auto', height: 'auto' }} // optional
+                            alt="Image"
+                        />
+                    </div>
                 </div>
             )}
         </div>

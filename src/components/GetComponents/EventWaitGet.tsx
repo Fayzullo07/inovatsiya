@@ -161,7 +161,6 @@ const EventWaitGet = ({ search = "", amount = 0 }) => {
                         <Modal button={<button className="absolute bottom-0 right-0 inline-flex justify-center border border-maincolor hover:border-white hover:text-white rounded-tl-3xl hover:bg-maincolor px-3 py-1 text-base font-medium hover:px-4 hover:py-2 duration-300">{"Ro'yhatdan o'tish"}</button>}>
                             <ScrollArea className="h-[60vh] py-4">
 
-                                <h1>HEllo</h1>
                                 <div>
                                     <div className="mb-5">
                                         <label htmlFor="name" className="mb-3 block text-base font-medium text-[#07074D]">

@@ -24,7 +24,6 @@ export const PATCH = async (req: any, { params }: { params: any }) => {
             $push: { users: newUser },
         });
 
-
         return NextResponse.json({ message: "Updated event wait succesfully" }, { status: 201 })
     } catch (error) {
         return NextResponse.json({ data: null }, { status: 500 })

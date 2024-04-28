@@ -17,6 +17,14 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
             slug: "/service",
             title: "Xizmatlar uchun",
         },
+        {
+            slug: "/center_mind",
+            title: "Aql Marlazi",
+        },
+        {
+            slug: "/ilmiy_etika",
+            title: "Ilmiy Etika",
+        },
     ]
 
     return (

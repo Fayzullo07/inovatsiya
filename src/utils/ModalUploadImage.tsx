@@ -1,15 +1,15 @@
-import { PickerOverlay } from "filestack-react";
+import { PickerInline } from "filestack-react";
 
-const UploadImage = (props: { setIsPicker: any, setURL: Function }) => {
-    const { setIsPicker, setURL } = props;
+const ModalUploadImage = (props: { setURL: Function }) => {
+    const { setURL } = props;
     return (
         <>
-            <PickerOverlay
+            <PickerInline
                 // apikey={process.env.REACT_APP_FILESTACK_API_KEY}
                 apikey="AF7nRI60DRz2W8VeFOsx4z"
                 onSuccess={(res: any) => {
                     setURL(res.filesUploaded[0].url);
-                    setIsPicker(false);
+                    document.getElementById('closeDialog')?.click();
                 }}
 
                 onError={(res) => alert(res)}
@@ -24,4 +24,4 @@ const UploadImage = (props: { setIsPicker: any, setURL: Function }) => {
     );
 };
 
-export default UploadImage;
+export default ModalUploadImage;
