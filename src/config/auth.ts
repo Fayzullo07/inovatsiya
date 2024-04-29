@@ -1,10 +1,12 @@
-import NextAuth, { AuthOptions } from "next-auth";
+import { AuthOptions } from "next-auth";
+import { Account, User as AuthUser } from "next-auth";
 import CredentialsProvider from 'next-auth/providers/credentials';
 import bcrypt from "bcryptjs";
 import connectMongoDB from "@/lib/mongodb";
 import User from "@/models/userModel";
 
 export const authOptions: AuthOptions = {
+    secret: process.env.NEXTAUTH_SECRET,  // Secret used to encrypt the JWT
     providers: [
         CredentialsProvider({
             name: "Credentials",
@@ -29,9 +31,9 @@ export const authOptions: AuthOptions = {
                     }
 
                     const passwordMatch = await bcrypt.compare(password, user.password);
-                    if (!passwordMatch) {
+                    if (passwordMatch) {
                         // If the password doesn't match, return null to indicate failed login
-                        return null;
+                        return user;
                     }
 
                     // If password matches, return the user object which will be serialized in the JWT
@@ -44,6 +46,7 @@ export const authOptions: AuthOptions = {
         })
     ],
     callbacks: {
+       
         async jwt({ token, user }) {
             return { ...token, ...user };
         },
@@ -55,7 +58,6 @@ export const authOptions: AuthOptions = {
     // session: {
     //     strategy: 'jwt'  // Using JSON Web Tokens for session strategy
     // },
-    // secret: process.env.NEXTAUTH_SECRET,  // Secret used to encrypt the JWT
     pages: {
         signIn: "/login"  // Custom sign-in page path
     }

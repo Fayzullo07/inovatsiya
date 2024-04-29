@@ -39,11 +39,12 @@ const InitiatorsApplication = () => {
         {
             mutationFn: async () => {
                 return telegramPostAPI({
-                    chat_id: -1002094967596,
+                    chat_id: -1002020152748,
                     text: "Hamkorlik uchun xabar!\n\nIsm: " + formData.name + "\nTel: " + formData.phone + "\nIzoh: " + formData.desc
                 });
             },
             onSuccess: () => {
+                toast.success(t("message"));
                 setFormData({ ...formData, name: "", phone: "", desc: "" })
             }
         }
@@ -54,7 +55,6 @@ const InitiatorsApplication = () => {
                 return messagePostAPI(formData);
             },
             onSuccess: () => {
-                toast.success(t("message"));
                 document.getElementById('closeDialog')?.click();
                 mutationBot.mutate();
                 // setFormData({ ...formData, name: "", phone: "", desc: "" })

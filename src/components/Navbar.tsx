@@ -50,7 +50,7 @@ const Navbar = () => {
                 </Link>
                 <div className={`hidden w-full lg:flex md:items-center lg:w-auto overflow-auto bg-white z-10`}>
                     <ul
-                        className="text-xl text-gray-500 lg:flex lg:justify-between">
+                        className="text-base uppercase text-gray-500 lg:flex lg:justify-between">
                         {navbar.map((item, i) => (
                             <li key={item.name}>
                                 <a href={`/${locale}${item.slug}`} className="*:hover:w-full p-2 font-normal block hover:text-maincolor duration-300" >

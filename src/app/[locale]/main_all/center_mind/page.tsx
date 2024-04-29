@@ -72,7 +72,7 @@ const CenterOfMind = () => {
         {
             mutationFn: async () => {
                 return telegramPostAPI({
-                    chat_id: -1002094967596,
+                    chat_id: -1002020152748,
                     text: "Aql Markazi uchun xabar!\n\nIsm: " + formDataM.name + "\nTel: " + formDataM.phone + "\nIzoh: " + formDataM.desc
                 });
             },
@@ -106,7 +106,7 @@ const CenterOfMind = () => {
             return
         }
 
-        if (!formDataM.name) {
+        if (!formDataM.phone) {
             toast.warning("Phone")
             return
         }
@@ -123,8 +123,6 @@ const CenterOfMind = () => {
                 <div className=" overflow-hidden ">
                     <div className="p-4 text-gray-600 text-lg">
                         <div className=" flex justify-between items-center">
-
-
                             <h1 className=" font-semibold text-maincolor">{data.data.center_mind.translations[`${locale}`].title}</h1>
                             <Modal button={<button
                                 className="mb-6  rounded bg-maincolor text-white px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal   lg:mb-0">
@@ -155,7 +153,6 @@ const CenterOfMind = () => {
                                                 required
                                             />
                                         </div>
-
                                     </div>
                                     <div className="mb-5">
                                         <label htmlFor="desc" className="mb-3 block text-base font-medium text-[#07074D]">
@@ -175,11 +172,7 @@ const CenterOfMind = () => {
                                         </button>
                                     </div>
                                 </form>
-
-
                             </Modal>
-
-
                         </div>
                         <div
                             className=" whitespace-pre-line tiptap"
@@ -197,7 +190,6 @@ const CenterOfMind = () => {
                                     <div className="flex justify-start items-center gap-4 border-b">
                                         <UserCircle2Icon size={50} strokeWidth={1} />
                                         <div>
-
                                             <h3 className="text-lg font-bold text-maincolor">{item.name}</h3>
                                             <p className="text-gray-700 text-sm mb-2">{moment(item.createdAt).fromNow()}</p>
                                         </div>
@@ -216,7 +208,7 @@ const CenterOfMind = () => {
                                         value={formData.name}
                                         onChange={handleInputChange}
                                         name="name"
-                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        className="bg-white shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         id="name" type="text" placeholder="Enter your name" />
                                 </div>
                                 <div className="mb-4">
@@ -227,7 +219,7 @@ const CenterOfMind = () => {
                                         value={formData.desc}
                                         onChange={handleInputChange}
                                         name="desc"
-                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        className="bg-white shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         id="comment" rows={3} placeholder="Enter your comment"></textarea>
                                 </div>
                                 <button
