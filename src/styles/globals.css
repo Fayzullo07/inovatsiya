@@ -250,16 +250,6 @@
   }
 }
 
-
-/* About US */
-.about-section {
-  background: url(../../public/about.jpg) no-repeat left;
-  background-size: 50%;
-  background-color: #fdfdfd;
-  overflow: hidden;
-  padding: 10px 0;
-}
-
 .about-section1 {
   background: url(https://www.shutterstock.com/image-photo/man-explaining-something-his-young-600nw-261168101.jpg) no-repeat right;
   background-size: 50%;

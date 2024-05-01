@@ -43,8 +43,9 @@ const LoginForm = () => {
                 return;
             }
             setLoading(false);
-            redirect(`/${locale}/admin`);
+            router.push(`/${locale}/admin`);
         } catch (error) {
+            setError("500");
             setLoading(false);
             console.log(error);
 

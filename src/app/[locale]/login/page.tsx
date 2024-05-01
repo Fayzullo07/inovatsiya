@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation';
 
 const Login = async () => {
     const session = await auth();
-    if (session) redirect("/");
+    if (!session) redirect("/uz/admin");
 
     return <LoginForm />
 };

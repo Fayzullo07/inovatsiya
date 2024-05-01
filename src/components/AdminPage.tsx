@@ -4,24 +4,18 @@ import SessionData from "./SessionData";
 
 const AdminPage = () => {
 
-  const { data: session, status } = useSession()
+  // const { data: session, status } = useSession()
 
   return (
 
     <div className="h-screen flex items-center justify-center">
-      <button onClick={() => {
-        window.alert("hee")
-        signOut();
-      }} className=" text-gray-800 bg-indigo-100 hover:bg-indigo-200 inline-flex items-center justify-center px-3 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm">
-        Logout
-      </button>
       <div>
 
-        {status === "loading" ? (
+        {/* {status === "loading" ? (
           <div>Loading...</div>
         ) : (
           <SessionData session={session} />
-        )}
+        )} */}
       </div>
     </div>
   )

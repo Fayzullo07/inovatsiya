@@ -1,11 +1,8 @@
 "use client"
-import { auth } from "@/configs/auth";
 import { AppWindowIcon, BellIcon, CalendarIcon, FoldersIcon, Handshake, HomeIcon, MessageCircleQuestionIcon, RssIcon, UserRoundCogIcon, UsersIcon } from "lucide-react";
 import { signOut } from "next-auth/react";
 import { useLocale } from "next-intl";
 import Link from "next/link";
-import { redirect } from "next/navigation";
-import { toast } from "react-toastify";
 
 export default function Layout({ children }: Readonly<{ children: React.ReactNode }>) {
     const locale = useLocale();
@@ -61,11 +58,6 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
         },
     ]
 
-    function handleClick() {
-        console.log("Clicked me!");
-        alert("Clicked me!");
-    }
-
     return (
         <div>
             <div className='flex bg-gray-100'>
@@ -99,16 +91,6 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
                                 </Link>
                             </li>
                         ))}
-                        <button onClick={() => {
-                            // signOut();
-                            console.log("click");
-
-                        }} className={` text-gray-800 bg-indigo-100 hover:bg-indigo-200 inline-flex items-center justify-center px-3 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm`}>
-                            Logout
-                        </button>
-                        <button onClick={handleClick}>
-                            Click me
-                        </button>
                     </ul>
                 </aside>
 
@@ -123,7 +105,6 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
                         </h1>
                         <button onClick={() => {
                             signOut();
-                            console.log("click");
 
                         }} className={` text-gray-800 bg-indigo-100 hover:bg-indigo-200 inline-flex items-center justify-center px-3 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm`}>
                             Logout
