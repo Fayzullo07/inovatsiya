@@ -76,5 +76,9 @@
     "Partners": {
         "hero_title": "Partners",
         "button": "All our partners"
+    },
+    "Footer": {
+        "hero_title": "The purpose of the association",
+        "hero_desc": "It consists in developing the scientific field by publicizing and promoting the results of scientific research, improving the quality of scientific publications, assisting in the development of editorial and publishing activities in the scientific field, and protecting the rights and interests of its members."
     }
 }

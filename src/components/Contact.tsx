@@ -174,8 +174,7 @@ const Contact = () => {
                                                     {t("contact_address")}
                                                 </p>
                                                 <p className="text-sm text-neutral-500">
-                                                    Tashkent shaxri,
-                                                    Sergili 22 kvartal
+                                                    {"Toshkent shahri, Yakkasaroy tumani, Shota Rustaveli koʻchasi, 45-uy"}
                                                 </p>
                                             </div>
                                         </div>

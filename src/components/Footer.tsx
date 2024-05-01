@@ -9,7 +9,7 @@ import { MailCheck, MailCheckIcon, MailIcon, MapPinIcon, PhoneIcon } from "lucid
 const Footer = () => {
     const pathname = usePathname();
 
-    // const t = useTranslations("Footer");
+    const t = useTranslations("Footer");
     const data_services = [
         "Ekspertiza",
         "Texnik koʻmak",
@@ -36,7 +36,7 @@ const Footer = () => {
                                         <div className=" h-8 w-0.5 bg-green-400">
                                         </div>
                                         <div>
-                                            <span className="text-blue-500 font-semibold text-lg">Assotsiatsiyaning maqsadi</span>
+                                            <span className="text-blue-500 font-semibold text-lg">{t("hero_title")}</span>
                                         </div>
 
                                     </Link>
@@ -45,7 +45,7 @@ const Footer = () => {
                                 <p
                                     className="text-justify mt-6 leading-relaxed text-lg text-gray-400 sm:text-left"
                                 >
-                                    {" Ilmiy tadqiqotlar natijalarini ommalashtirish va targʻib qilish orqali ilmiy sohani rivojlantirish, ilmiy nashrlari sifatini oshirish, ilmiy sohadagi tahririyat va noshirlik faoliyatini rivojlantirishga koʻmaklashish hamda oʻz aʼzolarining huquqlari va manfaatlarini himoya qilishdan iborat."}
+                                    {t("hero_desc")}
                                 </p>
 
 
@@ -188,7 +188,7 @@ const Footer = () => {
                                         />
                                     </li>
 
-                                    <li>
+                                    <Link href={"https://t.me/Ilmbukuch"}>
                                         <Image
                                             src="/socials/telegram.png"
                                             width={30}
@@ -196,7 +196,7 @@ const Footer = () => {
                                             className=" hover:scale-125 duration-300 cursor-pointer"
                                             alt="Image"
                                         />
-                                    </li>
+                                    </Link>
 
                                     <li>
                                         <Image

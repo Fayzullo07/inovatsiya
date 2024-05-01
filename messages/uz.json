@@ -76,5 +76,9 @@
     "Partners": {
         "hero_title": "Hamkorlarimiz",
         "button": "Barcha hamkorlarimiz"
+    },
+    "Footer": {
+        "hero_title": "Assotsiatsiyaning maqsadi",
+        "hero_desc": "Ilmiy tadqiqotlar natijalarini ommalashtirish va targʻib qilish orqali ilmiy sohani rivojlantirish, ilmiy nashrlari sifatini oshirish, ilmiy sohadagi tahririyat va noshirlik faoliyatini rivojlantirishga koʻmaklashish hamda oʻz aʼzolarining huquqlari va manfaatlarini himoya qilishdan iborat."
     }
 }
