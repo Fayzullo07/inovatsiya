@@ -126,7 +126,7 @@ const CenterOfMind = () => {
                             <h1 className=" font-semibold text-maincolor">{data.data.center_mind.translations[`${locale}`].title}</h1>
                             <Modal button={<button
                                 className="mb-6  rounded bg-maincolor text-white px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal   lg:mb-0">
-                                Ariza
+                                {"A'zolik uchun ariza qoldirish"}
                             </button>}>
                                 <form onSubmit={handleSubmit}>
                                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 md:gap-6">

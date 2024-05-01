@@ -1,11 +1,23 @@
+import AdminPage from "@/components/AdminPage";
+import AuthProvider from "@/components/Core/AuthProvider";
+import { auth } from "@/configs/auth";
 
 
-const Admin = () => {
-    
+const Admin = async () => {
+    const session = await auth()
+
+    if (session?.user) {
+        session.user = {
+
+            name: session.user.name,
+            id: session.user.id,
+        }
+    }
+
     return (
-        <div>
-            <h1>Admin</h1>
-        </div>
+        <AuthProvider session={session}>
+            <AdminPage />
+        </AuthProvider>
     )
 }
 

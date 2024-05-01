@@ -9,70 +9,64 @@ import { MailCheck, MailCheckIcon, MailIcon, MapPinIcon, PhoneIcon } from "lucid
 const Footer = () => {
     const pathname = usePathname();
 
-    const t = useTranslations("Footer");
+    // const t = useTranslations("Footer");
+    const data_services = [
+        "Ekspertiza",
+        "Texnik koʻmak",
+        "Reyting",
+        "Slib.uz",
+        "E-taqriz",
+        "ROI",
+        "Anjumanlar.uz",
+        "Veb sayt yaratish",
+        "Tarjima",
+        "Inson resurslari",
+        "ScienceGate"
+    ]
     return (
         <div className={`${pathname.split("/")[2] == "admin" ? "hidden" : ""} bg-gray-900`}>
             <Container>
                 {/* <!-- Footer --> */}
                 <footer className="">
-                    <div className="max-w-screen-xl px-4 pt-10 pb-6 mx-auto sm:px-6 lg:px-8 lg:pt-20">
+                    <div className="max-w-screen-xl px-4 pt-10 pb-6 mx-auto sm:px-6 lg:px-8">
                         <div className="grid grid-cols-1 gap-8 lg:grid-cols-5">
                             <div className="lg:col-span-2">
                                 <div>
                                     <Link href={"/"} className="flex  items-center gap-2 ">
-                                        <div className=" h-12 w-1 bg-green-200 rounded-full">
-                                            <div className="h-8 w-1 bg-blue rounded-full"></div>
+                                        <div className=" h-8 w-0.5 bg-green-400">
                                         </div>
                                         <div>
-                                            <span className="text-green-500">New</span>
-                                            <br />
-                                            <span className="text-blue-500 font-bold">Innovatsiya</span>
+                                            <span className="text-blue-500 font-semibold text-lg">Assotsiatsiyaning maqsadi</span>
                                         </div>
 
                                     </Link>
                                 </div>
 
                                 <p
-                                    className="max-w-md mx-auto mt-6 leading-relaxed text-center text-lg text-gray-400 sm:max-w-xs sm:mx-0 sm:text-left"
+                                    className="text-justify mt-6 leading-relaxed text-lg text-gray-400 sm:text-left"
                                 >
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt
-                                    consequuntur amet culpa cum itaque neque.
+                                    {" Ilmiy tadqiqotlar natijalarini ommalashtirish va targʻib qilish orqali ilmiy sohani rivojlantirish, ilmiy nashrlari sifatini oshirish, ilmiy sohadagi tahririyat va noshirlik faoliyatini rivojlantirishga koʻmaklashish hamda oʻz aʼzolarining huquqlari va manfaatlarini himoya qilishdan iborat."}
                                 </p>
 
 
                             </div>
 
-                            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-3 md:grid-cols-2">
+                            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-3 text-center md:grid-cols-2">
 
 
                                 <div className="text-left">
                                     <p className="text-lg font-medium text-white">Our Services</p>
 
-                                    <div className="mt-8">
-                                        <ul className="space-y-4 text-sm">
-                                            <li>
-                                                <a className="text-white transition hover:text-white/75" href="/">
-                                                    Web Development
-                                                </a>
-                                            </li>
+                                    <div className="mt-2">
+                                        <ul className=" text-sm">
+                                            {data_services.map((item, i) => (
 
-                                            <li>
-                                                <a className="text-white transition hover:text-white/75" href="/">
-                                                    Web Design
-                                                </a>
-                                            </li>
-
-                                            <li>
-                                                <a className="text-white transition hover:text-white/75" href="/">
-                                                    Marketing
-                                                </a>
-                                            </li>
-
-                                            <li>
-                                                <a className="text-white transition hover:text-white/75" href="/">
-                                                    Google Ads
-                                                </a>
-                                            </li>
+                                                <li key={i}>
+                                                    <div className="mb-1 text-white transition hover:text-white/75">
+                                                        {item}
+                                                    </div>
+                                                </li>
+                                            ))}
                                         </ul>
                                     </div>
                                 </div>
@@ -80,7 +74,7 @@ const Footer = () => {
                                 <div className="text-left">
                                     <p className="text-lg font-medium text-white">Contact Us</p>
 
-                                    <ul className="mt-8 space-y-4 text-sm">
+                                    <ul className="mt-4 space-y-4 text-sm">
                                         <li>
                                             <Link
                                                 className="flex items-center justify-start gap-2"
@@ -89,7 +83,7 @@ const Footer = () => {
                                                 <MailIcon color="white" />
 
                                                 <span className="text-white transition group-hover:text-white/75">
-                                                    test@gamil.com
+                                                    daminov.asror86@gmail.com
                                                 </span>
                                             </Link>
                                         </li>
@@ -102,7 +96,7 @@ const Footer = () => {
                                                 <PhoneIcon color="white" />
 
                                                 <span className="text-white transition group-hover:text-white/75">
-                                                    +998 93 917 99 33
+                                                    +998 77 280 70 60
                                                 </span>
                                             </Link>
                                         </li>
@@ -113,7 +107,7 @@ const Footer = () => {
                                             <MapPinIcon color="white" />
 
                                             <address className="-mt-0.5 not-italic text-white">
-                                                Uzbekistan, Tashkent, Sergili 17 kvartal
+                                                {"Toshkent shahri, Yakkasaroy tumani, Shota Rustaveli koʻchasi, 45-uy"}
                                             </address>
                                         </li>
                                     </ul>
@@ -138,7 +132,7 @@ const Footer = () => {
                                             />
                                         </li>
 
-                                        <li>
+                                        <Link href={"https://t.me/Ilmbukuch"}>
                                             <Image
                                                 src="/socials/telegram.png"
                                                 width={30}
@@ -146,7 +140,7 @@ const Footer = () => {
                                                 className=" hover:scale-125 duration-300 cursor-pointer"
                                                 alt="Image"
                                             />
-                                        </li>
+                                        </Link>
 
                                         <li>
                                             <Image

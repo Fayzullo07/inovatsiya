@@ -1,9 +1,17 @@
-import { AppWindowIcon, ArchiveIcon, BellIcon, BriefcaseIcon, CalendarIcon, FileTextIcon, FoldersIcon, Handshake, HomeIcon, MessageCircleIcon, MessageCircleQuestionIcon, RssIcon, UserIcon, UserRoundCogIcon, UsersIcon } from "lucide-react";
+"use client"
+import { auth } from "@/configs/auth";
+import { AppWindowIcon, BellIcon, CalendarIcon, FoldersIcon, Handshake, HomeIcon, MessageCircleQuestionIcon, RssIcon, UserRoundCogIcon, UsersIcon } from "lucide-react";
+import { signOut } from "next-auth/react";
 import { useLocale } from "next-intl";
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { toast } from "react-toastify";
 
 export default function Layout({ children }: Readonly<{ children: React.ReactNode }>) {
     const locale = useLocale();
+    // const session = await auth();
+    // if (!session) redirect(`/uz/login`);
+
     const data_links = [
         {
             slug: "/main/hero",
@@ -53,6 +61,11 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
         },
     ]
 
+    function handleClick() {
+        console.log("Clicked me!");
+        alert("Clicked me!");
+    }
+
     return (
         <div>
             <div className='flex bg-gray-100'>
@@ -86,11 +99,21 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
                                 </Link>
                             </li>
                         ))}
+                        <button onClick={() => {
+                            // signOut();
+                            console.log("click");
+
+                        }} className={` text-gray-800 bg-indigo-100 hover:bg-indigo-200 inline-flex items-center justify-center px-3 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm`}>
+                            Logout
+                        </button>
+                        <button onClick={handleClick}>
+                            Click me
+                        </button>
                     </ul>
                 </aside>
 
                 <div className='w-full'>
-                    <header className='px-6 lg:px-8 py-4 shadow bg-white sticky top-0 z-10'>
+                    <header className=' flex items-center justify-between px-6 lg:px-8 py-4 shadow bg-white sticky top-0 z-10'>
 
                         <h1 className='text-xl font-semibold flex items-center'>
                             <button className='btn-open-menu inline-block lg:hidden mr-6'>
@@ -98,6 +121,13 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
                             </button>
                             <span>My Admin</span>
                         </h1>
+                        <button onClick={() => {
+                            signOut();
+                            console.log("click");
+
+                        }} className={` text-gray-800 bg-indigo-100 hover:bg-indigo-200 inline-flex items-center justify-center px-3 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm`}>
+                            Logout
+                        </button>
 
                     </header>
                     <main className='px-6 py-8 lg:px-8 bg-gray-100 flex flex-col gap-6 '>

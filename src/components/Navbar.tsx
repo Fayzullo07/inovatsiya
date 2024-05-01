@@ -53,7 +53,7 @@ const Navbar = () => {
                         className="text-base uppercase text-gray-500 lg:flex lg:justify-between">
                         {navbar.map((item, i) => (
                             <li key={item.name}>
-                                <a href={`/${locale}${item.slug}`} className="*:hover:w-full p-2 font-normal block hover:text-maincolor duration-300" >
+                                <a href={`/${locale}/main_all${item.slug}`} className="*:hover:w-full p-2 font-normal block hover:text-maincolor duration-300" >
                                     {t(`${i}`)}
                                     <div className="w-0 duration-1000 h-0.5 bg-maincolor"></div>
                                 </a>

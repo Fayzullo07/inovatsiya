@@ -14,7 +14,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 
-import AuthProvider from "@/components/Core/AuthProvider";
 import Provider from "@/utils/Provider";
 
 export const metadata: Metadata = {
@@ -35,32 +34,30 @@ export default function LocaleLayout({ children, params: { locale }, }: Readonly
   return (
     <html lang={locale}>
       <body className={inter.className}>
-        <AuthProvider>
-          <NextIntlClientProvider locale={locale} messages={messages}>
-            <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-              <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="light" />
-              <TopLoader />
-              <div className="min-h-screen">
-                <Provider>
-                  <Navbar />
-                  {children}
-                </Provider>
-              </div>
-              <TailwindIndicator />
-              <Footer />
-            </ThemeProvider>
-          </NextIntlClientProvider>
-        </AuthProvider>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light" />
+            <TopLoader />
+            <div className="min-h-screen">
+              <Provider>
+                <Navbar />
+                {children}
+              </Provider>
+            </div>
+            <TailwindIndicator />
+            <Footer />
+          </ThemeProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
