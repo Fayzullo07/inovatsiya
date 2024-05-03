@@ -4,13 +4,17 @@ import Credentials from "next-auth/providers/credentials"
 
 export const config = {
     pages: {
-        signIn: `/uz/login`,
+        signIn: '/uz/login',
+        signOut: '/auth/signout',
+        error: '/auth/error', // Error code passed in query string as ?error=
+        verifyRequest: '/auth/verify-request', // (used for check email message)
+        newUser: '/auth/new-user' // New users will be directed here on first sign in (leave the property out if not of interest)
     },
     providers: [
         Credentials({
             name: "credentials",
             credentials: {
-                name: { label: "username", type: "text" },
+                login: { label: "username", type: "text" },
                 password: { label: "password", type: "password" },
             },
             authorize(c: any) {
@@ -23,9 +27,10 @@ export const config = {
     callbacks: {
         authorized({ request, auth }) {
             const { pathname } = request.nextUrl
-            console.log(pathname);
+            console.log("pathname", pathname);
 
-            if (pathname === "/uz/admin1") return !!auth
+
+            if (pathname === "/uz/admin" || pathname === "/ru/admin" || pathname === "/en/admin") return !!auth
             return true
         },
         jwt({ token, trigger, session }) {

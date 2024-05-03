@@ -1,6 +1,3 @@
-import Shuhrat from "../public/shuhrat.jpg"
-import Dusmurod from "../public/dusmurod.jpg"
-import User from "../public/user.png"
 import { CalendarCheckIcon, HandshakeIcon, NewspaperIcon, RssIcon } from "lucide-react";
 
 export const navbar = [

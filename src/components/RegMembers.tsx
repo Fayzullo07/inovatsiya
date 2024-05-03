@@ -1,3 +1,4 @@
+"use client"
 import { useState } from "react";
 import Container from "./Core/Container"
 import Modal from "./Core/Modal";

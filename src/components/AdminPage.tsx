@@ -4,18 +4,18 @@ import SessionData from "./SessionData";
 
 const AdminPage = () => {
 
-  // const { data: session, status } = useSession()
+  const { data: session, status } = useSession()
 
   return (
 
     <div className="h-screen flex items-center justify-center">
       <div>
 
-        {/* {status === "loading" ? (
+        {status === "loading" ? (
           <div>Loading...</div>
         ) : (
           <SessionData session={session} />
-        )} */}
+        )}
       </div>
     </div>
   )

@@ -1,4 +1,5 @@
 import createMiddleware from 'next-intl/middleware';
+
 import { locales, localePrefix, pathnames } from './navigation';
 
 import { NextRequest, NextResponse } from "next/server"

@@ -9,7 +9,7 @@ const LoginForm = () => {
     const router = useRouter();
     const locale = useLocale();
     const [formData, setFormData] = useState({
-        name: "",
+        login: "",
         password: ""
     });
     const [error, setError] = useState("");
@@ -24,14 +24,14 @@ const LoginForm = () => {
     const handleSubmit = async (e: any) => {
         e.preventDefault();
         setLoading(true);
-        if (!formData.name || !formData.password) {
+        if (!formData.login || !formData.password) {
             setError("All fields are necessary!");
             setLoading(false);
             return
         }
         try {
             const res = await signIn("credentials", {
-                name: formData.name,
+                name: formData.login,
                 password: formData.password,
                 redirect: false
             });
@@ -61,9 +61,9 @@ const LoginForm = () => {
                         <div className="py-6 px-8">
                             <label className="block font-semibold">Username</label>
                             <input
-                                name="name"
+                                name="login"
                                 type="text"
-                                value={formData.name}
+                                value={formData.login}
                                 onChange={handleInputChange}
                                 placeholder="Username"
                                 className=" border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-green-600 rounded-md"
