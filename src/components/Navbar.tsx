@@ -39,11 +39,11 @@ const Navbar = () => {
     return (
         <header className={`${pathname.split("/")[2] == "admin" ? "hidden" : ""}`}>
             <nav className={`${stickyNav ? "active" : ""} flex flex-wrap items-center justify-between w-full px-4 text-lg text-gray-700 bg-white z-[100]`}>
-
+            
                 <Link href={"/"}>
                     <Image
-                        src="/logo.png"
-                        width={100}
+                        src="/logo_png.png"
+                        width={250}
                         height={0}
                         alt="Logo"
                     />

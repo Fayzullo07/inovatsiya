@@ -1,55 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { ChevronRightIcon } from "lucide-react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image"
 import Link from "next/link";
+import { data_links } from "../../../../data/data";
 
 const Layout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
     const locale = useLocale();
+    const t = useTranslations("MainAll");
 
-    const data_links = [
-        {
-            slug: "/news",
-            title: "Yangiliklar"
-        },
-        {
-            slug: "/projects",
-            title: "Loyihalarimiz"
-        },
-        {
-            slug: "/members",
-            title: "A'zolar"
-        },
-        {
-            slug: "/events",
-            title: "Tadbirlar"
-        },
-
-        {
-            slug: "/partners",
-            title: "Hamkorlar"
-        },
-        {
-            slug: "/initiators",
-            title: "Tashabbuskorlar"
-        },
-        {
-            slug: "/services",
-            title: "Xizmatlar"
-        },
-        {
-            slug: "/center_mind",
-            title: "Aql Markazi"
-        },
-        {
-            slug: "/ilmiy_etika",
-            title: "Ilmiy etika"
-        },
-        {
-            slug: "/about",
-            title: "Biz haqimizda"
-        },
-    ]
     return (
         <div className=" bg-slate-50">
             <div className="md:h-32 border overflow-hidden relative">
@@ -83,7 +42,7 @@ const Layout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
                             {data_links.map((item, i) => (
                                 <Link key={i} href={`/${locale}/main_all${item.slug}`}>
                                     <div className="p-1.5 border border-white hover:bg-slate-200 duration-300 hover:border-gray-200">
-                                        <h1 className=" text-xl tracking-wide">{item.title}</h1>
+                                        <h1 className=" text-xl tracking-wide">{t(`${i}`)}</h1>
                                     </div>
                                 </Link>
                             ))}

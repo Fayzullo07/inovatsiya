@@ -17,3 +17,47 @@ export const stats = [
     { consulting: 25 },
     { clients: 187 }
 ];
+
+export const data_links = [
+    {
+        slug: "/news",
+        title: "Yangiliklar"
+    },
+    {
+        slug: "/projects",
+        title: "Loyihalarimiz"
+    },
+    {
+        slug: "/members",
+        title: "A'zolar"
+    },
+    {
+        slug: "/events",
+        title: "Tadbirlar"
+    },
+
+    {
+        slug: "/partners",
+        title: "Hamkorlar"
+    },
+    {
+        slug: "/initiators",
+        title: "Tashabbuskorlar"
+    },
+    {
+        slug: "/services",
+        title: "Xizmatlar"
+    },
+    {
+        slug: "/center_mind",
+        title: "Aql Markazi"
+    },
+    {
+        slug: "/ilmiy_etika",
+        title: "Ilmiy etika"
+    },
+    {
+        slug: "/about",
+        title: "Biz haqimizda"
+    },
+]

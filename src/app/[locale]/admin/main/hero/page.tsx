@@ -36,15 +36,15 @@ const Hero = () => {
             return;
         }
 
-        if (name === "uzDesc" && value.length > 250) {
+        if (name === "uzDesc" && value.length > 500) {
             return;
         }
 
-        if (name === "ruDesc" && value.length > 250) {
+        if (name === "ruDesc" && value.length > 500) {
             return;
         }
 
-        if (name === "enDesc" && value.length > 250) {
+        if (name === "enDesc" && value.length > 500) {
             return;
         }
 
