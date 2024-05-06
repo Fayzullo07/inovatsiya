@@ -5,15 +5,12 @@ import { ArrowRightIcon } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 
 import { useQuery } from "@tanstack/react-query";
-import { heroGetAPI, heroGetOneAPI } from "@/api/AdminRequest";
+import { heroGetAPI } from "@/api/AdminRequest";
 import Loading from "./Core/Loading";
 
 const Hero = () => {
     const t = useTranslations("Hero");
     const locale = useLocale();
-
-    const id = "660cd8c79982414aa6f44d17"
-
 
     const { data, isError, isLoading } = useQuery({
         queryKey: ["heroid"],
@@ -36,8 +33,8 @@ const Hero = () => {
                                 <span className="text-maincolor">{data?.data.hero[0].translations[`${locale}`].title.split(" ").slice(0, 2).join(" ")} </span>
                                 <span >{data?.data.hero[0].translations[`${locale}`].title.split(" ").slice(2).join(" ")}</span>
                             </h1>
-                            <p className="w-[90vw] min-h-20 text-sm md:text-xl text-gray-400 sm:max-w-md md:max-w-xl text-justify">
-                                {data?.data.hero[0].translations[`${locale}`].desc.substring(0, 250)}
+                            <p className="w-[90vw] min-h-20 text-sm md:text-lg text-gray-400 sm:max-w-md md:max-w-xl text-justify">
+                                {data?.data.hero[0].translations[`${locale}`].desc.substring(0, 500)}
                             </p>
                             <div className="flex items-center flex-wrap gap-2 md-gap-4 ">
                                 <a href="#contact" className="flex w-full sm:w-auto items-center px-5 py-1 text-lg text-white bg-maincolor rounded-md hover:scale-105 duration-300">
