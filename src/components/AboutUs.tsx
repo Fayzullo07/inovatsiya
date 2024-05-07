@@ -27,9 +27,9 @@ const AboutUs = () => {
     if (isLoading) return <Loading />;
     if (isError) return <div>Xatolik yuz berdi...</div>;
     return (
-        <div id="about" className={`${data.data.about.length >= 1 ? "bg-slate-100 py-10" : ""}`}>
+        <div id="about" className={`${data?.data?.about.length >= 1 ? "bg-slate-100 py-10" : ""}`}>
             <Container>
-                {data.data.about.length >= 1 ? (
+                {data?.data?.about.length >= 1 ? (
 
                     <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
                         <div className="mt-12 md:mt-0 overflow-hidden">

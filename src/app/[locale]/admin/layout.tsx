@@ -1,4 +1,5 @@
 "use client"
+import { UserButton } from "@clerk/nextjs";
 import { AppWindowIcon, BellIcon, CalendarIcon, FoldersIcon, Handshake, HomeIcon, MessageCircleQuestionIcon, RssIcon, UserRoundCogIcon, UsersIcon } from "lucide-react";
 import { signOut } from "next-auth/react";
 import { useLocale } from "next-intl";
@@ -103,12 +104,7 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
                             </button>
                             <span>My Admin</span>
                         </h1>
-                        <button onClick={() => {
-                            signOut();
-
-                        }} className={` text-gray-800 bg-indigo-100 hover:bg-indigo-200 inline-flex items-center justify-center px-3 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm`}>
-                            Logout
-                        </button>
+                        <UserButton afterSignOutUrl="/uz/sign-in" />
 
                     </header>
                     <main className='px-6 py-8 lg:px-8 bg-gray-100 flex flex-col gap-6 '>

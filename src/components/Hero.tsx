@@ -24,9 +24,9 @@ const Hero = () => {
     if (isError) return <div>Xatolik yuz berdi...</div>;
 
     return (
-        <div className={`${data.data.hero.length >= 1 ? "py-10 sm:py-5" : ""}`}>
+        <div className={`${data?.data?.hero.length >= 1 ? "py-10 sm:py-5" : ""}`}>
             <Container>
-                {data.data.hero.length >= 1 ? (
+                {data?.data?.hero.length >= 1 ? (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                         <div className="grid items-center justify-between gap-4" data-aos="fade-up" data-aos-delay="300">
                             <h1 className="text-3xl font-bold text-gray-900 sm:text-5xl w-[90vw] sm:max-w-md md:max-w-xl  md:text-3xl lg:text-4xl xl:text-5xl">
