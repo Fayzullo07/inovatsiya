@@ -5,7 +5,6 @@ import { locales, localePrefix, pathnames } from './navigation';
 import { NextRequest, NextResponse } from "next/server"
 
 const protectedRoutes = ["admin"];
-const isAuth = false;
 import { clerkMiddleware } from "@clerk/nextjs/server";
 export default clerkMiddleware((auth, req) => {
   const [, locale, ...segments] = req.nextUrl.pathname.split('/');
