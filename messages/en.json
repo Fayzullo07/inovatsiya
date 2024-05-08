@@ -94,5 +94,10 @@
         "Think tank",
         "Scientific Ethics",
         "About Us"
-    ]
+    ],
+    "CenterMind": {
+        "button": "APPLY FOR MEMBERSHIP",
+        "comments": "Comments",
+        "add_comment": "Add a comment"
+    }
 }

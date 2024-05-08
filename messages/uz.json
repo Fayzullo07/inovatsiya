@@ -94,5 +94,10 @@
         "Aql Markazi",
         "Ilmiy etika",
         "Biz haqimizda"
-    ]
+    ],
+    "CenterMind": {
+        "button": "A'ZOLIK UCHUN ARIZA QOLDIRISH",
+        "comments": "Izohlar",
+        "add_comment": "Fikr qo'shing"
+    }
 }

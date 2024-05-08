@@ -14,6 +14,7 @@ import Modal from "@/components/Core/Modal";
 const CenterOfMind = () => {
     const locale = useLocale();
     const t = useTranslations("Contact");
+    const m = useTranslations("CenterMind");
     const [formData, setFormData] = useState({
         name: "",
         desc: "",
@@ -62,7 +63,7 @@ const CenterOfMind = () => {
                 return centerMindPatchAPI(formData, id);
             },
             onSuccess: () => {
-                toast.success("Yuborildi");
+                // toast.success("Yuborildi");
                 setFormData({ ...formData, name: "", desc: "" })
             }
         }
@@ -126,7 +127,7 @@ const CenterOfMind = () => {
                             <h1 className=" font-semibold text-maincolor">{data.data.center_mind[0]?.translations[`${locale}`].title}</h1>
                             <Modal button={<button
                                 className="mb-6  rounded bg-maincolor text-white px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal   lg:mb-0">
-                                {"A'zolik uchun ariza qoldirish"}
+                                {m("button")}
                             </button>}>
                                 <form onSubmit={handleSubmit}>
                                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 md:gap-6">
@@ -182,7 +183,7 @@ const CenterOfMind = () => {
 
                     </div>
                     <div className="bg-gray-100 p-4">
-                        <h2 className="text-lg font-bold mb-4">Comments</h2>
+                        <h2 className="text-lg font-bold mb-4">{m("comments")}</h2>
                         <div className="flex flex-col space-y-4">
                             {data.data.center_mind[0]?.comments.map((item: any, i: number) => (
 
@@ -199,35 +200,35 @@ const CenterOfMind = () => {
                                 </div>
                             ))}
                             <div className="bg-white p-4 rounded-lg shadow-md">
-                                <h3 className="text-lg font-bold mb-2">Add a comment</h3>
+                                <h3 className="text-lg font-bold mb-2">{m("add_comment")}</h3>
                                 <div className="mb-4">
                                     <label className="block text-gray-700 font-bold mb-2" htmlFor="name">
-                                        Name
+                                        {t("name")}
                                     </label>
                                     <input
                                         value={formData.name}
                                         onChange={handleInputChange}
                                         name="name"
                                         className="bg-white shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                        id="name" type="text" placeholder="Enter your name" />
+                                        id="name" type="text" placeholder={t("name")} />
                                 </div>
                                 <div className="mb-4">
                                     <label className="block text-gray-700 font-bold mb-2" htmlFor="comment">
-                                        Comment
+                                        {t("desc")}
                                     </label>
                                     <textarea
                                         value={formData.desc}
                                         onChange={handleInputChange}
                                         name="desc"
                                         className="bg-white shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                        id="comment" rows={3} placeholder="Enter your comment"></textarea>
+                                        id="comment" rows={3} placeholder={t("desc")}></textarea>
                                 </div>
                                 <button
                                     disabled={mutation.isPending}
                                     onClick={() => mutation.mutate(data.data.center_mind[0]?._id)}
                                     className="bg-cyan-500 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                                 >
-                                    {mutation.isPending ? "Loading..." : "Send"}
+                                    {mutation.isPending ? "Loading..." : t("button")}
                                 </button>
                             </div>
                         </div>

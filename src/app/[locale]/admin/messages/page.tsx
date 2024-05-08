@@ -54,10 +54,10 @@ const Messages = () => {
                             Phone
                         </th>
                         <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Desc
+                            Yuridik / Jismoniy
                         </th>
                         <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Yuridik / Jismoniy
+                            Desc
                         </th>
 
                         <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -81,10 +81,10 @@ const Messages = () => {
                                 <div className="text-sm text-gray-900">{item.phone}</div>
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap">
-                                <div className="text-sm text-gray-900">{item.desc.substring(0, 20)}...</div>
+                                <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${item.isLegal ? "bg-blue-300 text-blue-800" : "bg-green-300 text-green-800"}  `}>{item.isLegal ? "Yuridik" : "Jismoniy"}</span>
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap">
-                                <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">{item.isLegal ? "Yuridik" : "Jismoniy"}</span>
+                                <div className="text-sm text-gray-900">{item.desc.substring(0, 20)}...</div>
                             </td>
 
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
