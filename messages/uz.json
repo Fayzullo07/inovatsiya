@@ -99,5 +99,18 @@
         "button": "A'ZOLIK UCHUN ARIZA QOLDIRISH",
         "comments": "Izohlar",
         "add_comment": "Fikr qo'shing"
-    }
+    },
+    "data_services": [
+        "Ekspertiza",
+        "Техническая поддержка",
+        "Reyting",
+        "Slib.uz",
+        "E-taqriz",
+        "ROI",
+        "Anjumanlar.uz",
+        "Veb sayt yaratish",
+        "Tarjima",
+        "Inson resurslari",
+        "ScienceGate"
+    ]
 }

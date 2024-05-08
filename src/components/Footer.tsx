@@ -10,6 +10,7 @@ const Footer = () => {
     const pathname = usePathname();
 
     const t = useTranslations("Footer");
+    const d = useTranslations("data_services");
     const data_services = [
         "Ekspertiza",
         "Texnik koʻmak",
@@ -63,7 +64,7 @@ const Footer = () => {
 
                                                 <li key={i}>
                                                     <div className="mb-1 text-white transition hover:text-white/75">
-                                                        {item}
+                                                        {d(`${i}`)}
                                                     </div>
                                                 </li>
                                             ))}

@@ -99,5 +99,18 @@
         "button": "ЗАЯВКА НА ЧЛЕНСТВО",
         "comments": "Комментарии",
         "add_comment": "Добавить комментарий"
-    }
+    },
+    "data_services": [
+        "Ekspertiza",
+        "Техническая поддержка",
+        "Reyting",
+        "Slib.uz",
+        "E-taqriz",
+        "ROI",
+        "Anjumanlar.uz",
+        "Создать веб-сайт",
+        "Tarjima",
+        "Inson resurslari",
+        "ScienceGate"
+    ]
 }

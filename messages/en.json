@@ -99,5 +99,18 @@
         "button": "APPLY FOR MEMBERSHIP",
         "comments": "Comments",
         "add_comment": "Add a comment"
-    }
+    },
+    "data_services": [
+        "Ekspertiza",
+        "Technical support",
+        "Reyting",
+        "Slib.uz",
+        "E-taqriz",
+        "ROI",
+        "Anjumanlar.uz",
+        "Create a website",
+        "Translation",
+        "Inson resurslari",
+        "ScienceGate"
+    ]
 }
