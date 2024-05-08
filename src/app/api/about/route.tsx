@@ -35,7 +35,7 @@ export const GET = async (req: NextRequest) => {
         const about = await About.find({});
         return NextResponse.json({ about }, { status: 200 })
     } catch (error) {
-        return NextResponse.json({ news: null }, { status: 500 })
+        return NextResponse.json({ about: [] }, { status: 500 })
     }
 }
 

@@ -34,9 +34,9 @@ export const POST = async (req: any) => {
 export const GET = async () => {
     await connectMongoDB();
     try {
-        const ilmiy_etika = await IlmiyEtika.findOne({ getId: 'fayzullo' });
+        const ilmiy_etika = await IlmiyEtika.find({});
         return NextResponse.json({ ilmiy_etika }, { status: 200 });
     } catch (error) {
-        return NextResponse.json({ ilmiy_etika: null }, { status: 500 });
+        return NextResponse.json({ ilmiy_etika: [] }, { status: 500 });
     }
 };

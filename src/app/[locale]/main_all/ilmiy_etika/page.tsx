@@ -119,13 +119,13 @@ const IlmiyEtika = () => {
     };
     return (
         <div className="bg-white border-slate-200 shadow shadow-slate-950/5 rounded overflow-hidden" >
-            {data?.data.ilmiy_etika && (
+            {data?.data.ilmiy_etika.length >= 1 ? (
                 <div className=" overflow-hidden ">
                     <div className="p-4 text-gray-600 text-lg">
                         <div className=" flex justify-between items-center">
 
 
-                            <h1 className=" font-semibold text-maincolor">{data.data.ilmiy_etika.translations[`${locale}`].title}</h1>
+                            <h1 className=" font-semibold text-maincolor">{data.data.ilmiy_etika[0]?.translations[`${locale}`].title}</h1>
                             <Modal button={<button
                                 className="mb-6  rounded bg-maincolor text-white px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal   lg:mb-0">
                                 {"A'zolik uchun ariza qoldirish"}
@@ -184,14 +184,14 @@ const IlmiyEtika = () => {
                         <div
                             className=" whitespace-pre-line tiptap"
                             style={{ whiteSpace: "pre-line" }}
-                            dangerouslySetInnerHTML={{ __html: data.data.ilmiy_etika.translations[`${locale}`].desc }}
+                            dangerouslySetInnerHTML={{ __html: data.data.ilmiy_etika[0]?.translations[`${locale}`].desc }}
                         />
 
                     </div>
                     <div className="bg-gray-100 p-4">
                         <h2 className="text-lg font-bold mb-4">Comments</h2>
                         <div className="flex flex-col space-y-4">
-                            {data.data.ilmiy_etika.comments.map((item: any, i: number) => (
+                            {data.data.ilmiy_etika[0]?.comments.map((item: any, i: number) => (
 
                                 <div key={i} className="bg-white p-4 rounded-lg shadow-md">
                                     <div className="flex justify-start items-center gap-4 border-b">
@@ -232,7 +232,7 @@ const IlmiyEtika = () => {
                                 </div>
                                 <button
                                     disabled={mutation.isPending}
-                                    onClick={() => mutation.mutate(data.data.ilmiy_etika._id)}
+                                    onClick={() => mutation.mutate(data.data.ilmiy_etika[0]?._id)}
                                     className="bg-cyan-500 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                                 >
                                     {mutation.isPending ? "Loading..." : "Send"}
@@ -241,7 +241,7 @@ const IlmiyEtika = () => {
                         </div>
                     </div>
                 </div>
-            )}
+            ): null}
         </div>
 
     )

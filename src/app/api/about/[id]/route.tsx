@@ -18,7 +18,6 @@ export const PUT = async (req: any, { params }: { params: any }) => {
     const { id } = params;
     const { photo, secondPhoto, uzDesc, ruDesc, enDesc } = await req.json();
     await connectMongoDB()
-    console.log(secondPhoto);
 
     try {
         await About.findByIdAndUpdate(id, {

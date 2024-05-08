@@ -13,7 +13,6 @@ import { toast } from "react-toastify";
 
 const About = () => {
     const locale = useLocale();
-    const id = "660ce53d9982414aa6f44ded"
     const [isPicker, setIsPicker] = useState(false);
     const [isPickerSecond, setIsPickerSecond] = useState(false);
     const [formData, setFormData] = useState({

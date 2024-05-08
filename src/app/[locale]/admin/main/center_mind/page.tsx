@@ -3,10 +3,13 @@ import { centerMindGetOneAPI, centerMindPutAPI } from "@/api/AdminRequest";
 import Loading from "@/components/Core/Loading";
 import TipTap from "@/components/Core/TipTap";
 import { useMutation, useQuery } from "@tanstack/react-query";
+import { useLocale } from "next-intl";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 const CenterMind = () => {
+    const locale = useLocale();
     const [formData, setFormData] = useState({
         uzTitle: "",
         ruTitle: "",
@@ -54,12 +57,12 @@ const CenterMind = () => {
     useEffect(() => {
         if (data) {
             setFormData({
-                uzTitle: data.data.center_mind.translations.uz.title,
-                ruTitle: data.data.center_mind.translations.ru.title,
-                enTitle: data.data.center_mind.translations.en.title,
-                uzDesc: data.data.center_mind.translations.uz.desc,
-                ruDesc: data.data.center_mind.translations.ru.desc,
-                enDesc: data.data.center_mind.translations.en.desc,
+                uzTitle: data.data.center_mind[0]?.translations.uz.title,
+                ruTitle: data.data.center_mind[0]?.translations.ru.title,
+                enTitle: data.data.center_mind[0]?.translations.en.title,
+                uzDesc: data.data.center_mind[0]?.translations.uz.desc,
+                ruDesc: data.data.center_mind[0]?.translations.ru.desc,
+                enDesc: data.data.center_mind[0]?.translations.en.desc,
             });
         }
     }, [data]);
@@ -79,75 +82,83 @@ const CenterMind = () => {
     };
     return (
         <div className="grid grid-cols-1 gap-4 md:gap-6">
-            <div className="mb-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-                <div>
-                    <label htmlFor="uztitle" className="block mb-2 text-sm font-medium text-gray-900">Title UZ</label>
-                    <input
-                        type="text"
-                        name="uzTitle"
-                        id="uztitle"
-                        value={formData.uzTitle}
-                        onChange={handleInputChange}
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                        placeholder="Enter title . . ."
-                    />
-                </div>
-                <div>
-                    <label htmlFor="rutitle" className="block mb-2 text-sm font-medium text-gray-900">Title RU</label>
-                    <input
-                        type="text"
-                        name="ruTitle"
-                        id="rutitle"
-                        value={formData.ruTitle}
-                        onChange={handleInputChange}
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                        placeholder="Enter title . . ."
-                    />
-                </div>
-                <div>
-                    <label htmlFor="entitle" className="block mb-2 text-sm font-medium text-gray-900">Title EN</label>
-                    <input
-                        type="text"
-                        name="enTitle"
-                        id="entitle"
-                        value={formData.enTitle}
-                        onChange={handleInputChange}
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                        placeholder="Enter title . . ."
-                    />
-                </div>
-            </div>
-            <div className="mb-5">
-                <label htmlFor="title" className="block mb-2 text-sm font-medium text-gray-900">Content UZ</label>
-                <TipTap
-                    content={data?.data.center_mind.translations.uz.desc}
-                    onChange={(newContent: string) => handleContentChangeUz(newContent)}
-                />
-            </div>
+            {data?.data.center_mind.length >= 1 ? (
+                <>
+                    <div className="mb-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+                        <div>
+                            <label htmlFor="uztitle" className="block mb-2 text-sm font-medium text-gray-900">Title UZ</label>
+                            <input
+                                type="text"
+                                name="uzTitle"
+                                id="uztitle"
+                                value={formData.uzTitle}
+                                onChange={handleInputChange}
+                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                placeholder="Enter title . . ."
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="rutitle" className="block mb-2 text-sm font-medium text-gray-900">Title RU</label>
+                            <input
+                                type="text"
+                                name="ruTitle"
+                                id="rutitle"
+                                value={formData.ruTitle}
+                                onChange={handleInputChange}
+                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                placeholder="Enter title . . ."
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="entitle" className="block mb-2 text-sm font-medium text-gray-900">Title EN</label>
+                            <input
+                                type="text"
+                                name="enTitle"
+                                id="entitle"
+                                value={formData.enTitle}
+                                onChange={handleInputChange}
+                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                placeholder="Enter title . . ."
+                            />
+                        </div>
+                    </div>
+                    <div className="mb-5">
+                        <label htmlFor="title" className="block mb-2 text-sm font-medium text-gray-900">Content UZ</label>
+                        <TipTap
+                            content={data?.data.center_mind[0]?.translations.uz.desc}
+                            onChange={(newContent: string) => handleContentChangeUz(newContent)}
+                        />
+                    </div>
 
-            <div className="mb-5">
-                <label htmlFor="title" className="block mb-2 text-sm font-medium text-gray-900">Content RU</label>
-                <TipTap
-                    content={data?.data.center_mind.translations.ru.desc}
-                    onChange={(newContent: string) => handleContentChangeRu(newContent)}
-                />
-            </div>
+                    <div className="mb-5">
+                        <label htmlFor="title" className="block mb-2 text-sm font-medium text-gray-900">Content RU</label>
+                        <TipTap
+                            content={data?.data.center_mind[0]?.translations.ru.desc}
+                            onChange={(newContent: string) => handleContentChangeRu(newContent)}
+                        />
+                    </div>
 
-            <div className="mb-5">
-                <label htmlFor="title" className="block mb-2 text-sm font-medium text-gray-900">Content EN</label>
-                <TipTap
-                    content={data?.data.center_mind.translations.en.desc}
-                    onChange={(newContent: string) => handleContentChangeEn(newContent)}
-                />
-            </div>
+                    <div className="mb-5">
+                        <label htmlFor="title" className="block mb-2 text-sm font-medium text-gray-900">Content EN</label>
+                        <TipTap
+                            content={data?.data.center_mind[0]?.translations.en.desc}
+                            onChange={(newContent: string) => handleContentChangeEn(newContent)}
+                        />
+                    </div>
 
-            <button
-                disabled={mutation.isPending}
-                onClick={() => handleSubmit(data?.data.center_mind._id)}
-                className="text-white bg-maincolor hover:scale-90 duration-300 font-medium rounded-lg text-sm  px-5 py-2.5"
-            >
-                {!mutation.isPending ? "Save" : "Loading . . ."}
-            </button>
+                    <button
+                        disabled={mutation.isPending}
+                        onClick={() => handleSubmit(data?.data.center_mind._id)}
+                        className="text-white bg-maincolor hover:scale-90 duration-300 font-medium rounded-lg text-sm  px-5 py-2.5"
+                    >
+                        {!mutation.isPending ? "Save" : "Loading . . ."}
+                    </button>
+                </>
+            ) : (
+                <Link href={`/${locale}/admin/main/center_mind/add`}>
+                    <button className="p-2 px-4 rounded-lg text-white text-base bg-maincolor">Create Center mind page</button>
+                </Link>
+            )}
 
         </div>
     )

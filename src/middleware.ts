@@ -10,6 +10,7 @@ import { clerkMiddleware } from "@clerk/nextjs/server";
 export default clerkMiddleware((auth, req) => {
   const [, locale, ...segments] = req.nextUrl.pathname.split('/');
 
+  // console.log(auth().sessionClaims?.metadata?.role);d
 
   if (!auth().userId && protectedRoutes.includes(req.nextUrl.pathname.split('/')[2])) {
     const absoluteURL = new URL(`/${locale}/sign-in`, req.nextUrl.origin);

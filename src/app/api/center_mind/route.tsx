@@ -33,10 +33,10 @@ export const POST = async (req: any) => {
 export const GET = async () => {
     await connectMongoDB();
     try {
-        const center_mind = await CenterMind.findOne({ getId: 'fayzullo' });
+        const center_mind = await CenterMind.find({});
         return NextResponse.json({ center_mind }, { status: 200 });
     } catch (error) {
-        return NextResponse.json({ center_mind: null }, { status: 500 });
+        return NextResponse.json({ center_mind: [] }, { status: 500 });
     }
 };
 
