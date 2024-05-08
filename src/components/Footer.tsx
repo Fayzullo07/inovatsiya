@@ -4,7 +4,7 @@ import Container from "./Core/Container";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import Image from "next/image";
-import { MailCheck, MailCheckIcon, MailIcon, MapPinIcon, PhoneIcon } from "lucide-react";
+import { MailIcon, MapPinIcon, PhoneIcon } from "lucide-react";
 
 const Footer = () => {
     const pathname = usePathname();
@@ -55,7 +55,7 @@ const Footer = () => {
 
 
                                 <div className="text-left">
-                                    <p className="text-lg font-medium text-white">Our Services</p>
+                                    <p className="text-lg font-medium text-white">{t("servece_title")}</p>
 
                                     <div className="mt-2">
                                         <ul className=" text-sm">
@@ -72,7 +72,7 @@ const Footer = () => {
                                 </div>
 
                                 <div className="text-left">
-                                    <p className="text-lg font-medium text-white">Contact Us</p>
+                                    <p className="text-lg font-medium text-white">{t("contact_title")}</p>
 
                                     <ul className="mt-4 space-y-4 text-sm">
                                         <li>
