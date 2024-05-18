@@ -148,7 +148,7 @@ const CenterMind = () => {
 
                     <button
                         disabled={mutation.isPending}
-                        onClick={() => handleSubmit(data?.data.center_mind._id)}
+                        onClick={() => handleSubmit(data?.data.center_mind[0]?._id)}
                         className="text-white bg-maincolor hover:scale-90 duration-300 font-medium rounded-lg text-sm  px-5 py-2.5"
                     >
                         {!mutation.isPending ? "Save" : "Loading . . ."}

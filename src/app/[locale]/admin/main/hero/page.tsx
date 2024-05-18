@@ -106,7 +106,7 @@ const Hero = () => {
     };
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-            {data.data.hero.length > 1 ? (
+            {data.data.hero.length >= 1 ? (
                 <>
                     <div className="grid items-center justify-between gap-4" data-aos="fade-up" data-aos-delay="300">
                         <div className="mb-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
