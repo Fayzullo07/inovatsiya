@@ -189,7 +189,7 @@ const IlmiyEtika = () => {
 
                     </div>
                     <div className="bg-gray-100 p-4">
-                        {/* <h2 className="text-lg font-bold mb-4">{m("comments")}</h2> */}
+                        <h2 className="text-lg font-bold mb-4">{m("comments")}</h2>
                         <div className="flex flex-col space-y-4">
                             {data.data.ilmiy_etika[0]?.comments.map((item: any, i: number) => (
 
