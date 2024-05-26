@@ -76,7 +76,7 @@ const EventWait = ({ params }: { params: any }) => {
                             </div>
                         </div>
                         <div className="p-4 text-gray-600 text-lg">
-                            <p className="text-sm">Tadbirdan kutilayotgan natigalar</p>
+                            <p className="text-sm">Tadbirdan kutilayotgan natijalar</p>
                             <p className="mb-2 ml-2 text-sm text-gray-500">
                                 {data.data.eventsWait.translations[`${locale}`].result}
                             </p>
@@ -87,7 +87,6 @@ const EventWait = ({ params }: { params: any }) => {
                             <p className="text-sm">Tadbir shakli</p>
                             <p className="mb-2 ml-2 text-sm text-gray-500">
                                 {data.data.eventsWait.translations[`${locale}`].form}
-                                {"Lorem Ipsum is simply dummy text of the printing and typesetting since the 1500s"}
                             </p>
                             <p className="text-sm">{"Tadbir bo'lib o'tadigan joyi"}</p>
                             <p className="mb-2 ml-2 text-sm text-gray-500">

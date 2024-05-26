@@ -1,7 +1,7 @@
 "use client"
 import Container from "@/components/Core/Container"
 
-import { Input } from "@/components/ui/input"
+// import { Input } from "@/components/ui/input"
 import { useState } from "react";
 
 import {
@@ -14,15 +14,15 @@ import EventFinishedGet from "@/components/GetComponents/EventFinishedGet";
 import EventWaitGet from "@/components/GetComponents/EventWaitGet";
 
 const Events = () => {
-    const [search, setSearch] = useState("");
-    const [isFinished, setIsFinished] = useState(true);
+    // const [search, setSearch] = useState("");
+    const [isFinished, setIsFinished] = useState(false);
     return (
         <div className=" bg-slate-50">
             <Container>
 
                 <div className="flex mb-4 gap-4 justify-between items-center">
                     <div className="flex w-full max-w-sm items-center space-x-2">
-                        <Input type="search" placeholder="Search . . ." value={search} onChange={(e) => setSearch(e.target.value)} />
+                        {/* <Input type="search" placeholder="Search . . ." value={search} onChange={(e) => setSearch(e.target.value)} /> */}
                     </div>
                     <DropdownMenu >
                         <DropdownMenuTrigger asChild>
@@ -34,7 +34,7 @@ const Events = () => {
                         </DropdownMenuContent>
                     </DropdownMenu>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 md:gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
                     {isFinished ? (
                         <EventFinishedGet />
                     ) : (

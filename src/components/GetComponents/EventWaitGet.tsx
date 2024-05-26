@@ -116,7 +116,7 @@ const EventWaitGet = ({ search = "", amount = 0 }) => {
                     <Link href={`/${locale}/main_all/events/wait/${item._id}`}>
                         <div className="py-4 px-8">
                             <h4 className="text-xl tracking-wide mb-3 font-semibold text-maincolor capitalize">{item.translations[`${locale}`].name}</h4>
-                            <p className="text-sm">Tadbirdan kutilayotgan natigalar</p>
+                            <p className="text-sm">Tadbirdan kutilayotgan natijalar</p>
                             <p className="mb-2 ml-2 text-sm text-gray-500">
                                 {item.translations[`${locale}`].result}
                             </p>
@@ -127,7 +127,6 @@ const EventWaitGet = ({ search = "", amount = 0 }) => {
                             <p className="text-sm">Tadbir shakli</p>
                             <p className="mb-2 ml-2 text-sm text-gray-500">
                                 {item.translations[`${locale}`].form}
-                                {"Lorem Ipsum is simply dummy text of the printing and typesetting since the 1500s"}
                             </p>
                             <p className="text-sm">{"Tadbir bo'lib o'tadigan joyi"}</p>
                             <p className="mb-2 ml-2 text-sm text-gray-500">
